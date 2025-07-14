@@ -1,13 +1,15 @@
 using System;
+using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
-using Code.Scripts.ScriptableObjects;
+using Code.Scripts.Components.Interfaces;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
+public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IEndDragHandler
 {
     [SerializeField] private CardSO _cardData;
     private Image _cardImage;
@@ -16,6 +18,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private TMP_Text _cardLifeTimeText;
     private TMP_Text _cardEnergyCostText;
 
+    private Transform _originalTransform;
 	public int EnergyCost { get; set; }
 	public int LifeTime { get; set; }
     
@@ -48,7 +51,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     }
     
     public virtual void PlayCard(TriggerTiming timing, GameContext context) {
-        foreach (var ability in cardData.abilities) {
+        foreach (var ability in _cardData.abilities) {
             if (ability.triggerTiming == timing)
             {
                 ability.Activate(this, context);
@@ -60,7 +63,12 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         _cardLifeTimeText.text = $"{this.LifeTime}";
         _cardEnergyCostText.text = $"{this.EnergyCost}";
 	}
-    
+
+    public void Drop()
+    {
+        throw new NotImplementedException();
+    }
+
     public void Select()
     {
         _isSelected = true;
@@ -84,16 +92,17 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     {
         if (_isSelected)
         {
-            if (eventData.delta.y > 0)
-            {
-                Debug.Log("Card deployed on table");
-            }
+            // Move the card with the mouse
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(eventData.position);
+            mousePosition.z = 0; // Ensure the card stays in the same plane
+            transform.position = mousePosition;
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        HandDeckManager.Instance.SelectCard(this);
+        _originalTransform = transform;
+        GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -107,4 +116,16 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         // Change the card's appearance to indicate deselection
         transform.DOScale(0.2f, 0.1f);
     }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+            transform.DOMove(_originalTransform.position, 0.2f)
+                .SetEase(Ease.OutBack)
+                .OnComplete(() => {
+                    // Optionally, you can reset the card's appearance after dragging
+                    transform.DOScale(0.2f, 0.1f);
+                });
+    }
+
+    
 }

@@ -1,0 +1,29 @@
+using System.Collections;
+using Code.Scripts.Components.Entity;
+using UnityEngine;
+
+namespace Code.Scripts.Components.GameManagment
+{
+    public class TurnManager : MonoBehaviour
+    {
+        private GameBoard.GameBoard _board;
+        private Player _player;
+        private Enemy _enemy;
+
+        private bool isPlayerTurn = true;
+
+        public void StartGame()
+        {
+
+        }
+
+        public void StartGame(GameBoard.GameBoard board, Player player, Enemy enemy)
+        {
+            _board = board;
+            _player = player;
+            _enemy = enemy;
+
+        }
+
+    }
+}

@@ -1,15 +1,19 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.GameManagment;
+using UnityEngine;
 
-public enum TriggerTiming {
-    OnPlay,
-    OnDeath,
-    OnTurnStart,
-    OnTurnEnd,
-    Passive
-}
-
-public abstract class CardAbilitySO : ScriptableObject
+namespace Code.Scripts.Components.Card.ScriptableObjects
 {
-    public TriggerTiming triggerTiming;
-    public abstract void Activate(ACard card, GameContext gameContext);
+    public enum TriggerTiming {
+        OnPlay,
+        OnDeath,
+        OnTurnStart,
+        OnTurnEnd,
+        Passive
+    }
+
+    public abstract class CardAbilitySo : ScriptableObject
+    {
+        public TriggerTiming triggerTiming;
+        public abstract void Activate(ACard card, GameContext gameContext);
+    }
 }

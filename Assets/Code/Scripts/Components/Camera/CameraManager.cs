@@ -1,4 +1,5 @@
 using System;
+using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
 using DG.Tweening;
 using UnityEngine;
@@ -9,20 +10,37 @@ namespace Code.Scripts.Components.Camera
     {
         [SerializeField] private Transform topView;
         [SerializeField] private Transform tableView;
+        [SerializeField] private Transform pivotPoint;
+        
+        [SerializeField] private float angleDegrees = 90f;
+        [SerializeField] private float duration = 1f;
         private void OnEnable()
         {
-            HandDeckManager.Instance.OnCardSelected += MoveCameraToTopView;
-            HandDeckManager.Instance.OnCardDeselected += HandleCardDeselected;
+            GameManager.Instance.Player.HandDeck.OnCardSelected += MoveCameraToTopView;
+            GameManager.Instance.Player.HandDeck.OnCardDeselected += HandleCardDeselected;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                MoveCameraToTopView();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                HandleCardDeselected(null);
+            }
         }
 
         private void MoveCameraToTopView(ACard obj)
         {
-            transform.DOMove(topView.position, 0.5f)
-                .SetEase(Ease.OutBack)
-                .OnComplete(() =>
-                {
-                    transform.DORotate(topView.rotation.eulerAngles, 0.5f)
-                        .SetEase(Ease.OutBack).OnComplete(() =>
+            float elapsed = 0f;
+            
+            DOTween.To(() => 0f, x => {
+                float deltaAngle = x - elapsed;
+                transform.RotateAround(pivotPoint.position, Vector3.right, deltaAngle);
+                elapsed = x;
+            }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
                         {
                             obj.transform.DOMove(transform.position + transform.forward * 0.5f - transform.up * 0.1f, 0.5f)
                                 .SetEase(Ease.OutBack).OnComplete(() =>
@@ -30,24 +48,41 @@ namespace Code.Scripts.Components.Camera
                                     obj.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.5f).SetEase(Ease.OutBack);
                                 });
                         });
-                });
+        }
+        
+        private void MoveCameraToTopView()
+        {
+            float elapsed = 0f;
+
+            DOTween.To(() => 0f, x =>
+            {
+                float deltaAngle = x - elapsed;
+                transform.RotateAround(pivotPoint.position, Vector3.right, deltaAngle);
+                elapsed = x;
+            }, angleDegrees, duration).SetEase(Ease.InOutSine);
         }
         
         private void HandleCardDeselected(ACard obj)
         {
-            transform.DOMove(tableView.position, 0.5f)
-                .SetEase(Ease.OutBack)
-                .OnComplete(() =>
-                {
-                    transform.DORotate(tableView.rotation.eulerAngles, 0.5f)
-                        .SetEase(Ease.OutBack).OnComplete(HandDeckManager.Instance.DeployCardsInHand);
-                });
+            float elapsed = 0f;
+            
+            DOTween.To(() => 0f, x => {
+                float deltaAngle = x - elapsed;
+                transform.RotateAround(pivotPoint.position, Vector3.right, -deltaAngle);
+                elapsed = x;
+            }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
+            {
+                transform.DORotate(tableView.rotation.eulerAngles, 0.5f)
+                    .SetEase(Ease.OutBack).OnComplete(GameManager.Instance.Player.HandDeck.DeployCardsInHand);
+            });
+            
+                
         }
 
         private void OnDisable()
         {
-            HandDeckManager.Instance.OnCardSelected -= MoveCameraToTopView;
-            HandDeckManager.Instance.OnCardDeselected -= HandleCardDeselected;
+            GameManager.Instance.Player.HandDeck.OnCardSelected -= MoveCameraToTopView;
+            GameManager.Instance.Player.HandDeck.OnCardDeselected -= HandleCardDeselected;
         }
     }
 }

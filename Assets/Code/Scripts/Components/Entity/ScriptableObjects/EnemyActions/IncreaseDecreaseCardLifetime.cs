@@ -1,12 +1,18 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.GameManagment;
+using UnityEngine;
 
-public class IncreaseDecreaseCardLifetime : EnemyActionSO
+namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
 {
-    public override void ExecuteAbility(Enemy enemy, GameContext context)
+    [CreateAssetMenu(fileName = "IncreaseDecreaseCardLifetime", menuName = "ScriptableObjects/Entity/EnemyAction/IncreaseDecreaseCardLifetime", order = 1)]
+    public class IncreaseDecreaseCardLifetime : EnemyActionSO
     {
-        foreach (ACard card in context.allCardsInPlay)
+
+        public override void ExecuteAction(Enemy enemy, GameContext gameContext)
         {
-            card.LifeTime += Random.Range(-1, 1)
+            foreach (ACard card in gameContext.allCardsInHand)
+            {
+                card.LifeTime += Random.Range(-1, 1);
+            }
         }
     }
 }

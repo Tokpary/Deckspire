@@ -1,13 +1,16 @@
-namespace DefaultNamespace;
+using UnityEngine;
 
-public class Entity
+namespace Code.Scripts.Components.Entity
 {
-    public int MaxHealth {  get; set; }
-    public int CurrentHealth { get; set; }
-    public int MaxEnergy {get; set;}
-    public int CurrentEnergy {get; set;}
+	public class Entity : MonoBehaviour
+	{
+		public int MaxHealth {  get; set; }
+		public int CurrentHealth { get; set; }
+		public int MaxEnergy {get; set;}
+		public int CurrentEnergy {get; set;}
 
-	public virtual void TakeDamage(int damage){
-		CurrentHealth -= damage;
+		public virtual void TakeDamage(int damage){
+			CurrentHealth -= damage;
+		}
 	}
 }

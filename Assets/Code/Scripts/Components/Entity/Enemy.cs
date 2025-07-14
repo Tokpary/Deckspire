@@ -1,11 +1,14 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.Entity.ScriptableObjects;
+using UnityEngine;
 
-public class Enemy : Entity
+namespace Code.Scripts.Components.Entity
 {
-    [SerializeField] private EntitySO _enemyData;
+	public class Enemy : Entity
+	{
+		[SerializeField] private EntitySO _enemyData;
 
-	public void PlayTurn(){
-		int index = Random.Range(0, _enemyData.Actions.length);
-		_enemyData.Actions[index].ExecuteAction(this, gameContext);
+		public void PlayTurn(){
+			//_enemyData.Actions[Random.Range(0, _enemyData.Actions.Count)].ExecuteAction(this, gameContext);
+		}
 	}
 }

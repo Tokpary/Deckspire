@@ -1,6 +1,11 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.GameManagment;
+using UnityEngine;
 
-public abstract class EnemyActionSO : ScriptableObject
+namespace Code.Scripts.Components.Entity.ScriptableObjects
 {
-    public abstract void ExecuteAction(Enemy enemy, GameContext gameContext);
+    
+    public abstract class EnemyActionSO : ScriptableObject
+    {
+        public abstract void ExecuteAction(Enemy enemy, GameContext gameContext);
+    }
 }

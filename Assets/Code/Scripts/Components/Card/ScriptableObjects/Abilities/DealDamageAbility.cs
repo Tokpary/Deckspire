@@ -1,11 +1,17 @@
-namespace DefaultNamespace;
 
-public class DealDamageAbility : CardAbilitySO
+using Code.Scripts.Components.GameManagment;
+using UnityEngine;
+
+namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
 {
-    public int damage;
-
-    public override void Activate(ACard card, GameContext gameContext)
+    [CreateAssetMenu(fileName = "DealDamageAbility", menuName = "ScriptableObjects/Card/Ability/DealDamageAbility", order = 1)]
+    public class DealDamageAbility : CardAbilitySo
     {
-        gameContext.targetEnemy.TakeDamage(damage);
+        public int damage;
+
+        public override void Activate(ACard card, GameContext gameContext)
+        {
+            gameContext.targetEnemy.TakeDamage(damage);
+        }
     }
 }

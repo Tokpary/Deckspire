@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Code.Scripts.ScriptableObjects
+namespace Code.Scripts.Components.Card.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "NewCard", menuName = "ScriptableObjects/Card", order = 1)]
+    [CreateAssetMenu(fileName = "NewCard", menuName = "ScriptableObjects/Card/Card", order = 1)]
     public class CardSO : ScriptableObject   
     {
         public string cardName;
@@ -11,6 +12,6 @@ namespace Code.Scripts.ScriptableObjects
         public int manaCost;
         public int lifetime;
         
-        public List<CardAbilitySO> abilities;
+        public List<CardAbilitySo> abilities;
     }
 }

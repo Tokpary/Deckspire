@@ -1,9 +1,15 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.GameManagment;
+using UnityEngine;
 
-public class AddGarbageCards : EnemyActionSO
+namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
 {
-    public override void ExecuteAction(Enemy enemy, GameContext gameContext)
+    
+    [CreateAssetMenu(fileName = "NewAddGarbageAction", menuName = "ScriptableObjects/Entity/EnemyAction/AddGarbageCards", order = 1)]
+    public class AddGarbageCards : EnemyActionSO
     {
-        gameContext.currentPlayer.HandDeck
+        public override void ExecuteAction(Enemy enemy, GameContext gameContext)
+        {
+           // gameContext.currentPlayer.HandDeck
+        }
     }
 }

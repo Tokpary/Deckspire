@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.Interfaces;
 using Code.Scripts.DesignPatterns;
 using DG.Tweening;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Code.Scripts.Components.Handdeck
 {
-    public class HandDeckManager : Singleton<HandDeckManager>
+    public class HandDeckManager : MonoBehaviour
     {
         [SerializeField] List<ACard> handCards = new List<ACard>();
         [SerializeField] Transform _cameraTransform;
@@ -19,6 +20,8 @@ namespace Code.Scripts.Components.Handdeck
         
         [SerializeField] private int _maxCardsInHand = 4; // Maximum number of cards in hand
 
+        public GameObject cardPrefab; // Prefab for the cards in hand
+        public int MaxCardsInHand { get; set; }
         public event System.Action<ACard> OnCardSelected;
         public event System.Action<ACard> OnCardDeselected;
         
@@ -45,20 +48,27 @@ namespace Code.Scripts.Components.Handdeck
             OnCardSelected?.Invoke(card);
             
             DeployCardsInHand();
-            
-            
         }
 
-        public int MaxCardsInHand { get; set; }
+        public int GetCurrentCardCount()
+        {
+            return handCards.Count;
+        }
+        
         void Awake()
         {
             MaxCardsInHand = _maxCardsInHand; 
         }
         
-        public void AddCard(ACard card, bool deploy = true)
+        public void AddCard(CardSO card, bool deploy = true)
         {
             if (card == null) return;
-            handCards.Add(card);
+            
+            GameObject cardObject = Instantiate(cardPrefab, transform);
+            ACard cardComponent = cardObject.GetComponent<ACard>();
+            cardComponent.SetSortingOrder(100); 
+            
+            handCards.Add(cardComponent);
             
             if(deploy)
                 DeployCardsInHand();
