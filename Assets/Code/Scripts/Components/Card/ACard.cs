@@ -1,4 +1,5 @@
 using System;
+using Code.Scripts.Components.Handdeck;
 using Code.Scripts.ScriptableObjects;
 using DG.Tweening;
 using TMPro;
@@ -6,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ACard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public abstract class ACard : MonoBehaviour, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private CardSO _cardData;
     private Image _cardImage;
@@ -14,6 +15,8 @@ public abstract class ACard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private TMP_Text _cardDescriptionText;
     private TMP_Text _cardLifeTimeText;
     private TMP_Text _cardEnergyCostText;
+    
+    private bool _isSelected = false;
     [SerializeField] private Transform childTransform;
 
     private void Awake()
@@ -30,7 +33,7 @@ public abstract class ACard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         }
     }
     
-    private void InitializeCard()
+    public void InitializeCard()
     {
         _cardImage.sprite = _cardData.cardImage;
         _cardNameText.text = _cardData.cardName;
@@ -38,15 +41,15 @@ public abstract class ACard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         _cardLifeTimeText.text = $"{_cardData.lifetime}";
         _cardEnergyCostText.text = $"{_cardData.manaCost}";
     }
-
-    public void OnPointerDown(PointerEventData e)
+    
+    public void Select()
     {
-        transform.DOScale(0.23f, 0.15f);
+        _isSelected = true;
     }
-
-    public void OnPointerUp(PointerEventData e)
+    
+    public void Deselect()
     {
-        transform.DOScale(0.2f, 0.1f);
+        _isSelected = false;
     }
     
     
@@ -58,5 +61,33 @@ public abstract class ACard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     void Update()
     {
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (_isSelected)
+        {
+            if (eventData.delta.y > 0)
+            {
+                Debug.Log("Card deployed on table");
+            }
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        HandDeckManager.Instance.SelectCard(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // Change the card's appearance to indicate selection
+        transform.DOScale(0.25f, 0.15f);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Change the card's appearance to indicate deselection
+        transform.DOScale(0.2f, 0.1f);
     }
 }
