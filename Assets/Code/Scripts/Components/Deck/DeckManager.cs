@@ -24,13 +24,7 @@ public class DeckManager : MonoBehaviour, IPointerClickHandler
         {
             AddCardToHand(false);
         }
-        AddCardToHand(); // Add the first card to hand immediately
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AddCardToHand(); 
     }
     
     private void ShuffleDeck(Stack<CardSO> deck)

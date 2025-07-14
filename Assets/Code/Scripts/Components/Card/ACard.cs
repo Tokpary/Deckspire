@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ACard : MonoBehaviour, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
+public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private CardSO _cardData;
     private Image _cardImage;
@@ -15,6 +15,9 @@ public abstract class ACard : MonoBehaviour, IPointerClickHandler, IDragHandler,
     private TMP_Text _cardDescriptionText;
     private TMP_Text _cardLifeTimeText;
     private TMP_Text _cardEnergyCostText;
+
+	public int EnergyCost { get; set; }
+	public int LifeTime { get; set; }
     
     private bool _isSelected = false;
     [SerializeField] private Transform childTransform;
@@ -40,7 +43,23 @@ public abstract class ACard : MonoBehaviour, IPointerClickHandler, IDragHandler,
         _cardDescriptionText.text = _cardData.description;
         _cardLifeTimeText.text = $"{_cardData.lifetime}";
         _cardEnergyCostText.text = $"{_cardData.manaCost}";
+		this.EnergyCost = _cardData.manaCost;
+		this.LifeTime = _cardData.lifetime;
     }
+    
+    public virtual void PlayCard(TriggerTiming timing, GameContext context) {
+        foreach (var ability in cardData.abilities) {
+            if (ability.triggerTiming == timing)
+            {
+                ability.Activate(this, context);
+            }
+        }
+    }
+
+	public void UpdateCard(){
+        _cardLifeTimeText.text = $"{this.LifeTime}";
+        _cardEnergyCostText.text = $"{this.EnergyCost}";
+	}
     
     public void Select()
     {
@@ -52,15 +71,13 @@ public abstract class ACard : MonoBehaviour, IPointerClickHandler, IDragHandler,
         _isSelected = false;
     }
     
+	public void Discard(){
+	}
     
     public void SetSortingOrder(int order)
     {
         foreach (var r in GetComponentsInChildren<Renderer>())
             r.sortingOrder = order;
-    }
-
-    void Update()
-    {
     }
 
     public void OnDrag(PointerEventData eventData)

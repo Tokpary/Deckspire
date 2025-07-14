@@ -10,5 +10,7 @@ namespace Code.Scripts.ScriptableObjects
         public Sprite cardImage;
         public int manaCost;
         public int lifetime;
+        
+        public List<CardAbilitySO> abilities;
     }
 }
