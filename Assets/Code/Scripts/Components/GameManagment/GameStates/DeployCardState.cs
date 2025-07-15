@@ -14,7 +14,6 @@ namespace Code.Scripts.Components.GameManagment.GameStates
         public override void Enter(IGameState gameManager)
         {
             CameraManager.Instance.SubscribeToCardSelect();
-            Debug.Log("DeployCardState: Entering Deploy Card State. Player can now deploy cards.");
         }
 
         public override void Exit(IGameState gameManager)

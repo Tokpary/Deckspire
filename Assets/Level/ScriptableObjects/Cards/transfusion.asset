@@ -15,6 +15,8 @@ MonoBehaviour:
   cardName: transfusion
   description: "Agota esta carta. A\xF1ade sus turnos de agotamiento actuales a otra
     carta de tu mano"
-  cardImage: {fileID: 21300000, guid: f5042a0d509c6f445bdb977ecbac0bd4, type: 3}
+  cardImage: {fileID: 21300000, guid: a26e65d448f8cb24a98e5c97b79396a5, type: 3}
   manaCost: 3
   lifetime: 3
+  cardType: 0
+  abilities: []

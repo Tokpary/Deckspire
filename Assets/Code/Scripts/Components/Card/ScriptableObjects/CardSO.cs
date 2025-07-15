@@ -11,6 +11,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects
         public Sprite cardImage;
         public int manaCost;
         public int lifetime;
+        public int cardType; // 0: Unit, 1: Spell, 2: Rule
         
         public List<CardAbilitySo> abilities;
     }

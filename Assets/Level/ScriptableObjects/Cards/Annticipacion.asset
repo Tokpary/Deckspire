@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Anticipacion
   description: "Salta la siguiente acci\xF3n del rival"
-  cardImage: {fileID: 21300000, guid: f5042a0d509c6f445bdb977ecbac0bd4, type: 3}
+  cardImage: {fileID: 21300000, guid: deb73daf4d341f64681c3cada8dcba85, type: 3}
   manaCost: 2
   lifetime: 1
+  cardType: 1
+  abilities: []

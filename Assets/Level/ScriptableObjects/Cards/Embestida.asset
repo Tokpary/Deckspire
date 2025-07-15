@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Embestida
   description: "Infringe 3 de da\xF1o"
-  cardImage: {fileID: 21300000, guid: f5042a0d509c6f445bdb977ecbac0bd4, type: 3}
+  cardImage: {fileID: 21300000, guid: 5e89b2f1e5e34b84ab2be288da3980c7, type: 3}
   manaCost: 2
   lifetime: 1
+  cardType: 1
+  abilities: []

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
@@ -9,7 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IEndDragHandler
+public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IEndDragHandler, IBeginDragHandler
 {
     [SerializeField] private CardSO _cardData;
     private Image _cardImage;
@@ -18,7 +19,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private TMP_Text _cardLifeTimeText;
     private TMP_Text _cardEnergyCostText;
 
-    private Transform _originalTransform;
+    private Vector3 _originalPosition;
 	public int EnergyCost { get; set; }
 	public int LifeTime { get; set; }
     
@@ -118,7 +119,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        _originalTransform = transform;
+        if(_isSelected) return;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
@@ -136,23 +137,28 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        GameObject target = eventData.pointerEnter;
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
 
-        if (target != null && target.TryGetComponent<ISnapZone>(out var snapZone) && snapZone.CanAcceptCard(this))
+        foreach (var result in results)
         {
-            snapZone.SnapCard(this);
+            if (result.gameObject.TryGetComponent<ISnapZone>(out var snapZone) && snapZone.CanAcceptCard(this))
+            {
+                snapZone.SnapCard(this);
+                return;
+            }
         }
-        else
-        {
-            // Volver a posición original
-            transform.DOMove(_originalTransform.position, 0.2f)
-                .SetEase(Ease.OutBack)
-                .OnComplete(() =>
-                {
-                    transform.DOScale(0.2f, 0.1f);
-                });
-        }
+        
+        transform.DOMove(_originalPosition, 0.35f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() =>
+            {
+                transform.DOScale(0.2f, 0.1f);
+            });
     }
 
-    
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _originalPosition = transform.position;
+    }
 }

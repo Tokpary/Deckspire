@@ -74,7 +74,6 @@ namespace Code.Scripts.Components.GameBoard
 
    			int cardsToDraw = GameManager.Instance.Player.HandDeck.MaxCardsInHand - PlayerHand.Count;
 
-            Debug.Log($"Refilling player hand with {cardsToDraw} cards. Current hand count: {PlayerHand.Count}");
     		for (int i = 0; i < cardsToDraw; i++)
     		{
      		    seq.AppendCallback(() => AddCardToHand());
@@ -86,12 +85,12 @@ namespace Code.Scripts.Components.GameBoard
 
         private void InitializeCards()
         {
-            Debug.Log($"{CurrentFullDeck.Length} cards in the current full deck. Initializing draw stack... {CurrentFullDeck}");
             foreach (CardSO card in CurrentFullDeck)
             {
                 ACard cardComponent = CreateCardInstance(card);
                 DrawStack.Push(cardComponent);
             }
+            ShuffleDrawStack();
         }
         
         private ACard CreateCardInstance(CardSO cardSo)
@@ -125,16 +124,25 @@ namespace Code.Scripts.Components.GameBoard
                 DrawStack.Push(card);
             }
             
-            // Shuffle the draw stack
+            ShuffleDrawStack();
+            
+            // Return the top card from the now shuffled draw stack
+            return DrawStack.Count > 0 ? DrawStack.Pop() : null;
+        }
+        
+        public void ShuffleDrawStack()
+        {
             var shuffledCards = new List<ACard>(DrawStack);
+            DrawStack.Clear();
             for (int i = 0; i < shuffledCards.Count; i++)
             {
                 int j = Random.Range(i, shuffledCards.Count);
                 (shuffledCards[i], shuffledCards[j]) = (shuffledCards[j], shuffledCards[i]);
             }
-            
-            // Return the top card from the now shuffled draw stack
-            return DrawStack.Count > 0 ? DrawStack.Pop() : null;
+            foreach (var card in shuffledCards)
+            {
+                DrawStack.Push(card);
+            }
         }
     }
 }
