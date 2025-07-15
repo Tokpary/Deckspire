@@ -1,15 +1,20 @@
-namespace DefaultNamespace;
+using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.GameManagment.GameStates;
+using Code.Scripts.Components.Interfaces;
 
-public class InteractableTurnPass : IInteractableObject
+namespace Code.Scripts.Components.Interactables
 {
-    public void Activate()
+    public class InteractableTurnPass : IInteractableObject
     {
-        if(GameManager.Instance.GetCurrentState() is DeployCardState);
-            GameManager.Instance.SetState(new EnemyActionState());
-    }
+        public void Activate()
+        {
+         //   if(GameManager.Instance.GetCurrentState() is DeployCardState);
+         //   GameManager.Instance.SetState(new EnemyActionState());
+        }
 
-    public void Highlight()
-    {
+        public void Highlight()
+        {
         
+        }
     }
 }

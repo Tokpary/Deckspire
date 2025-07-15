@@ -1,25 +1,30 @@
 
+using System;
 using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
+using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Scripts.Components.GameBoard
 {
-    public class GameBoard 
+    public class GameBoard : MonoBehaviour
     {
-        public Stack<CardSO> DiscardStack;
-        public Stack<CardSO> DrawStack;
+        public Stack<ACard> DiscardStack;
+        public Stack<ACard> DrawStack;
         
-        public List<CardSO> PlayerHand;
+        public List<ACard> PlayerHand;
         
         public GameObject cardPrefab;
         
+        public CardSO[] CurrentFullDeck;
+        
         public GameBoard()
         {
-            DiscardStack = new Stack<CardSO>();
-            DrawStack = new Stack<CardSO>();
-            PlayerHand = new List<CardSO>();
+            DiscardStack = new Stack<ACard>();
+            DrawStack = new Stack<ACard>();
+            PlayerHand = new List<ACard>();
         }
         
         public void Initialize(GameManager gameManager)
@@ -27,10 +32,10 @@ namespace Code.Scripts.Components.GameBoard
             DiscardStack.Clear();
             DrawStack.Clear();
             PlayerHand.Clear();
-            DrawStack = new Stack<CardSO>(gameManager.Player.CurrentFullDeck);
+            InitializeCards();
         }
         
-        public void AddToDrawStack(IEnumerable<CardSO> cards)
+        public void AddToDrawStack(IEnumerable<ACard> cards)
         {
             foreach (var card in cards)
             {
@@ -38,22 +43,22 @@ namespace Code.Scripts.Components.GameBoard
             }
         }
         
-        public void AddToDiscardStack(CardSO card)
+        public void AddToDiscardStack(ACard card)
         {
             DiscardStack.Push(card);
         }
         
-        public void AddToDrawStack(CardSO card)
+        public void AddToDrawStack(ACard card)
         {
             DrawStack.Push(card);
         }
         
-        public void AddToPlayerHand(CardSO card)
+        public void AddToPlayerHand(ACard card)
         {
             PlayerHand.Add(card);
         }
         
-        public void RemoveFromPlayerHand(CardSO card)
+        public void RemoveFromPlayerHand(ACard card)
         {
             PlayerHand.Remove(card);
         }
@@ -69,6 +74,7 @@ namespace Code.Scripts.Components.GameBoard
 
    			int cardsToDraw = GameManager.Instance.Player.HandDeck.MaxCardsInHand - PlayerHand.Count;
 
+            Debug.Log($"Refilling player hand with {cardsToDraw} cards. Current hand count: {PlayerHand.Count}");
     		for (int i = 0; i < cardsToDraw; i++)
     		{
      		    seq.AppendCallback(() => AddCardToHand());
@@ -78,12 +84,28 @@ namespace Code.Scripts.Components.GameBoard
 			seq.OnComplete(() => onComplete?.Invoke());
         }
 
+        private void InitializeCards()
+        {
+            Debug.Log($"{CurrentFullDeck.Length} cards in the current full deck. Initializing draw stack... {CurrentFullDeck}");
+            foreach (CardSO card in CurrentFullDeck)
+            {
+                ACard cardComponent = CreateCardInstance(card);
+                DrawStack.Push(cardComponent);
+            }
+        }
+        
+        private ACard CreateCardInstance(CardSO cardSo)
+        {
+            GameObject cardObject = Instantiate(cardPrefab, transform);
+            ACard cardComponent = cardObject.GetComponent<ACard>();
+            cardComponent.SetCardData(cardSo);
+            return cardComponent;
+        }
 		
         
         public void AddCardToHand()
         {
-            CardSO drawnCard = DrawStack.Count > 0 ? DrawStack.Pop() : RefillAndGiveCard();
-            
+            ACard drawnCard = DrawStack.Count > 0 ? DrawStack.Pop() : RefillAndGiveCard();
             if (drawnCard != null)
             {
                 PlayerHand.Add(drawnCard);
@@ -91,12 +113,12 @@ namespace Code.Scripts.Components.GameBoard
             }
         }
         
-        private CardSO RefillAndGiveCard()
+        private ACard RefillAndGiveCard()
         {
             if (DiscardStack.Count == 0) return null;
             
             // Refill the draw stack from the discard stack
-            var discardCards = new List<CardSO>(DiscardStack);
+            var discardCards = new List<ACard>(DiscardStack);
             DiscardStack.Clear();
             foreach (var card in discardCards)
             {
@@ -104,7 +126,7 @@ namespace Code.Scripts.Components.GameBoard
             }
             
             // Shuffle the draw stack
-            var shuffledCards = new List<CardSO>(DrawStack);
+            var shuffledCards = new List<ACard>(DrawStack);
             for (int i = 0; i < shuffledCards.Count; i++)
             {
                 int j = Random.Range(i, shuffledCards.Count);

@@ -1,6 +1,8 @@
-namespace DefaultNamespace;
 
-public class SceneManager
+namespace Code.Scripts.Components.GameManagment
 {
+    public class SceneManager
+    {
     
+    }
 }

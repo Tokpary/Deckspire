@@ -9,9 +9,9 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int damage;
 
-        public override void Activate(ACard card, GameContext gameContext)
+        public override void Activate(ACard card)
         {
-            gameContext.targetEnemy.TakeDamage(damage);
+            GameManager.Instance.Enemy.TakeDamage(damage);
         }
     }
 }

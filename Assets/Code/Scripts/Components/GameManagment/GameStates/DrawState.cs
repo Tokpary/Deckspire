@@ -1,25 +1,28 @@
 using Patterns.State.Interfaces;
+using UnityEngine;
 
 namespace Code.Scripts.Components.GameManagment.GameStates
 {
     public class DrawState : AGameState
     {
-        public DrawState(GameManager gameState) : base(gameState)
+        public DrawState(IGameState gameState) : base(gameState)
         {
             
         }
 
-        public override void Enter(GameManager gameManager)
+        public override void Enter(IGameState gameManager)
         {
-            gameManager.gameBoard.RefillPlayerHand(() =>
+            
+            var gm = GameManager.Instance;
+            var f = gameManager;
+            gm.GameBoard.RefillPlayerHand(() =>
             {
-                gameManager.SetState(new DeployCardState(gameManager));  
+                f.SetState(new DeployCardState(f));  
             });
         }
 
-        public override void Exit(GameManager gameManager)
+        public override void Exit(IGameState gameManager)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Update()

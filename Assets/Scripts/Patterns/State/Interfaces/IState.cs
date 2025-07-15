@@ -4,8 +4,8 @@ namespace Patterns.State.Interfaces
 {
     public interface IState
     {
-        public void Enter(GameManager gameManager);
-        public void Exit(GameManager gameManager);
+        public void Enter(IGameState gameManager);
+        public void Exit(IGameState gameManager);
         public void Update();
     }
 }

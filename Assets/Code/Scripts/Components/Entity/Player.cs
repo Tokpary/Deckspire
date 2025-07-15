@@ -8,7 +8,6 @@ namespace Code.Scripts.Components.Entity
     {
         public HandDeckManager HandDeck { get; set; }
 
-        [SerializeField] public CardSO[] CurrentFullDeck;
         private void Awake()
         {
             HandDeck = GetComponentInChildren<HandDeckManager>();

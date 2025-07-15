@@ -4,16 +4,16 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 {
     public class DialogueState : AGameState
     {
-        public DialogueState(GameManager gameState) : base(gameState)
+        public DialogueState(IGameState gameState) : base(gameState)
         {
         }
 
-        public override void Enter(GameManager gameManager)
+        public override void Enter(IGameState gameManager)
         {
             throw new System.NotImplementedException();
         }
 
-        public override void Exit(GameManager gameManager)
+        public override void Exit(IGameState gameManager)
         {
             throw new System.NotImplementedException();
         }

@@ -7,9 +7,9 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
     public class IncreaseDecreaseCardLifetime : EnemyActionSO
     {
 
-        public override void ExecuteAction(Enemy enemy, GameContext gameContext)
+        public override void ExecuteAction(Enemy enemy)
         {
-            foreach (ACard card in gameContext.allCardsInHand)
+            foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand)
             {
                 card.LifeTime += Random.Range(-1, 1);
             }

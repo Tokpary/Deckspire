@@ -6,14 +6,14 @@ namespace Patterns.State.Interfaces
     {
         protected IGameState _gameState;
         
-        public AGameState(GameManager gameState)
+        public AGameState(IGameState gameState)
         {
             this._gameState = gameState;
         }
 
-        public abstract void Enter(GameManager gameManager);
+        public abstract void Enter(IGameState gameManager);
 
-        public abstract void Exit(GameManager gameManager);
+        public abstract void Exit(IGameState gameManager);
         
         public abstract void Update();
 

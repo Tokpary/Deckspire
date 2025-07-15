@@ -26,8 +26,8 @@ namespace Code.Scripts.Components.GameManagment
 
         public void EnemyTurn()
         {
-            var ctx = BuildGameContext();
-            _enemy.PlayTurn(ctx);
+            _enemy.PlayTurn();
         }
+        
     }
 }

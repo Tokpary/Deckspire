@@ -14,6 +14,6 @@ namespace Code.Scripts.Components.Card.ScriptableObjects
     public abstract class CardAbilitySo : ScriptableObject
     {
         public TriggerTiming triggerTiming;
-        public abstract void Activate(ACard card, GameContext gameContext);
+        public abstract void Activate(ACard card);
     }
 }

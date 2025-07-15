@@ -4,16 +4,16 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 {
     public class EnemyActionState : AGameState
     {
-        public EnemyActionState(GameManager gameState) : base(gameState)
+        public EnemyActionState(IGameState gameState) : base(gameState)
         {
         }
 
-        public override void Enter(GameManager gameManager)
+        public override void Enter(IGameState gameState)
         {
-            gameManager.Enemy.PlayTurn(gameManager);
+            var gm = GameManager.Instance;
         }
 
-        public override void Exit(GameManager gameManager)
+        public override void Exit(IGameState gameManager)
         {
             throw new System.NotImplementedException();
         }

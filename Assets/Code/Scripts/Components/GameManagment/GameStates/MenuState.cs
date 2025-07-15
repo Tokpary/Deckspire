@@ -4,22 +4,22 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 {
     public class MenuState : AGameState
     {
-        public MenuState(GameManager gameState) : base(gameState)
+        public MenuState(IGameState gameState) : base(gameState)
         {
         }
 
-        public override void Enter(GameManager gameManager)
+        public override void Enter(IGameState gameManager)
         {
             // Logic for entering the menu state
             // This could include showing the main menu UI, pausing the game, etc.
-            gameManager.ShowMainMenu();
+            GameManager.Instance.ShowMainMenu();
         }
 
-        public override void Exit(GameManager gameManager)
+        public override void Exit(IGameState gameManager)
         {
             // Logic for exiting the menu state
             // This could include hiding the main menu UI, resuming the game, etc.
-            gameManager.HideMainMenu();
+            GameManager.Instance.HideMainMenu();
         }
 
         public override void Update()

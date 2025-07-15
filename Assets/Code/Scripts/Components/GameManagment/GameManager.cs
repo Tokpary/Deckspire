@@ -9,12 +9,17 @@ using IState = Patterns.State.Interfaces.IState;
 
 namespace Code.Scripts.Components.GameManagment
 {
-    public class GameManager : DesignPatterns.Singleton<GameManager>, IGameState
+    public class GameManager : DesignPatterns.Singleton<GameManager>
     {
         private GameFlowManager _gameFlowManager;
+        public GameFlowManager GameFlowManager
+        {
+            get => _gameFlowManager;
+            set => _gameFlowManager = value;
+        }
         private TurnManager _turnManager;
         
-        public GameBoard.GameBoard _gameBoard;
+        public GameBoard.GameBoard GameBoard;
         
         [SerializeField] Player _player;
         public Player Player
@@ -33,7 +38,6 @@ namespace Code.Scripts.Components.GameManagment
         private void Awake()
         {
             base.Awake();
-            _gameBoard = new GameBoard.GameBoard();
             _turnManager = GetComponent<TurnManager>();
             _gameFlowManager = GetComponent<GameFlowManager>();
         }
@@ -41,29 +45,16 @@ namespace Code.Scripts.Components.GameManagment
         private void Start()
         {
             InitializeGame();
-            Debug.Log(_player);
-            _gameBoard.Initialize(this);
-            _turnManager.StartGame(gameBoard, _player, _enemy);
-           
+            GameBoard.Initialize(this);
+            _gameFlowManager.SetState(new DrawState(_gameFlowManager));
+            _turnManager.StartGame(GameBoard, _player, _enemy);
         }
 
         private void InitializeGame()
         {
            // player.HandDeck.Initialize();
         }
-
-        public void StartGame()
-        {
-            _gameFlowManager.SetState(new DrawState(this));
-        }
-
-        public void EndGame()
-        {
-            // Logic to end the game, e.g., show game over screen, reset game state, etc.
-            Debug.Log("Game Over");
-            ShowMainMenu();
-        }
-
+        
         
 
         public void ShowMainMenu()

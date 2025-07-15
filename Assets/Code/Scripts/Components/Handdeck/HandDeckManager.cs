@@ -60,15 +60,12 @@ namespace Code.Scripts.Components.Handdeck
             MaxCardsInHand = _maxCardsInHand; 
         }
         
-        public void AddCard(CardSO card, bool deploy = true)
+        public void AddCard(ACard card, bool deploy = true)
         {
             if (card == null) return;
             
-            GameObject cardObject = Instantiate(cardPrefab, transform);
-            ACard cardComponent = cardObject.GetComponent<ACard>();
-            cardComponent.SetSortingOrder(100); 
             
-            handCards.Add(cardComponent);
+            handCards.Add(card);
             
             if(deploy)
                 DeployCardsInHand();
@@ -86,8 +83,7 @@ namespace Code.Scripts.Components.Handdeck
                 {
                     ACard card = handCards[i];
 
-                    // 1. Normalizar índice a rango -1..1
-                    float t = (i - half) / half;
+                    float t = half == 0 ? 0 : (i - half) / half; // Evita NaN
                     float angle = t * arcAngle * cardSpace;
 
                     // 2. Posición en arco (rotando la dirección de la cámara hacia los lados)
@@ -100,15 +96,19 @@ namespace Code.Scripts.Components.Handdeck
                                                             + _cameraTransform.up * cardHeight;
 
                     // 3. Rotación: que la carta mire a la cámara
-                    Vector3 toCam = _cameraTransform.position - pos;
-                    Quaternion look = Quaternion.LookRotation(toCam.normalized, _cameraTransform.up);
-                    look *= Quaternion.Euler(0, 180, angle); // rotación en Z para mantener el abanico
+                    angle = Mathf.Repeat(angle, 360f);
 
-                    // 4. Aplicar posición y rotación
-                    
+                    Vector3 toCam = _cameraTransform.position - pos;
+                    if (toCam.sqrMagnitude < 0.001f)
+                        toCam = _cameraTransform.forward;
+
+                    Quaternion look = Quaternion.LookRotation(toCam.normalized, _cameraTransform.up);
+                    look *= Quaternion.Euler(0, 180, angle);
+
+// Aplicar rotación en espacio global
                     card.transform.DOMove(pos, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
                     {
-                        card.transform.DOLocalRotate(look.eulerAngles, 0.5f).SetEase(Ease.OutBack);
+                        card.transform.DORotate(look.eulerAngles, 0.5f).SetEase(Ease.OutBack);
                     });
                     card.transform.localScale = Vector3.one * cardScale;
                 

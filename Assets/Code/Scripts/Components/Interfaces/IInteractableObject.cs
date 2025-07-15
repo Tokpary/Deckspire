@@ -1,7 +1,9 @@
-namespace DefaultNamespace;
 
-public interface IInteractableObject
+namespace Code.Scripts.Components.Interfaces
 {
-    public void Activate();
-    public void Highlight();
+    public interface IInteractableObject
+    {
+        public void Activate();
+        public void Highlight();
+    }
 }
