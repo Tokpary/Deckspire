@@ -14,6 +14,9 @@ namespace Code.Scripts.Components.Camera
         
         [SerializeField] private float angleDegrees = 90f;
         [SerializeField] private float duration = 1f;
+        
+        private bool _isTopView = false;
+        
         private void OnEnable()
         {
             GameManager.Instance.Player.HandDeck.OnCardSelected += MoveCameraToTopView;
@@ -22,6 +25,7 @@ namespace Code.Scripts.Components.Camera
 
         private void Update()
         {
+            if (GameManager.Instance.GetCurrentState() is not DeployCardState) return;
             if (Input.GetKeyDown(KeyCode.W))
             {
                 MoveCameraToTopView();
@@ -34,6 +38,9 @@ namespace Code.Scripts.Components.Camera
 
         private void MoveCameraToTopView(ACard obj)
         {
+            if (GameManager.Instance.GetCurrentState() is not DeployCardState) return;
+            if (_isTopView) return;
+            _isTopView = true;
             float elapsed = 0f;
             
             DOTween.To(() => 0f, x => {
@@ -64,6 +71,10 @@ namespace Code.Scripts.Components.Camera
         
         private void HandleCardDeselected(ACard obj)
         {
+            
+            if (GameManager.Instance.GetCurrentState() is not DeployCardState) return;
+            if (!_isTopView) return;
+            _isTopView = false;
             float elapsed = 0f;
             
             DOTween.To(() => 0f, x => {

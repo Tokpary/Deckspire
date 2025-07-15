@@ -63,17 +63,22 @@ namespace Code.Scripts.Components.GameBoard
             DiscardStack.Clear();
         }
         
-        public void RefillPlayerHand()
+        public void RefillPlayerHand(Action onComplete = null)
         {
-            Debug.Log("Refilling Player Hand");
-            Debug.Log($"Current Hand Count: {PlayerHand.Count}");
-            Debug.Log($"Draw Stack Count: {DrawStack.Count}");
-            Debug.Log($"Max Cards in Hand: {GameManager.Instance.Player.HandDeck.MaxCardsInHand}");
-            while (PlayerHand.Count < GameManager.Instance.Player.HandDeck.MaxCardsInHand)
-            {
-                AddCardToHand();
-            }
+            var seq = DOTween.Sequence();
+
+   			int cardsToDraw = GameManager.Instance.Player.HandDeck.MaxCardsInHand - PlayerHand.Count;
+
+    		for (int i = 0; i < cardsToDraw; i++)
+    		{
+     		    seq.AppendCallback(() => AddCardToHand());
+        		seq.AppendInterval(0.3f);
+   			}
+
+			seq.OnComplete(() => onComplete?.Invoke());
         }
+
+		
         
         public void AddCardToHand()
         {

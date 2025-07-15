@@ -11,7 +11,10 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 
         public override void Enter(GameManager gameManager)
         {
-            gameManager.gameBoard.RefillPlayerHand();
+            gameManager.gameBoard.RefillPlayerHand(() =>
+            {
+                gameManager.SetState(new DeployCardState(gameManager));  
+            });
         }
 
         public override void Exit(GameManager gameManager)

@@ -10,7 +10,7 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 
         public override void Enter(GameManager gameManager)
         {
-            throw new System.NotImplementedException();
+            gameManager.Enemy.PlayTurn(gameManager);
         }
 
         public override void Exit(GameManager gameManager)

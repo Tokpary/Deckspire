@@ -22,8 +22,12 @@ namespace Code.Scripts.Components.GameManagment
             _board = board;
             _player = player;
             _enemy = enemy;
-
         }
 
+        public void EnemyTurn()
+        {
+            var ctx = BuildGameContext();
+            _enemy.PlayTurn(ctx);
+        }
     }
 }

@@ -11,12 +11,10 @@ namespace Code.Scripts.Components.GameManagment
 {
     public class GameManager : DesignPatterns.Singleton<GameManager>, IGameState
     {
-        
-        private IState _currentState;
-        private IState _previousState;
+        private GameFlowManager _gameFlowManager;
         private TurnManager _turnManager;
         
-        public GameBoard.GameBoard gameBoard;
+        public GameBoard.GameBoard _gameBoard;
         
         [SerializeField] Player _player;
         public Player Player
@@ -25,7 +23,7 @@ namespace Code.Scripts.Components.GameManagment
             set => _player = value;
         }
         
-        [SerializeField] public Enemy _enemy;
+        [SerializeField] Enemy _enemy;
         public Enemy Enemy
         {
             get => _enemy;
@@ -35,29 +33,18 @@ namespace Code.Scripts.Components.GameManagment
         private void Awake()
         {
             base.Awake();
-            _currentState = null;
-            _previousState = null;
-            gameBoard = new GameBoard.GameBoard();
+            _gameBoard = new GameBoard.GameBoard();
             _turnManager = GetComponent<TurnManager>();
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-        {
-            if (arg0.name == "GameLevel")
-            {
-                StartGame();
-            }
+            _gameFlowManager = GetComponent<GameFlowManager>();
         }
         
         private void Start()
         {
             InitializeGame();
             Debug.Log(_player);
-            gameBoard.Initialize(this);
+            _gameBoard.Initialize(this);
             _turnManager.StartGame(gameBoard, _player, _enemy);
-            
-            SetState(new DrawState(this));
+           
         }
 
         private void InitializeGame()
@@ -67,9 +54,7 @@ namespace Code.Scripts.Components.GameManagment
 
         public void StartGame()
         {
-            // Logic to start the game, e.g., initialize game board, player, enemy, etc.
-            Debug.Log("Game Started");
-            SetState(new DrawState(this));
+            _gameFlowManager.SetState(new DrawState(this));
         }
 
         public void EndGame()
@@ -79,22 +64,7 @@ namespace Code.Scripts.Components.GameManagment
             ShowMainMenu();
         }
 
-        public IState GetCurrentState()
-        {
-            return _currentState;
-        }
-
-        public void SetState(IState state)
-        {
-            if (_currentState != null)
-            {
-                _currentState.Exit(this);
-            }
-
-            _previousState = _currentState;
-            _currentState = state;
-            _currentState.Enter(this);
-        }
+        
 
         public void ShowMainMenu()
         {
