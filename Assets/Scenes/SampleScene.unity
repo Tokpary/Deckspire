@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: The Wheel of Fortune
   nameColor: {r: 1, g: 1, b: 1, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 55cc09113a95d4a4eaad3d894fe33d98, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: The Hermit
   nameColor: {r: 1, g: 1, b: 1, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 9476cf7ceadf91b43b8764f52e37a93e, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
@@ -2414,7 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: Death
   nameColor: {r: 0, g: 0, b: 0, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 2d5a3b290f40d4f43be9ed1af46c20ff, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
@@ -2465,7 +2465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: The Dealer
   nameColor: {r: 0, g: 0, b: 0, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 2d5a3b290f40d4f43be9ed1af46c20ff, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
@@ -3059,7 +3059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: The Fool
   nameColor: {r: 0.6327247, g: 0.4494482, b: 0.9433962, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: b61e8f074f62db445ba55bd9f04be98d, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
@@ -3369,7 +3369,6 @@ GameObject:
   - component: {fileID: 1013965654}
   - component: {fileID: 1013965653}
   - component: {fileID: 1013965656}
-  - component: {fileID: 1013965655}
   - component: {fileID: 1013965662}
   - component: {fileID: 1013965661}
   - component: {fileID: 1013965660}
@@ -3449,7 +3448,6 @@ GameObject:
   - component: {fileID: 1013965752}
   - component: {fileID: 1013965751}
   - component: {fileID: 1013965754}
-  - component: {fileID: 1013965753}
   - component: {fileID: 1013965760}
   - component: {fileID: 1013965759}
   - component: {fileID: 1013965758}
@@ -3485,6 +3483,10 @@ GameObject:
   - component: {fileID: 1013965789}
   - component: {fileID: 1013965788}
   - component: {fileID: 1013965787}
+  - component: {fileID: 1013965790}
+  - component: {fileID: 1013965792}
+  - component: {fileID: 1013965794}
+  - component: {fileID: 1013965793}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3542,7 +3544,7 @@ MonoBehaviour:
   itemId: 0
   blockName: FirstDialogue
   description: 
-  eventHandler: {fileID: 1013965655}
+  eventHandler: {fileID: 1013965793}
   commandList:
   - {fileID: 1013965662}
   - {fileID: 1013965648}
@@ -3565,7 +3567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 39.508625, y: 162.0907}
+  scrollPos: {x: 249.63528, y: 78.54636}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 392
@@ -3576,7 +3578,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 1013965650}
   selectedCommands: []
   variables: []
   description: 
@@ -3661,21 +3664,6 @@ MonoBehaviour:
   - {fileID: 1013965719}
   - {fileID: 1013965717}
   suppressAllAutoSelections: 0
---- !u!114 &1013965655
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013965647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1013965650}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!114 &1013965656
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3734,7 +3722,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: 'This will be your final reading, one last chance to evade your destiny
 
-    
+
 
 '
   description: 
@@ -3863,6 +3851,7 @@ MonoBehaviour:
   - {fileID: 1013965688}
   - {fileID: 1013965689}
   - {fileID: 1013965690}
+  - {fileID: 1013965790}
   - {fileID: 1013965691}
   - {fileID: 1013965692}
   - {fileID: 1013965693}
@@ -4592,7 +4581,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: 'Let us begin then
 
-    
+
 
 '
   description: 
@@ -5775,21 +5764,6 @@ MonoBehaviour:
   parentBlock: {fileID: 1013965727}
   suppressBlockAutoSelect: 0
   message: 
---- !u!114 &1013965753
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013965647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1013965754}
-  suppressBlockAutoSelect: 0
-  message: 
 --- !u!114 &1013965754
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5804,7 +5778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 50.11277
+    x: 48.846947
     y: 409.25046
     width: 98.10126
     height: 40
@@ -5813,10 +5787,11 @@ MonoBehaviour:
   itemId: 105
   blockName: TheFool
   description: 
-  eventHandler: {fileID: 1013965753}
+  eventHandler: {fileID: 1013965794}
   commandList:
   - {fileID: 1013965761}
   - {fileID: 1013965765}
+  - {fileID: 1013965792}
   - {fileID: 1013965766}
   - {fileID: 1013965767}
   - {fileID: 1013965768}
@@ -6753,6 +6728,80 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1013965790
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 139
+  indentLevel: 0
+  storyText: "You can check the {b}table{/b} at any time pressing {b}W{/b} or {b}S{/b}\r"
+  description: 
+  character: {fileID: 502526039}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965792
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616cd37e21c7645c58a89edf5abee56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 140
+  indentLevel: 0
+  duration: 0.5
+  amount: {x: 0.1, y: 0.1}
+  waitUntilFinished: 0
+--- !u!114 &1013965793
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1013965650}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
+--- !u!114 &1013965794
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1013965754}
+  suppressBlockAutoSelect: 0
+  message: 
 --- !u!1 &1022274441
 GameObject:
   m_ObjectHideFlags: 0
@@ -16476,7 +16525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: The Moon
   nameColor: {r: 1, g: 1, b: 1, a: 1}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: f1b54903bc3188145a66eea7ef6ef45d, type: 3}
   portraits: []
   portraitsFace: 0
   setSayDialog: {fileID: 0}
