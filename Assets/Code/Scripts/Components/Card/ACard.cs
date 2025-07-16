@@ -22,6 +22,8 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private Vector3 _originalPosition;
 	public int EnergyCost { get; set; }
 	public int LifeTime { get; set; }
+    private bool _cardDeployedOnTable;
+    private bool _readyToUse;
     
     private bool _isSelected = false;
     [SerializeField] private Transform childTransform;
@@ -39,6 +41,12 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
             InitializeCard();
         }
     }
+
+    public void SetCardDeployed(bool deployedOnTable)
+    {
+        _cardDeployedOnTable = deployedOnTable;
+        _isSelected = false;
+    }
     
     public void InitializeCard()
     {
@@ -49,14 +57,24 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         _cardEnergyCostText.text = $"{_cardData.manaCost}";
 		this.EnergyCost = _cardData.manaCost;
 		this.LifeTime = _cardData.lifetime;
+        _readyToUse = false;
+    }
+
+    public bool GetReadyToUse()
+    {
+        return _readyToUse;
+    }
+
+    public void SetReadyToUse(bool value)
+    {
+        _readyToUse = value;
     }
     
-    public virtual void PlayCard(TriggerTiming timing) {
+    public virtual void PlayCard() {
         foreach (var ability in _cardData.abilities) {
-            if (ability.triggerTiming == timing)
-            {
-                ability.Activate(this);
-            }
+            
+            ability.Activate(this);
+            
         }
     }
 
@@ -119,6 +137,10 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (deployedOnTable && readyToUse)
+        {
+            GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
+        }
         if(_isSelected) return;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }

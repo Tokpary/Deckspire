@@ -15,5 +15,6 @@ namespace Code.Scripts.Components.Card.ScriptableObjects
     {
         public TriggerTiming triggerTiming;
         public abstract void Activate(ACard card);
+        public abstract void Deactivate(ACard card);
     }
 }

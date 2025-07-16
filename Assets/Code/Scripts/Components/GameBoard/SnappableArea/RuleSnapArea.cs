@@ -31,6 +31,7 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
             if (CanAcceptCard(card))
             {
                 card.transform.position = _snapPoint.position;
+                card.PlayCard();
             }
         }
     }

@@ -11,5 +11,17 @@ namespace Code.Scripts.Components.Entity
 		public void PlayTurn(){
 			_enemyData.Actions[Random.Range(0, _enemyData.Actions.Count)].ExecuteAction(this);
 		}
+
+		public void Die()
+		{
+			
+		}
+
+		public virtual void TakeDamage(int damage){
+			
+			CurrentHealth -= damage * DamageMultiplier;
+			if (CurrentHealth <= 0)
+				Die();
+		}
 	}
 }

@@ -11,5 +11,6 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects
         public string Name;
         public int MaxHealth;
         public List<EnemyActionSO> Actions;
+        public List<EnemyPassivesSO>  Passives;
     }
 }

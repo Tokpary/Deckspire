@@ -15,7 +15,10 @@ namespace Code.Scripts.Components.GameBoard
         public Stack<ACard> DrawStack;
         
         public List<ACard> PlayerHand;
+        public List<ACard> RulesMat;
+        public List<ACard> AbilityMat;
         
+        public GameRulesData GameRules;
         public GameObject cardPrefab;
         
         public CardSO[] CurrentFullDeck;
@@ -25,6 +28,8 @@ namespace Code.Scripts.Components.GameBoard
             DiscardStack = new Stack<ACard>();
             DrawStack = new Stack<ACard>();
             PlayerHand = new List<ACard>();
+            AbilityMat = new List<ACard>();
+            RulesMat = new List<ACard>();
         }
         
         public void Initialize(GameManager gameManager)
@@ -80,6 +85,17 @@ namespace Code.Scripts.Components.GameBoard
         		seq.AppendInterval(0.3f);
    			}
 
+            foreach (var card in AbilityMat)
+            {
+                if (!card.GetReadyToUse())
+                {
+                    seq.AppendCallback(() => {
+                        card.SetReadyToUse(true);
+                        card.transform.DORotate(new Vector3(0, 0, 0), 0.3f);  });
+                    seq.AppendInterval(0.3f);
+                }
+            }
+
 			seq.OnComplete(() => onComplete?.Invoke());
         }
 
@@ -92,6 +108,53 @@ namespace Code.Scripts.Components.GameBoard
             }
             ShuffleDrawStack();
         }
+
+        public void DisplayCardInTable(ACard card)
+        {
+            PlayerHand.Remove(card);
+            switch (card.GetDataCard().cardType)
+            {
+                case 0:
+                    DiscardStack.Push(card);
+                    break;
+                case 1:
+                    AbilityMat.Add(card);
+                    break;
+                case 2:
+                    RulesMat.Add(card);
+                    break;
+            }
+        }
+
+        public void UseCardFromAbilityMat(ACard card)
+        {
+            AbilityMat.Remove(card);
+            card.PlayCard();
+            DiscardStack.Push(card);
+        }
+
+        public void AddToDiscardStack(ACard card)
+        {
+            if (PlayerHand.Contains(card))
+            {
+                PlayerHand.Remove(card);
+                return;
+            }
+
+            if (RulesMat.Contains(card))
+            {
+                RulesMat.Remove(card);
+                return;
+            }
+
+            if (AbilityMat.Contains(card))
+            {
+                AbilityMat.Remove(card);
+                return;
+            }
+            
+            DiscardStack.Push(card);
+        }
         
         private ACard CreateCardInstance(CardSO cardSo)
         {
@@ -100,6 +163,7 @@ namespace Code.Scripts.Components.GameBoard
             cardComponent.SetCardData(cardSo);
             return cardComponent;
         }
+
 		
         
         public void AddCardToHand()
