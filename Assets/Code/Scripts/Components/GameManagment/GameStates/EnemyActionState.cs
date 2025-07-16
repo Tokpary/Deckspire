@@ -1,4 +1,5 @@
 using Patterns.State.Interfaces;
+using UnityEngine;
 
 namespace Code.Scripts.Components.GameManagment.GameStates
 {
@@ -10,12 +11,20 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 
         public override void Enter(IGameState gameState)
         {
-            var gm = GameManager.Instance;
+            if (GameManager.Instance.GameBoard.GameRulesData.IsSkippingNextEnemy)
+            {
+                GameManager.Instance.GameBoard.GameRulesData.IsSkippingNextEnemy = false;
+                GameManager.Instance.GameFlowManager.SetState(new AfterEnemyState(GameManager.Instance.GameFlowManager));
+                return;
+            }
+            else
+            {
+                GameManager.Instance.TurnManager.EnemyTurn();
+            }
         }
 
         public override void Exit(IGameState gameManager)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Update()

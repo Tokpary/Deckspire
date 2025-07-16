@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Prolongacion
   description: Aumenta en 2 turnos el tiempo de agotamiento de una carta de tu mano
   cardImage: {fileID: 21300000, guid: 22b0d722a3d9aa946ab8f78c2e0f9f24, type: 3}
+  cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 1
   lifetime: 2
   cardType: 1
-  abilities: []
+  abilities:
+  - {fileID: 0}

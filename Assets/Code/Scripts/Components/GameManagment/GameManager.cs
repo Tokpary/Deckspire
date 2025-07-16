@@ -17,7 +17,7 @@ namespace Code.Scripts.Components.GameManagment
             get => _gameFlowManager;
             set => _gameFlowManager = value;
         }
-        private TurnManager _turnManager;
+        public TurnManager TurnManager {get; private set; }
         
         public GameBoard.GameBoard GameBoard;
         
@@ -38,7 +38,7 @@ namespace Code.Scripts.Components.GameManagment
         private void Awake()
         {
             base.Awake();
-            _turnManager = GetComponent<TurnManager>();
+            TurnManager = GetComponent<TurnManager>();
             _gameFlowManager = GetComponent<GameFlowManager>();
         }
         
@@ -47,7 +47,7 @@ namespace Code.Scripts.Components.GameManagment
             InitializeGame();
             GameBoard.Initialize(this);
             _gameFlowManager.SetState(new DrawState(_gameFlowManager));
-            _turnManager.StartGame(GameBoard, _player, _enemy);
+            TurnManager.StartGame(GameBoard, _player, _enemy);
         }
 
         private void InitializeGame()

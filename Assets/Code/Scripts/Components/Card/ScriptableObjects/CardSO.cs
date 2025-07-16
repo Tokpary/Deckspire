@@ -9,6 +9,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects
         public string cardName;
         public string description;
         public Sprite cardImage;
+        public Sprite cardBackground;
         public int manaCost;
         public int lifetime;
         public int cardType; // 0: Unit, 1: Spell, 2: Rule

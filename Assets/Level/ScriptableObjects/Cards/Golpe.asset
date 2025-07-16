@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Golpe
   description: "Infringe 2 de da\xF1o"
   cardImage: {fileID: 21300000, guid: cb494c9c00ed5c84fabb729f7e695f57, type: 3}
+  cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 1
   lifetime: 2
   cardType: 0
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 3bf1c80bb1b99ee4aad22ff0be0007b4, type: 2}

@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: Basura
   description: "No tiene ning\xFAn efecto"
   cardImage: {fileID: 21300000, guid: f1268909b08175c4792fe11f38e3d69e, type: 3}
+  cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2
   lifetime: 6
   cardType: 0

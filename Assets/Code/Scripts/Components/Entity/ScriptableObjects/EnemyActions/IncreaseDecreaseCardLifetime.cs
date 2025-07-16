@@ -1,5 +1,7 @@
+using System;
 using Code.Scripts.Components.GameManagment;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
 {
@@ -7,7 +9,7 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
     public class IncreaseDecreaseCardLifetime : EnemyActionSO
     {
 
-        public override void ExecuteAction(Enemy enemy)
+        public override void ExecuteAction(Action onComplete = null)
         {
             foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand)
             {

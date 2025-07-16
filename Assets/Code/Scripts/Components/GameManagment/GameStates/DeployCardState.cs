@@ -19,6 +19,7 @@ namespace Code.Scripts.Components.GameManagment.GameStates
         public override void Exit(IGameState gameManager)
         {
             CameraManager.Instance.UnsubscribeFromCardSelect();
+            CameraManager.Instance.ReturnToTableView();
             // Logic for exiting the deploy card state
         }
 

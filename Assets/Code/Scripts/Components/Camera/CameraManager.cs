@@ -52,7 +52,6 @@ namespace Code.Scripts.Components.Camera
             _isTopView = true;
             _isAnimating = true;
             float elapsed = 0f;
-            
             DOTween.To(() => 0f, x => {
                 float deltaAngle = x - elapsed;
                 transform.RotateAround(pivotPoint.position, Vector3.right, deltaAngle);
@@ -113,6 +112,27 @@ namespace Code.Scripts.Components.Camera
             });
             
                 
+        }
+
+        public void ReturnToTableView()
+        {
+            if (!_isTopView) return;
+            _isTopView = false;
+            _isAnimating = true;
+            float elapsed = 0f;
+            DOTween.To(() => 0f, x => {
+                float deltaAngle = x - elapsed;
+                transform.RotateAround(pivotPoint.position, Vector3.right, -deltaAngle);
+                elapsed = x;
+            }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
+            {
+                transform.DORotate(tableView.rotation.eulerAngles, 0.5f)
+                    .SetEase(Ease.OutBack).OnComplete(() => {
+                        GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+                    }).OnComplete(() => {
+                        _isAnimating = false;
+                    });
+            });
         }
     }
 }

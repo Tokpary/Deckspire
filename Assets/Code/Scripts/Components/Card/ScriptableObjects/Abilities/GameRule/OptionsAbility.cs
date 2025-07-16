@@ -10,12 +10,12 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
 
         public override void Activate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.MaxCardsInHand += handSizeIncrement;
+            GameManager.Instance.GameBoard.GameRulesData.MaxHandSize += handSizeIncrement;
         }
         
         public override void Deactivate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.MaxCardsInHand -= handSizeIncrement;
+            GameManager.Instance.GameBoard.GameRulesData.MaxHandSize -= handSizeIncrement;
         }
     }
 }

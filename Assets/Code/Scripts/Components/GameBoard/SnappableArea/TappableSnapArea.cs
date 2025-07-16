@@ -1,31 +1,41 @@
+using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.Interfaces;
+using DG.Tweening;
+using UnityEngine;
 
-public class TappableSnapArea : MonoBehaviour, ISnapArea
+namespace Code.Scripts.Components.GameBoard.SnappableArea
 {
-    private Transform _snapPoint;
-
-    private void Awake()
+    public class TappableSnapArea : ASnapZone, ISnapZone
     {
-        _snapPoint = transform;
-    }
+        private Transform _snapPoint;
 
-    public bool CanAcceptCard(ACard card)
-    {
-        if (card.GetDataCard().cardType == 1)
+        private void Awake()
         {
-            return true;
+            _snapPoint = transform;
         }
 
-        return false;
-    }
-
-    public void SnapCard(ACard card)
-    {
-        if (card == null) return;
-
-        if (CanAcceptCard(card))
+        public override bool CanAcceptCard(ACard card)
         {
-            card.transform.position = _snapPoint.position;
-            card.transform.DORotate(new Vector3(0, 90, 0), 0.5f).SetEase(Ease.OutBack);
+            if (card.GetDataCard().cardType == 1 && card.EnergyCost <= GameManager.Instance.Player.CurrentEnergy)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override void SnapCard(ACard card)
+        {
+            if (card == null) return;
+
+            if (CanAcceptCard(card))
+            {
+                card.transform.position = _snapPoint.position;
+                card.transform.DORotate(new Vector3(90,90, 0), 0.5f).SetEase(Ease.OutBack);
+                _currentCardOnSlot = card;
+                GameManager.Instance.Player.CurrentEnergy -= card.EnergyCost;
+                GameManager.Instance.GameBoard.DisplayCardInTable(card);
+            }
         }
     }
 }

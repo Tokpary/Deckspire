@@ -9,12 +9,12 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
 
         public override void Activate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsMoonlightApplied = true;
+            GameManager.Instance.GameBoard.GameRulesData.IsMoonLightApplied = true;
         }
         
         public override void Deactivate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsMoonlightApplied = false;
+            GameManager.Instance.GameBoard.GameRulesData.IsMoonLightApplied = false;
         }
     }
 }

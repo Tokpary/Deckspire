@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Suspiro
   description: "A\xF1ade 2 turnos a tu vida"
   cardImage: {fileID: 21300000, guid: ec3c32baa54cdd541a5a8a8b88930604, type: 3}
+  cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2
   lifetime: 2
   cardType: 0
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 3c8c0c72db928664787bc08a7cb8d897, type: 2}

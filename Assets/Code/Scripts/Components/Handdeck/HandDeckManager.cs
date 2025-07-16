@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Interfaces;
 using Code.Scripts.DesignPatterns;
 using DG.Tweening;
@@ -9,7 +10,6 @@ namespace Code.Scripts.Components.Handdeck
 {
     public class HandDeckManager : MonoBehaviour
     {
-        [SerializeField] List<ACard> handCards = new List<ACard>();
         [SerializeField] Transform _cameraTransform;
         
         [SerializeField] public float cardScale = 0.5f; // Scale of the cards in hand
@@ -18,7 +18,6 @@ namespace Code.Scripts.Components.Handdeck
         [SerializeField] public float cardDistanceFromCamera = 0.5f; // Scale of the cards
         [SerializeField] public float arcAngle = 0.015f; // Scale of the cards
         
-        [SerializeField] private int _maxCardsInHand = 4; // Maximum number of cards in hand
 
         public GameObject cardPrefab; // Prefab for the cards in hand
         public int MaxCardsInHand { get; set; }
@@ -49,23 +48,11 @@ namespace Code.Scripts.Components.Handdeck
             
             DeployCardsInHand();
         }
-
-        public int GetCurrentCardCount()
-        {
-            return handCards.Count;
-        }
-        
-        void Awake()
-        {
-            MaxCardsInHand = _maxCardsInHand; 
-        }
         
         public void AddCard(ACard card, bool deploy = true)
         {
             if (card == null) return;
             
-            
-            handCards.Add(card);
             
             if(deploy)
                 DeployCardsInHand();
@@ -74,6 +61,7 @@ namespace Code.Scripts.Components.Handdeck
         [ContextMenu("Deploy Cards in Hand")]
         public void DeployCardsInHand()
         {
+            List<ACard> handCards = GameManager.Instance.GameBoard.PlayerHand;
             if (handCards.Count == 0) return;
 
             float half = (handCards.Count - 1) / 2f;

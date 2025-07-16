@@ -16,7 +16,9 @@ MonoBehaviour:
   description: "Al agotarse una carta, existe una probabilidad de \u2153 de que sus
     efectos se activen autom\xE1ticamente"
   cardImage: {fileID: 21300000, guid: 3c0dddebbbe745e458a4b406fea29a0d, type: 3}
+  cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 3
   lifetime: 1
   cardType: 2
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 228d3f8b544899140a947bc3765574c0, type: 2}

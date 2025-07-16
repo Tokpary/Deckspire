@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Subidon
   description: "Aumenta en 1 tu energ\xEDa m\xE1xima"
   cardImage: {fileID: 21300000, guid: 8c683d1a12a762f4fba7c36870a8e3af, type: 3}
+  cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 2
   lifetime: 1
   cardType: 2
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 3a0736cb1506d7f4abbd97dff079e624, type: 2}

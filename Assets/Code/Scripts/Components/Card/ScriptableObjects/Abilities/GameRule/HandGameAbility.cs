@@ -9,12 +9,12 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
 
         public override void Activate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsHandGameApp = true;
+            GameManager.Instance.GameBoard.GameRulesData.IsHandGameApplied = true;
         }
         
         public override void Deactivate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied = false;
+            GameManager.Instance.GameBoard.GameRulesData.IsHandGameApplied = false;
         }
     }
 }

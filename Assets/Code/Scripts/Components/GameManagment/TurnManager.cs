@@ -1,5 +1,6 @@
 using System.Collections;
 using Code.Scripts.Components.Entity;
+using Code.Scripts.Components.GameManagment.GameStates;
 using UnityEngine;
 
 namespace Code.Scripts.Components.GameManagment
@@ -26,7 +27,10 @@ namespace Code.Scripts.Components.GameManagment
 
         public void EnemyTurn()
         {
-            _enemy.PlayTurn();
+            _enemy.PlayTurn(() =>
+            {
+                GameManager.Instance.GameFlowManager.SetState(new AfterEnemyState(GameManager.Instance.GameFlowManager));
+            });
         }
         
     }

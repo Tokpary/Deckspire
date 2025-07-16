@@ -16,7 +16,9 @@ MonoBehaviour:
   description: "Elimina una carta de Cambio de Reglas o Habilidad que est\xE9 en
     la mesa y la devuelve al mazo de descartes"
   cardImage: {fileID: 21300000, guid: 1db0787e2121def42a0c42d2d21df597, type: 3}
+  cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2
   lifetime: 3
   cardType: 0
-  abilities: []
+  abilities:
+  - {fileID: 0}

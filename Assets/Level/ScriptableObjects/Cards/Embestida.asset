@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Embestida
   description: "Infringe 3 de da\xF1o"
   cardImage: {fileID: 21300000, guid: 5e89b2f1e5e34b84ab2be288da3980c7, type: 3}
+  cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 2
   lifetime: 1
   cardType: 1
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 006c52a65785ada46a3b6db77071c5c7, type: 2}

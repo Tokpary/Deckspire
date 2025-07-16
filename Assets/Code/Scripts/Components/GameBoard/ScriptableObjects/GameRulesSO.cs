@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace Code.Scripts.Components.GameBoard.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "GameRules", menuName = "ScriptableObjects/GameRules", order = 1)]
-    public class GameRules : ScriptableObject
+    public class GameRulesSO : ScriptableObject
     {
         // PLAYER
         public int PlayerHealth;
@@ -20,7 +22,7 @@ namespace Code.Scripts.Components.GameBoard.ScriptableObjects
         public bool IsRushApplied;
         public bool IsFriendlyFireApplied;
         public bool IsSkippingNextEnemy;
-        public int IsMirrorApplied;
+        public bool IsMirrorApplied;
 
         // BOSS RULES
         public int DecoyPerRound;

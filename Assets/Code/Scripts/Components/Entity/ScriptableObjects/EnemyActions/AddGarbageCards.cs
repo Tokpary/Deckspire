@@ -1,15 +1,21 @@
+using System;
+using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
 using UnityEngine;
 
 namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
 {
     
-    [CreateAssetMenu(fileName = "NewAddGarbageAction", menuName = "ScriptableObjects/Entity/EnemyAction/AddGarbageCards", order = 1)]
+    [CreateAssetMenu(fileName = "AddCardToPlayerDeck", menuName = "ScriptableObjects/Entity/EnemyAction/AddCardToPlayerDeck", order = 1)]
     public class AddGarbageCards : EnemyActionSO
     {
-        public override void ExecuteAction(Enemy enemy)
+        [SerializeField] private CardSO CardPrefab;
+        public override void ExecuteAction(Action onComplete = null)
         {
-           // gameContext.currentPlayer.HandDeck
+           GameManager.Instance.GameBoard.AddCardToDiscardStackFromEnemy(CardPrefab, () =>
+            {
+                onComplete?.Invoke();
+            });
         }
     }
 }

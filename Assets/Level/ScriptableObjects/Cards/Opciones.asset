@@ -15,7 +15,9 @@ MonoBehaviour:
   cardName: Opciones
   description: "Aumenta en 1 el tama\xF1o de tu mano"
   cardImage: {fileID: 21300000, guid: 572dcb83781cc5c4caabcc740c63d518, type: 3}
+  cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 2
   lifetime: 1
   cardType: 2
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 3787dfbcba370584cbe214e1d717b74c, type: 2}

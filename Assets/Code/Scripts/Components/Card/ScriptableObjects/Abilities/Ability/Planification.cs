@@ -10,9 +10,9 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
         
         public override void Activate(ACard card)
         {
-            foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand)
+            foreach (ACard c in GameManager.Instance.GameBoard.PlayerHand)
             {
-                card.Lifetime += Increment;
+                c.LifeTime += Increment;
             }
         }
 

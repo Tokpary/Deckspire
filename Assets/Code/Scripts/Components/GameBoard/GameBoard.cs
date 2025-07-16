@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using Code.Scripts.Components.Camera;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
 using DG.Tweening;
@@ -18,10 +19,14 @@ namespace Code.Scripts.Components.GameBoard
         public List<ACard> RulesMat;
         public List<ACard> AbilityMat;
         
-        public GameRulesData GameRules;
+        public GameRulesData GameRulesData { get; set; }
         public GameObject cardPrefab;
         
+        public Transform DiscardStackTransform;
+        
         public CardSO[] CurrentFullDeck;
+        
+        public Transform NewCardsTransform;
         
         public GameBoard()
         {
@@ -37,7 +42,14 @@ namespace Code.Scripts.Components.GameBoard
             DiscardStack.Clear();
             DrawStack.Clear();
             PlayerHand.Clear();
+            GameRulesData = GetComponent<GameRulesData>();
             InitializeCards();
+            InitializePlayer();
+        }
+
+        private void InitializePlayer()
+        {
+            GameManager.Instance.Player.Initialize(GameRulesData);
         }
         
         public void AddToDrawStack(IEnumerable<ACard> cards)
@@ -48,10 +60,6 @@ namespace Code.Scripts.Components.GameBoard
             }
         }
         
-        public void AddToDiscardStack(ACard card)
-        {
-            DiscardStack.Push(card);
-        }
         
         public void AddToDrawStack(ACard card)
         {
@@ -63,9 +71,17 @@ namespace Code.Scripts.Components.GameBoard
             PlayerHand.Add(card);
         }
         
-        public void RemoveFromPlayerHand(ACard card)
+        public Sequence RemoveFromPlayerHandTween(ACard card, Action onComplete = null)
         {
+            Sequence s = DOTween.Sequence();
+
+            DiscardStack.Push(card);
             PlayerHand.Remove(card);
+            
+            s.Append(card.transform.DOMove(DiscardStackTransform.position, 0.5f).SetEase(Ease.InOutQuad));
+            s.Append(card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad));
+            
+            return s;
         }
         
         public void ClearDiscardStack()
@@ -77,7 +93,7 @@ namespace Code.Scripts.Components.GameBoard
         {
             var seq = DOTween.Sequence();
 
-   			int cardsToDraw = GameManager.Instance.Player.HandDeck.MaxCardsInHand - PlayerHand.Count;
+   			int cardsToDraw = GameRulesData.MaxHandSize - PlayerHand.Count;
 
     		for (int i = 0; i < cardsToDraw; i++)
     		{
@@ -91,7 +107,7 @@ namespace Code.Scripts.Components.GameBoard
                 {
                     seq.AppendCallback(() => {
                         card.SetReadyToUse(true);
-                        card.transform.DORotate(new Vector3(0, 0, 0), 0.3f);  });
+                        card.transform.DORotate(new Vector3(90, 0, 0), 0.3f);  });
                     seq.AppendInterval(0.3f);
                 }
             }
@@ -109,9 +125,12 @@ namespace Code.Scripts.Components.GameBoard
             ShuffleDrawStack();
         }
 
+
         public void DisplayCardInTable(ACard card)
         {
-            PlayerHand.Remove(card);
+            card.Deselect();
+            PlayerHand.Remove(card); 
+            Debug.Log($"Displaying card in table: {card.GetDataCard().cardName}");
             switch (card.GetDataCard().cardType)
             {
                 case 0:
@@ -119,9 +138,12 @@ namespace Code.Scripts.Components.GameBoard
                     break;
                 case 1:
                     AbilityMat.Add(card);
+                    card.SetCardDeployed(true);
                     break;
                 case 2:
                     RulesMat.Add(card);
+                    Debug.Log($"Adding card to rules mat: {card.GetDataCard().cardName}");
+                    card.SetCardDeployed(true);
                     break;
             }
         }
@@ -130,7 +152,7 @@ namespace Code.Scripts.Components.GameBoard
         {
             AbilityMat.Remove(card);
             card.PlayCard();
-            DiscardStack.Push(card);
+            MoveCardToDiscard(card);
         }
 
         public void AddToDiscardStack(ACard card)
@@ -172,6 +194,7 @@ namespace Code.Scripts.Components.GameBoard
             if (drawnCard != null)
             {
                 PlayerHand.Add(drawnCard);
+                drawnCard.ResetValues();
                 GameManager.Instance.Player.HandDeck.AddCard(drawnCard);
             }
         }
@@ -207,6 +230,47 @@ namespace Code.Scripts.Components.GameBoard
             {
                 DrawStack.Push(card);
             }
+        }
+
+        public void AddCardToDiscardStackFromEnemy(CardSO cardSo, Action onComplete = null)
+        {
+            ACard card = CreateCardInstance(cardSo);
+            card.transform.position = NewCardsTransform.position;
+            card.transform.rotation = Quaternion.Euler(0, 0, 0);
+            
+            // Se mueve en frente de la camara
+            card.transform.DOMove(CameraManager.Instance.transform.position + CameraManager.Instance.transform.forward * 0.35f, 0.5f)
+                .SetEase(Ease.InOutQuad)
+                .OnComplete(() => 
+                {
+                    card.transform.DORotate(new Vector3(0, 0, 0), 2f).SetEase(Ease.InOutQuad).OnComplete(() =>
+                    {
+                        card.transform.DOMove(DiscardStackTransform.position, 0.5f)
+                            .SetEase(Ease.InOutQuad)
+                            .OnComplete(() =>
+                            {
+                                card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad).OnComplete(() =>
+                                {
+                                    DiscardStack.Push(card);
+                                    onComplete?.Invoke();
+                                });
+                            });
+                    });
+                });
+           
+        }
+
+        public void MoveCardToDiscard(ACard card)
+        {
+            card.transform.DOMove(DiscardStackTransform.position, 0.5f)
+                .SetEase(Ease.InOutQuad)
+                .OnComplete(() =>
+                {
+                    card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad).OnComplete(() =>
+                    {
+                        AddToDiscardStack(card);
+                    });
+                });
         }
     }
 }

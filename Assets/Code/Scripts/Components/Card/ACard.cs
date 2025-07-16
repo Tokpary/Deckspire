@@ -18,6 +18,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private TMP_Text _cardDescriptionText;
     private TMP_Text _cardLifeTimeText;
     private TMP_Text _cardEnergyCostText;
+    private Image _cardBackgroundImage;
 
     private Vector3 _originalPosition;
 	public int EnergyCost { get; set; }
@@ -31,6 +32,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private void Awake()
     {
         _cardImage = childTransform.Find("CardSprite").GetComponent<Image>();
+        _cardBackgroundImage = childTransform.GetComponent<Image>();
         _cardNameText = childTransform.Find("CardTitle").GetComponent<TMP_Text>();
         _cardDescriptionText = childTransform.Find("CardDescription").GetComponent<TMP_Text>();
         _cardLifeTimeText = childTransform.Find("LifeTimeIndicator").GetComponent<TMP_Text>();
@@ -51,6 +53,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     public void InitializeCard()
     {
         _cardImage.sprite = _cardData.cardImage;
+        _cardBackgroundImage.sprite = _cardData.cardBackground;
         _cardNameText.text = _cardData.cardName;
         _cardDescriptionText.text = _cardData.description;
         _cardLifeTimeText.text = $"{_cardData.lifetime}";
@@ -65,6 +68,13 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         return _readyToUse;
     }
 
+    public void ResetValues()
+    {
+        this.EnergyCost = _cardData.manaCost;
+        this.LifeTime = _cardData.lifetime;
+        UpdateCard();
+    }
+
     public void SetReadyToUse(bool value)
     {
         _readyToUse = value;
@@ -72,7 +82,6 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     
     public virtual void PlayCard() {
         foreach (var ability in _cardData.abilities) {
-            
             ability.Activate(this);
             
         }
@@ -137,10 +146,16 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (deployedOnTable && readyToUse)
+        if (_cardDeployedOnTable && _readyToUse)
         {
             GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
+            _cardDeployedOnTable = false;
+            _readyToUse = false;
+            return;
         }
+        
+        if(_cardDeployedOnTable) return;
+        Debug.Log($"{_cardDeployedOnTable} - {_readyToUse} - {_isSelected} - Card clicked: {gameObject.name}");
         if(_isSelected) return;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
@@ -170,13 +185,16 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
                 return;
             }
         }
-        
         transform.DOMove(_originalPosition, 0.35f)
             .SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
-                transform.DOScale(0.2f, 0.1f);
+                transform.DOShakePosition(0.35f, 0.1f, 10, 90, false, true)
+                    .OnComplete(() => { 
+                            transform.DOScale(0.2f, 0.1f);
+                }); 
             });
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Code.Scripts.Components.Entity.ScriptableObjects
 {
     
