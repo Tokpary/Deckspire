@@ -128,6 +128,7 @@ namespace Code.Scripts.Components.GameBoard
 
         public void DisplayCardInTable(ACard card)
         {
+            GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
             card.Deselect();
             PlayerHand.Remove(card); 
             Debug.Log($"Displaying card in table: {card.GetDataCard().cardName}");

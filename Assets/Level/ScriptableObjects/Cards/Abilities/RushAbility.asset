@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea36b56ecd7b466cb34648b67f1710e3, type: 3}
   m_Name: RushAbility
   m_EditorClassIdentifier: 
-  triggerTiming: 0
-  energyIncrement: 0
+  energyIncrement: 2

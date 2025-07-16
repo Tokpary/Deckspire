@@ -11,6 +11,7 @@ namespace Code.Scripts.Components.GameManagment
 {
     public class GameManager : DesignPatterns.Singleton<GameManager>
     {
+        public UIManager UIManager {get; private set; }
         private GameFlowManager _gameFlowManager;
         public GameFlowManager GameFlowManager
         {
@@ -40,6 +41,7 @@ namespace Code.Scripts.Components.GameManagment
             base.Awake();
             TurnManager = GetComponent<TurnManager>();
             _gameFlowManager = GetComponent<GameFlowManager>();
+            UIManager = GetComponent<UIManager>();
         }
         
         private void Start()

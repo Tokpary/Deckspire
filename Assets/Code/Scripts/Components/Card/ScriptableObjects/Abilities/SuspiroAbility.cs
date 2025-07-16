@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
 {
-    public class Suspiro
-    {
         [CreateAssetMenu(fileName = "SuspiroAbility", menuName = "ScriptableObjects/Card/Ability/SuspiroAbility", order = 1)]
         public class SuspiroAbility : CardAbilitySo
         {
@@ -19,5 +17,5 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
             {
             }
         }
-    }
+    
 }

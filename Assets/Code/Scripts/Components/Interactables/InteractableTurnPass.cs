@@ -9,8 +9,11 @@ namespace Code.Scripts.Components.Interactables
     {
         public override void Activate()
         {
-         if(GameManager.Instance.GameFlowManager.GetCurrentState() is DeployCardState);
-            GameManager.Instance.GameFlowManager.SetState(new EnemyActionState(GameManager.Instance.GameFlowManager));
+            if (GameManager.Instance.GameFlowManager.GetCurrentState() is DeployCardState)
+            {
+                GetComponent<Animator>().SetTrigger("Toque");
+                GameManager.Instance.GameFlowManager.SetState(new EnemyActionState(GameManager.Instance.GameFlowManager));
+            }
         }
 
         public override void Highlight()

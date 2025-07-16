@@ -1,6 +1,7 @@
 using System;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameBoard;
+using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ namespace Code.Scripts.Components.Entity
         {
             MaxHealth = gameRulesData.PlayerMaxHealth;
             MaxEnergy = gameRulesData.PlayerMaxMana;
+            
+            GameManager.Instance.UIManager.UpdateTurn(MaxHealth);
             CurrentHealth = MaxHealth;
             CurrentEnergy = MaxEnergy;
         }
@@ -26,6 +29,12 @@ namespace Code.Scripts.Components.Entity
         public override void Die()
         {
             Debug.Log("Player has died.");
+        }
+
+        public virtual void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            GameManager.Instance.UIManager.UpdateTurn(CurrentHealth);
         }
     }
 }
