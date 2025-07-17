@@ -1361,7 +1361,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 41
     y: 68
-    width: 124
+    width: 124.99999
     height: 40
   tint: {r: 0.9150943, g: 0.66042185, b: 0.66042185, a: 1}
   useCustomTint: 1
@@ -1391,19 +1391,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 148.98187, y: -21.63971}
+  scrollPos: {x: 256.75497, y: 204.64273}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 392
-  zoom: 1
+  zoom: 0.8800001
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1013965680}
+  selectedCommands:
+  - {fileID: 1013965688}
   variables: []
   description: 
   stepPause: 0
@@ -1473,7 +1475,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 40
     y: 216
-    width: 166
+    width: 167.04544
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1626,7 +1628,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 191.5
     y: 111
-    width: 111
+    width: 112.49999
     height: 40
   tint: {r: 0.9150943, g: 0.66042185, b: 0.66042185, a: 1}
   useCustomTint: 1
@@ -1655,7 +1657,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 191.5
     y: 38
-    width: 116
+    width: 117.04545
     height: 40
   tint: {r: 0.9150943, g: 0.66042185, b: 0.66042185, a: 1}
   useCustomTint: 1
@@ -1807,7 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 48
   indentLevel: 0
-  storyText: "{color=yellow}Yellow{/color} for {b}immediate{/b} cards\r"
+  storyText: "{color=yellow}Yellow{/color} for {b}action{/b} cards\r"
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1834,7 +1836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 47
   indentLevel: 0
-  storyText: "The effects of {b}immediate{/b} cards will occur on the spot\r"
+  storyText: The effects of {b}action{/b} cards will occur immediately
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1889,8 +1891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 0
-  storyText: "{b}Ability{/b} cards will be placed inactive on the desk, and you will
-    be able to play them after one turn has passed\r"
+  storyText: "{b}Ability{/b} are placed inactive on the desk, you will be able to
+    use them after one turn has passed\r"
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2026,7 +2028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 40
   indentLevel: 0
-  storyText: "{color=blue}Blue{/color} for {b}game changers\r{/b}"
+  storyText: "{color=cyan}Cyan{/color} for {b}game changers\r{/b}"
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2053,7 +2055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  storyText: "Here you can see how many {b}turns{/b} you have left\r"
+  storyText: To your right, you can see how many {b}turns{/b} you have left
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2080,7 +2082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 38
   indentLevel: 0
-  storyText: "If it reaches 0, you will have failed\r"
+  storyText: If it reaches 0, your time here will come to an end
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2107,7 +2109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 37
   indentLevel: 0
-  storyText: "You can also see how much {b}energy{/b} you have left for this round\r"
+  storyText: To your left, you can see how much {b}energy{/b} you have left for this
+    round
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2438,7 +2441,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 329.5
     y: 78
-    width: 126
+    width: 127.27272
     height: 40
   tint: {r: 0.9150943, g: 0.66042185, b: 0.66042185, a: 1}
   useCustomTint: 1
@@ -2563,7 +2566,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 497.5
     y: 78
-    width: 140
+    width: 140.90909
     height: 40
   tint: {r: 0.9150943, g: 0.66042185, b: 0.66042185, a: 1}
   useCustomTint: 1
@@ -2788,7 +2791,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 222.5
     y: 259
-    width: 108
+    width: 106.81818
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2884,7 +2887,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 42.5
     y: 296
-    width: 155
+    width: 155.6818
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2912,7 +2915,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 54.2857
     y: 723.5819
-    width: 180
+    width: 181.81816
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3543,7 +3546,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 387.86957
     y: 723.3166
-    width: 154
+    width: 155.6818
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3610,7 +3613,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 48.846947
     y: 409.25046
-    width: 96
+    width: 95.454544
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3663,7 +3666,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 50.739143
     y: 623.6239
-    width: 104
+    width: 103.40909
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3708,7 +3711,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 49.288654
     y: 547.49207
-    width: 163
+    width: 163.63635
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3756,7 +3759,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 45.275566
     y: 483.75623
-    width: 109
+    width: 110.227264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4911,11 +4914,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 319.01813
     y: 408.6397
-    width: 140
+    width: 139.7727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 105
+  itemId: 198
   blockName: TheFoolAttack2
   description: 
   eventHandler: {fileID: 1013965805}
@@ -5057,11 +5060,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 168.51813
     y: 408.6397
-    width: 139
+    width: 138.63635
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 105
+  itemId: 197
   blockName: TheFoolAttack1
   description: 
   eventHandler: {fileID: 1013965819}
@@ -5156,11 +5159,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 335.51813
     y: 478.6397
-    width: 153
+    width: 154.54544
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 136
+  itemId: 200
   blockName: TheHermitAttack2
   description: 
   eventHandler: {fileID: 1013965833}
@@ -5253,11 +5256,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 172.01813
     y: 481.6397
-    width: 152
+    width: 153.40909
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 136
+  itemId: 199
   blockName: TheHermitAttack1
   description: 
   eventHandler: {fileID: 1013965837}
@@ -5323,11 +5326,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 225.01814
     y: 546.6397
-    width: 237
+    width: 238.63634
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 137
+  itemId: 201
   blockName: TheWheelOfFortuneBeforeAttack
   description: 
   eventHandler: {fileID: 1013965841}
@@ -5392,11 +5395,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 473.51813
     y: 606.6397
-    width: 208
+    width: 209.09088
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 137
+  itemId: 204
   blockName: TheWheelOfFortuneAttack3
   description: 
   eventHandler: {fileID: 1013965850}
@@ -5461,11 +5464,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 474.51813
     y: 566.6397
-    width: 207
+    width: 207.95453
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 137
+  itemId: 203
   blockName: TheWheelOfFortuneAttack2
   description: 
   eventHandler: {fileID: 1013965853}
@@ -5530,11 +5533,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 474.01813
     y: 524.6397
-    width: 206
+    width: 206.81816
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 137
+  itemId: 202
   blockName: TheWheelOfFortuneAttack1
   description: 
   eventHandler: {fileID: 1013965856}
@@ -5680,11 +5683,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 166.51813
     y: 623.6397
-    width: 147
+    width: 146.5909
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 138
+  itemId: 205
   blockName: TheMoonAttack1
   description: 
   eventHandler: {fileID: 1013965859}
@@ -5806,11 +5809,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 248.51813
     y: 724.6397
-    width: 127
+    width: 127.27272
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 78
+  itemId: 206
   blockName: DeathAttack1
   description: 
   eventHandler: {fileID: 1013965865}
