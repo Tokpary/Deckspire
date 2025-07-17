@@ -4,13 +4,15 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 {
     public class DialogueState : AGameState
     {
-        public DialogueState(IGameState gameState) : base(gameState)
+        private readonly string message;
+        public DialogueState(IGameState gameState, string message) : base(gameState)
         {
+            this.message = message;
         }
 
         public override void Enter(IGameState gameManager)
         {
-            throw new System.NotImplementedException();
+            Fungus.Flowchart.BroadcastFungusMessage(message);
         }
 
         public override void Exit(IGameState gameManager)

@@ -10,7 +10,7 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyDeathEvents
     {
         public override void OnDieEvent(Action onComplete = null)
         {
-            GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager));
+            GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "FoolBeated"));
             onComplete?.Invoke();
         }
     }
