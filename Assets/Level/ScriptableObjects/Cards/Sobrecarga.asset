@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Sobrecarga
   description: "A\xF1ade 2 de energ\xEDa durante este turno"
-  cardImage: {fileID: 21300000, guid: f5042a0d509c6f445bdb977ecbac0bd4, type: 3}
+  cardImage: {fileID: 21300000, guid: e69b237871e7de949943b156a717fe85, type: 3}
+  cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 2
   lifetime: 2
+  cardType: 1
+  abilities:
+  - {fileID: 11400000, guid: 25078ec82e722584187dc4e11234635a, type: 2}

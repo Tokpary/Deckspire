@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Refuerzo
   description: "El siguiente ataque infringe el doble de da\xF1o"
-  cardImage: {fileID: 21300000, guid: f5042a0d509c6f445bdb977ecbac0bd4, type: 3}
+  cardImage: {fileID: 21300000, guid: dfd16b7cc6e3d4b42904a1df714d8277, type: 3}
+  cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2
   lifetime: 2
+  cardType: 0
+  abilities:
+  - {fileID: 11400000, guid: f8ca2e0812c98264c94a595824e5fddf, type: 2}
