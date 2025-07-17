@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
-  storyText: Welcome
+  storyText: Welcome.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1504,7 +1504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 256.75497, y: 204.64273}
+  scrollPos: {x: 213.57318, y: 92.14275}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 392
@@ -1515,10 +1515,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1013965671}
-  selectedCommands:
-  - {fileID: 1013965874}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1634,7 +1632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 9
   indentLevel: 0
-  storyText: "\xBFDo you need me to explain the rules to you?"
+  storyText: Do you need me to explain the rules to you?
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1661,11 +1659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 6
   indentLevel: 0
-  storyText: 'This will be your final reading, one last chance to evade your destiny
-
-
-
-'
+  storyText: This will be your final reading, one last chance to evade your destiny.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1692,9 +1686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 5
   indentLevel: 0
-  storyText: 'Seems like you ran out of time
-
-'
+  storyText: Seems like you ran out of time.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1891,7 +1883,7 @@ MonoBehaviour:
   itemId: 50
   indentLevel: 0
   storyText: "When you feel like your turn is finished, don\u2019t forget to ring
-    the {b}bell\r{/b}"
+    the {b}bell\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1918,7 +1910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 49
   indentLevel: 0
-  storyText: "I believe that will be all\r"
+  storyText: "I believe that will be all\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1945,7 +1937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 48
   indentLevel: 0
-  storyText: "{color=yellow}Yellow{/color} for {b}action{/b} cards\r"
+  storyText: "{color=yellow}Yellow{/color} for {b}action{/b} cards\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -1972,7 +1964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 47
   indentLevel: 0
-  storyText: The effects of {b}action{/b} cards will occur immediately
+  storyText: The effects of {b}action{/b} cards will occur immediately.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2000,7 +1992,7 @@ MonoBehaviour:
   itemId: 46
   indentLevel: 0
   storyText: "This is a lot to grasp, but your destiny depends on how well you can
-    understand this information\r"
+    understand this information\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2028,7 +2020,7 @@ MonoBehaviour:
   itemId: 45
   indentLevel: 0
   storyText: "{b}Ability{/b} are placed inactive on the desk, you will be able to
-    use them after one turn has passed\r"
+    use them after one turn has passed\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2083,7 +2075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 43
   indentLevel: 0
-  storyText: "Space is limited, so be careful\r"
+  storyText: "Space is limited, so be careful\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2137,7 +2129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 41
   indentLevel: 0
-  storyText: "{color=magenta}Pink{/color} for {b}ability{/b} cards\r"
+  storyText: "{color=magenta}Pink{/color} for {b}ability{/b} cards\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2164,7 +2156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 40
   indentLevel: 0
-  storyText: "{color=cyan}Cyan{/color} for {b}game changers\r{/b}"
+  storyText: "{color=cyan}Cyan{/color} for {b}game changers\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2191,7 +2183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  storyText: To your right, you can see how many {b}turns{/b} you have left
+  storyText: To your right, you can see how many {b}turns{/b} you have left.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2218,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 38
   indentLevel: 0
-  storyText: If it reaches 0, your time here will come to an end
+  storyText: If it reaches 0, your time here will come to an end.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2246,7 +2238,7 @@ MonoBehaviour:
   itemId: 37
   indentLevel: 0
   storyText: To your left, you can see how much {b}energy{/b} you have left for this
-    round
+    round.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2300,8 +2292,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 35
   indentLevel: 0
-  storyText: "It has been split into two sections: One for {b}ability{/b} cards,
-    and another one for {b}game changers\r{/b}"
+  storyText: "There are two sections: One for {b}ability{/b} cards, and another one
+    for {b}game changers\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2328,7 +2320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 34
   indentLevel: 0
-  storyText: "That deck over there holds your {b}cards\r{/b}"
+  storyText: "That deck over there holds your {b}cards\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2355,7 +2347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 33
   indentLevel: 0
-  storyText: "You will need them to complete this trial\r"
+  storyText: "You will need them to complete this trial\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2382,7 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 32
   indentLevel: 0
-  storyText: "All your {b}cards{/b} have a {b}cost{/b} and an {b}exhaust time\r{/b}"
+  storyText: "All your {b}cards{/b} have a {b}cost{/b} and an {b}exhaust time\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2409,7 +2401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 31
   indentLevel: 0
-  storyText: "They will eventually meet their fate, just like you\r"
+  storyText: "They will eventually meet their fate, just like you\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2436,7 +2428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 30
   indentLevel: 0
-  storyText: Alright then, let me explain how things work around here
+  storyText: Alright then, let me explain how things work around here.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2463,7 +2455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 52
   indentLevel: 0
-  storyText: "{s=5}{b}Or a fool\r{/b}{/s}"
+  storyText: "{s=5}{b}Or a fool\r{/b}{/s}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2517,7 +2509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 58
   indentLevel: 0
-  storyText: "{b}Take your first card\r{/b}"
+  storyText: "{b}Take your first card\r{/b}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2544,11 +2536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 55
   indentLevel: 0
-  storyText: 'Let us begin then
-
-
-
-'
+  storyText: Let us begin then.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2646,7 +2634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 63
   indentLevel: 0
-  storyText: "I suppose it makes sense\r"
+  storyText: "I suppose it makes sense\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2673,7 +2661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 62
   indentLevel: 0
-  storyText: "Well, {i}The Fool\u2026\r{/i}"
+  storyText: "Well, {i}The Fool\u2026\r{/i}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2748,7 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 65
   indentLevel: 0
-  storyText: "If you succeed, we shall meet again\r"
+  storyText: "If you succeed, we shall meet again\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2775,7 +2763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 64
   indentLevel: 0
-  storyText: "{s=7}{b}Do not waste my time\r{/b}{/s}"
+  storyText: "{s=7}{b}Do not waste my time\r{/b}{/s}."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2802,7 +2790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 70
   indentLevel: 0
-  storyText: '{b}Now, choose your next opponent{/b}'
+  storyText: '{b}Now, choose your next opponent{/b}.'
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2829,7 +2817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 69
   indentLevel: 0
-  storyText: But this is only the beggining
+  storyText: But this is only the beggining.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2856,7 +2844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 68
   indentLevel: 0
-  storyText: I'm giving you a set of new cards, they will help you in your quest
+  storyText: I'm giving you a set of new cards, they will help you in your quest.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2898,7 +2886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 72
   indentLevel: 0
-  storyText: Good luck
+  storyText: Good luck.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2967,7 +2955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 77
   indentLevel: 0
-  storyText: '{b}Now, choose your next opponent{/b}'
+  storyText: '{b}Now, choose your next opponent{/b}.'
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2994,7 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 74
   indentLevel: 0
-  storyText: Good Job
+  storyText: Good Job.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -3955,7 +3943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 109
   indentLevel: 0
-  storyText: "{i}Another lost soul\u2026\r{/i}"
+  storyText: "{i}Another lost soul\u2026\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -3982,7 +3970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 108
   indentLevel: 0
-  storyText: "Our path consists of yesterday\u2019s steps\r"
+  storyText: "Our path consists of yesterday\u2019s steps\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4037,7 +4025,7 @@ MonoBehaviour:
   itemId: 114
   indentLevel: 0
   storyText: "If I\u2019ve understood correctly, you\u2019re here to challenge time
-    itself\r"
+    itself\r."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -4091,7 +4079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 112
   indentLevel: 0
-  storyText: "I love folks like you\r"
+  storyText: "I love folks like you\r."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -4172,7 +4160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 117
   indentLevel: 0
-  storyText: "{b}Deal 15 damage?\r{/b}"
+  storyText: "{b}Deal 15 damage?\r{/b}."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -4199,7 +4187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 116
   indentLevel: 0
-  storyText: "Yes! That\u2019d be lovely\r"
+  storyText: "Yes! That\u2019d be lovely\r."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -4226,7 +4214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 115
   indentLevel: 0
-  storyText: "Come on, show me your time ain\u2019t over just yet!\r"
+  storyText: "Come on, show me your time ain\u2019t over just yet!\r."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -4280,7 +4268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 124
   indentLevel: 0
-  storyText: "Well, if you\u2019re here it can only mean one thing\r"
+  storyText: "Well, if you\u2019re here it can only mean one thing\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4307,7 +4295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 123
   indentLevel: 0
-  storyText: "But you can\u2019t beat eternity like this\r"
+  storyText: "But you can\u2019t beat eternity like this\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4361,7 +4349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 121
   indentLevel: 0
-  storyText: "{s=5}{b}Patience\r{/b}{/s}"
+  storyText: "{s=5}{b}Patience\r{/b}{/s}."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4388,7 +4376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 120
   indentLevel: 0
-  storyText: "Your cards shall despair, but you must remain firm\r"
+  storyText: "Your cards shall despair, but you must remain firm\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4416,7 +4404,7 @@ MonoBehaviour:
   itemId: 119
   indentLevel: 0
   storyText: "If a card of yours manages to reach 10 turns of exhaust time I will
-    consider this lesson learnt\r"
+    consider this lesson learnt\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4443,7 +4431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 118
   indentLevel: 0
-  storyText: "Let us proceed\r"
+  storyText: "Let us proceed\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -4470,7 +4458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 132
   indentLevel: 0
-  storyText: "If you have come this far, then you have learnt to walk\r"
+  storyText: "If you have come this far, then you have learnt to walk\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4497,7 +4485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 131
   indentLevel: 0
-  storyText: "But now it is time for you to run\r"
+  storyText: "But now it is time for you to run\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4524,7 +4512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 130
   indentLevel: 0
-  storyText: "We want you to know your actions have consequences\r"
+  storyText: "We want you to know your actions have consequences\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4578,7 +4566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 128
   indentLevel: 0
-  storyText: "We want you to fill up that deck 2 times in order to continue\r"
+  storyText: "We want you to fill up that deck 2 times in order to continue\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4605,7 +4593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 127
   indentLevel: 0
-  storyText: "Time is running out, but we won\u2019t go easy on you\r"
+  storyText: "Time is running out, but we won\u2019t go easy on you\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -4632,7 +4620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 135
   indentLevel: 0
-  storyText: "{i}What are you looking for, exactly?\r{/i}"
+  storyText: "{i}What are you looking for, exactly?\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -4659,7 +4647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 134
   indentLevel: 0
-  storyText: "{i}Let the moonlight guide your steps\r{/i}"
+  storyText: "{i}Let the moonlight guide your steps\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -4686,7 +4674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 133
   indentLevel: 0
-  storyText: "{i}Search for my light in your deck\u2026 and a path will open\u2026\r{/i}"
+  storyText: "{i}Search for my light in your deck\u2026 and a path will open\u2026\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -4713,7 +4701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 139
   indentLevel: 0
-  storyText: "You can check the {b}table{/b} at any time pressing {b}W{/b} or {b}S{/b}\r"
+  storyText: "You can check the {b}table{/b} at any time pressing {b}W{/b} or {b}S{/b}\r."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -5092,7 +5080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 162
   indentLevel: 0
-  storyText: "I don\u2019t think that\u2019s fair\r"
+  storyText: "I don\u2019t think that\u2019s fair\r."
   description: 
   character: {fileID: 847098738}
   portrait: {fileID: 0}
@@ -5363,7 +5351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 169
   indentLevel: 0
-  storyText: "You must learn to live without what you seek\r"
+  storyText: "You must learn to live without what you seek\r."
   description: 
   character: {fileID: 259042983}
   portrait: {fileID: 0}
@@ -5433,7 +5421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 175
   indentLevel: 0
-  storyText: "{i}May the wheel guide your destiny\u2026\r{/i}"
+  storyText: "{i}May the wheel guide your destiny\u2026\r{/i}."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -5502,7 +5490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 187
   indentLevel: 0
-  storyText: "We shall increment the exhaust time of a card\r"
+  storyText: "We shall increment the exhaust time of a card\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -5571,7 +5559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 185
   indentLevel: 0
-  storyText: "We shall increment the cost of a card\r"
+  storyText: "We shall increment the cost of a card\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -5640,7 +5628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 183
   indentLevel: 0
-  storyText: "We shall discard a card from your hand\r"
+  storyText: "We shall discard a card from your hand\r."
   description: 
   character: {fileID: 254782334}
   portrait: {fileID: 0}
@@ -5709,7 +5697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 192
   indentLevel: 0
-  storyText: "{i}Hidden before your eyes...\r{/i}"
+  storyText: "{i}Hidden before your eyes...\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -5736,7 +5724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 191
   indentLevel: 0
-  storyText: "{i}Their values have changed\u2026\r{/i}"
+  storyText: "{i}Their values have changed\u2026\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -5763,7 +5751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 190
   indentLevel: 0
-  storyText: "{i}Your cards don\u2019t know if they\u2019re tired or not\u2026\r{/i}"
+  storyText: "{i}Your cards don\u2019t know if they\u2019re tired or not\u2026\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -5790,7 +5778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 189
   indentLevel: 0
-  storyText: "{i}Darkness brings confusion\u2026\r{/i}"
+  storyText: "{i}Darkness brings confusion\u2026\r{/i}."
   description: 
   character: {fileID: 1679856507}
   portrait: {fileID: 0}
@@ -6254,7 +6242,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965887
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6293,7 +6281,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965888
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6332,7 +6320,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965889
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6371,7 +6359,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965890
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6410,7 +6398,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965891
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6449,7 +6437,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965892
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6488,7 +6476,7 @@ MonoBehaviour:
   toPositionOLD: {x: 0, y: 0, z: 0}
 --- !u!114 &1013965893
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
