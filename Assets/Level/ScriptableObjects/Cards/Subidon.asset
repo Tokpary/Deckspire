@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Subidon
   m_EditorClassIdentifier: 
-  cardName: Subidon
-  description: "Aumenta en 1 tu energ\xEDa m\xE1xima"
+  cardName: Rush
+  description: Increment your max energy in 1
   cardImage: {fileID: 21300000, guid: 8c683d1a12a762f4fba7c36870a8e3af, type: 3}
   cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 2

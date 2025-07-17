@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Fuego Amigo
   m_EditorClassIdentifier: 
-  cardName: Fuego Amigo
-  description: "Puedes utilizar el da\xF1o de tus cartas para reducir el tiempo de
-    agotamiento de las cartas de tu mano. 1 punto de da\xF1o reduce 1 turno"
+  cardName: Friendly Fire
+  description: You can deal damage to your own cards to reduce their exhaust time.
+    1 point of damage reduces 1 turn
   cardImage: {fileID: 21300000, guid: f9a9e603828442948bad3000fd5b213e, type: 3}
   cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 3

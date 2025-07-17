@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: transfusion
   m_EditorClassIdentifier: 
-  cardName: transfusion
-  description: "Agota esta carta. A\xF1ade sus turnos de agotamiento actuales a otra
-    carta de tu mano"
+  cardName: Transfusion
+  description: Discard this card. Add its exhaust turns to another card in your hand
   cardImage: {fileID: 21300000, guid: a26e65d448f8cb24a98e5c97b79396a5, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 3

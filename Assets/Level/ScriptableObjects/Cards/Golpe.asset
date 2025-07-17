@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Golpe
   m_EditorClassIdentifier: 
-  cardName: Golpe
-  description: "Infringe 2 de da\xF1o"
+  cardName: Blow
+  description: Deal 2 damage
   cardImage: {fileID: 21300000, guid: cb494c9c00ed5c84fabb729f7e695f57, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 1

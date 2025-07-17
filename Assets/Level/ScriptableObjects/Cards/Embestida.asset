@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Embestida
   m_EditorClassIdentifier: 
-  cardName: Embestida
-  description: "Infringe 3 de da\xF1o"
+  cardName: Assault
+  description: Deal 3 damage
   cardImage: {fileID: 21300000, guid: 5e89b2f1e5e34b84ab2be288da3980c7, type: 3}
   cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 2
