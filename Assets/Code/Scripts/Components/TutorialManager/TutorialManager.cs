@@ -78,33 +78,24 @@ public class TutorialManager : MonoBehaviour
     
     public void PositionDeck()
     {
-        camera.transform.DOMove(cameraDeckPosition, 1.5f);
-        camera.transform.DORotate(cameraDeckRotation, 1.5f);
         deck.transform.DOMove(deckPos, 1.5f);
     }
     
     
     public void PositionBall()
     {
-        camera.transform.DOMove(cameraBallPosition, 1.5f);
-        camera.transform.DORotate(cameraBallRotation, 1.5f);
         ball.transform.DOMove(ballPos, 1.5f);
     }
     
     
     public void PositionClock()
     {
-        camera.transform.DOMove(cameraClockPosition, 1.5f);
-        camera.transform.DORotate(cameraClockRotation, 1.5f);
         clock.transform.DOMove(clockPos, 1.5f);
     }
     
     
     public void PositionBell()
     {
-        camera.transform.DOMove(cameraBellPosition, 1.5f);
-        camera.transform.DORotate(cameraBellRotation, 1.5f);
         bell.transform.DOMove(bellPos, 1.5f);
     }
-    
 }
