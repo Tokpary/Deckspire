@@ -17,12 +17,12 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 
         public override void Exit(IGameState gameManager)
         {
-            throw new System.NotImplementedException();
+            //
         }
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
+            //
         }
     }
 }
