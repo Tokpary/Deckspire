@@ -131,22 +131,21 @@ namespace Code.Scripts.Components.GameBoard
             GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
             card.Deselect();
             PlayerHand.Remove(card); 
-            Debug.Log($"Displaying card in table: {card.GetDataCard().cardName}");
+            card.SetCardDeployed(true);
             switch (card.GetDataCard().cardType)
             {
                 case 0:
                     DiscardStack.Push(card);
+                    card.SetReadyToUse(false);
                     break;
                 case 1:
                     AbilityMat.Add(card);
-                    card.SetCardDeployed(true);
                     break;
                 case 2:
                     RulesMat.Add(card);
-                    Debug.Log($"Adding card to rules mat: {card.GetDataCard().cardName}");
-                    card.SetCardDeployed(true);
                     break;
             }
+            CameraManager.Instance.ReturnToTableView();
         }
 
         public void UseCardFromAbilityMat(ACard card)
@@ -154,6 +153,7 @@ namespace Code.Scripts.Components.GameBoard
             AbilityMat.Remove(card);
             card.PlayCard();
             MoveCardToDiscard(card);
+            CameraManager.Instance.ReturnToTableView();
         }
 
         public void AddToDiscardStack(ACard card)
@@ -253,6 +253,7 @@ namespace Code.Scripts.Components.GameBoard
                                 card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad).OnComplete(() =>
                                 {
                                     DiscardStack.Push(card);
+                                    card.Deselect();
                                     onComplete?.Invoke();
                                 });
                             });

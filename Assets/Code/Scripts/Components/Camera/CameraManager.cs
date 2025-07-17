@@ -89,7 +89,6 @@ namespace Code.Scripts.Components.Camera
         
         private void HandleCardDeselected(ACard obj)
         {
-            
             if (GameManager.Instance.GameFlowManager.GetCurrentState() is not DeployCardState) return;
             if (!_isTopView) return;
             _isTopView = false;
@@ -102,13 +101,8 @@ namespace Code.Scripts.Components.Camera
                 elapsed = x;
             }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
             {
-                transform.DORotate(tableView.rotation.eulerAngles, 0.5f)
-                    .SetEase(Ease.OutBack).OnComplete(() => {
-                        Debug.Log("Deploying cards in hand");
-                    GameManager.Instance.Player.HandDeck.DeployCardsInHand();
-                }).OnComplete(() => {
-                        _isAnimating = false;
-                    });
+                GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+                _isAnimating = false;
             });
             
                 
@@ -126,12 +120,8 @@ namespace Code.Scripts.Components.Camera
                 elapsed = x;
             }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
             {
-                transform.DORotate(tableView.rotation.eulerAngles, 0.5f)
-                    .SetEase(Ease.OutBack).OnComplete(() => {
-                        GameManager.Instance.Player.HandDeck.DeployCardsInHand();
-                    }).OnComplete(() => {
-                        _isAnimating = false;
-                    });
+                GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+                _isAnimating = false;
             });
         }
     }

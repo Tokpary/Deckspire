@@ -72,6 +72,9 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     {
         this.EnergyCost = _cardData.manaCost;
         this.LifeTime = _cardData.lifetime;
+        _cardDeployedOnTable = false;
+        _readyToUse = false;
+        _isSelected = false;
         UpdateCard();
     }
 
@@ -105,6 +108,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     public void Deselect()
     {
         _isSelected = false;
+        transform.DOScale(0.2f, 0.1f);
     }
     
     public void SetCardData(CardSO cardData)
@@ -162,6 +166,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (_cardDeployedOnTable && !_readyToUse) return;
         // Change the card's appearance to indicate selection
         transform.DOScale(0.25f, 0.15f);
     }

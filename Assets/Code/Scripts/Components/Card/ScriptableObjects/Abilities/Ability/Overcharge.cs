@@ -11,6 +11,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
         public override void Activate(ACard card)
         {
             GameManager.Instance.Player.CurrentEnergy += Increment;
+            GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
         }
         
         public override void Deactivate(ACard card)

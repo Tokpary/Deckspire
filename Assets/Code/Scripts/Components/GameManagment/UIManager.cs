@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,17 @@ namespace Code.Scripts.Components.GameManagment
     {
         [SerializeField] private TMP_Text energyText;
         [SerializeField] private TMP_Text turnText;
+        [SerializeField] private Light spotlight;
         
         public void UpdateEnergy(int energy)
         {
             if (energyText != null)
             {
                 energyText.text = $"{energy}";
+                if (spotlight != null)
+                {
+                    spotlight.DOIntensity(energy / 1f, 0.5f).SetEase(Ease.InOutQuad);
+                }
             }
         }
         
