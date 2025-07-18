@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Level/ScriptableObjects/Enemy/EnemyPassive.meta
 guid: 69c9e3b175bba204e89d8f1644d0cec3
 folderAsset: yes
 DefaultImporter:
-========
-guid: c7b75da75eab38c43993204f5b8df5e4
-NativeFormatImporter:
->>>>>>>> main:Assets/Art/Sprites/Mesa/Materials/Tablero_Habilidades 1.mat.meta
   externalObjects: {}
-  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
