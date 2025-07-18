@@ -12,20 +12,20 @@ public class TutorialManager : MonoBehaviour
     
     //Camara
     [SerializeField] private GameObject camera;
-    private Vector3 cameraPos = new (0.83f,2.36f,-3.3f);
-    private Vector3 cameraRot = new (13.86f, 0, 0);
+    [SerializeField] private Vector3 cameraPos = new (0.83f,2.36f,-3.3f);
+    [SerializeField] private Vector3 cameraRot = new (13.86f, 0, 0);
     
-    private Vector3 cameraDeckPosition = new (0.83f,2f,-2.7f);
-    private Vector3 cameraDeckRotation = new (4.37f,0,0);
+    [SerializeField] private Vector3 cameraDeckPosition = new (0.83f,2f,-2.7f);
+    [SerializeField] private Vector3 cameraDeckRotation = new (4.37f,0,0);
     
-    private Vector3 cameraBallPosition = new (0.3f,2,-2.4f);
-    private Vector3 cameraBallRotation = new (3.9f,333.8f,358);
+    [SerializeField] private Vector3 cameraBallPosition = new (0.3f,2,-2.4f);
+    [SerializeField] private Vector3 cameraBallRotation = new (3.9f,333.8f,358);
     
-    private Vector3 cameraClockPosition = new (1.55f,2,-2.6f);
-    private Vector3 cameraClockRotation = new (4.3f,3,0);
+    [SerializeField] private Vector3 cameraClockPosition = new (1.55f,2,-2.6f);
+    [SerializeField] private Vector3 cameraClockRotation = new (4.3f,3,0);
     
-    private Vector3 cameraBellPosition = new (1.45f,2.35f,-2.4f);
-    private Vector3 cameraBellRotation = new (4.35f,4.8f,0.3f);
+    [SerializeField] private Vector3 cameraBellPosition = new (1.45f,2.35f,-2.4f);
+    [SerializeField] private Vector3 cameraBellRotation = new (4.35f,4.8f,0.3f);
     
     //Mazo
     [SerializeField] private GameObject deck;
