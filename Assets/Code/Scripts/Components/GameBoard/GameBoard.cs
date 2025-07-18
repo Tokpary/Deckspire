@@ -52,25 +52,6 @@ namespace Code.Scripts.Components.GameBoard
             GameManager.Instance.Player.Initialize(GameRulesData);
         }
         
-        public void AddToDrawStack(IEnumerable<ACard> cards)
-        {
-            foreach (var card in cards)
-            {
-                DrawStack.Push(card);
-            }
-        }
-        
-        
-        public void AddToDrawStack(ACard card)
-        {
-            DrawStack.Push(card);
-        }
-        
-        public void AddToPlayerHand(ACard card)
-        {
-            PlayerHand.Add(card);
-        }
-        
         public Sequence RemoveFromPlayerHandTween(ACard card, Action onComplete = null)
         {
             Sequence s = DOTween.Sequence();
@@ -103,10 +84,10 @@ namespace Code.Scripts.Components.GameBoard
 
             foreach (var card in AbilityMat)
             {
-                if (!card.GetReadyToUse())
+                if (card.CardStatus == CardStatus.DeployedOnAbilitiesInactive)
                 {
                     seq.AppendCallback(() => {
-                        card.SetReadyToUse(true);
+                        card.CardStatus = CardStatus.DeployedOnAbilitiesActive;
                         card.transform.DORotate(new Vector3(90, 0, 0), 0.3f);  });
                     seq.AppendInterval(0.3f);
                 }
@@ -121,6 +102,7 @@ namespace Code.Scripts.Components.GameBoard
             {
                 ACard cardComponent = CreateCardInstance(card);
                 DrawStack.Push(cardComponent);
+                cardComponent.CardStatus = CardStatus.InDeck; // Set initial status
             }
             ShuffleDrawStack();
         }
@@ -131,18 +113,19 @@ namespace Code.Scripts.Components.GameBoard
             GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
             card.Deselect();
             PlayerHand.Remove(card); 
-            card.SetCardDeployed(true);
             switch (card.GetDataCard().cardType)
             {
                 case 0:
                     DiscardStack.Push(card);
-                    card.SetReadyToUse(false);
+                    card.CardStatus = CardStatus.Discarded;
                     break;
                 case 1:
                     AbilityMat.Add(card);
+                    card.CardStatus = CardStatus.DeployedOnAbilitiesInactive;
                     break;
                 case 2:
                     RulesMat.Add(card);
+                    card.CardStatus = CardStatus.DeployedOnRules;
                     break;
             }
             CameraManager.Instance.ReturnToTableView();
@@ -177,6 +160,7 @@ namespace Code.Scripts.Components.GameBoard
             }
             
             DiscardStack.Push(card);
+            card.CardStatus = CardStatus.Discarded;
         }
         
         private ACard CreateCardInstance(CardSO cardSo)
@@ -195,6 +179,7 @@ namespace Code.Scripts.Components.GameBoard
             if (drawnCard != null)
             {
                 PlayerHand.Add(drawnCard);
+                drawnCard.CardStatus = CardStatus.InHand;
                 drawnCard.ResetValues();
                 GameManager.Instance.Player.HandDeck.AddCard(drawnCard);
             }
@@ -210,6 +195,7 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in discardCards)
             {
                 DrawStack.Push(card);
+                card.CardStatus = CardStatus.InHand; // Reset the card status
             }
             
             ShuffleDrawStack();
@@ -230,6 +216,7 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in shuffledCards)
             {
                 DrawStack.Push(card);
+                card.CardStatus = CardStatus.InHand; // Reset the card status
             }
         }
 
@@ -253,6 +240,7 @@ namespace Code.Scripts.Components.GameBoard
                                 card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad).OnComplete(() =>
                                 {
                                     DiscardStack.Push(card);
+                                    card.CardStatus = CardStatus.Discarded;
                                     card.Deselect();
                                     onComplete?.Invoke();
                                 });

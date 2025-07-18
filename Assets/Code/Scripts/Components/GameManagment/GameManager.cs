@@ -48,7 +48,7 @@ namespace Code.Scripts.Components.GameManagment
         {
             InitializeGame();
             GameBoard.Initialize(this);
-            _gameFlowManager.SetState(new DialogueState(_gameFlowManager, "StartGame"));
+            _gameFlowManager.SetState(new DrawState(_gameFlowManager));
             TurnManager.StartGame(GameBoard, _player, _enemy);
         }
 
