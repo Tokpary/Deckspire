@@ -11,6 +11,7 @@ namespace Code.Scripts.Components.GameManagment
 {
     public class GameManager : DesignPatterns.Singleton<GameManager>
     {
+        public DialogueManager DialogueManager { get; private set; }
         public bool PlayIntroduction = true;
         public TutorialManager TutorialManager;
         public UIManager UIManager {get; private set; }
@@ -44,6 +45,7 @@ namespace Code.Scripts.Components.GameManagment
             TurnManager = GetComponent<TurnManager>();
             _gameFlowManager = GetComponent<GameFlowManager>();
             UIManager = GetComponent<UIManager>();
+            DialogueManager = GetComponent<DialogueManager>();
         }
         
         private void Start()

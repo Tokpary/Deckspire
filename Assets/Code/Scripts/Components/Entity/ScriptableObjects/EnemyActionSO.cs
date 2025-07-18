@@ -8,6 +8,19 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects
     
     public abstract class EnemyActionSO : ScriptableObject
     {
-        public abstract void ExecuteAction(Action onComplete = null);
+        [SerializeField] private string actionDialogue = "Adding garbage card to your deck!";
+
+        public virtual void ExecuteAction(Action onComplete = null)
+        {
+            SayDialogue();
+        }
+        
+        public virtual void SayDialogue(Action onComplete = null)
+        {
+            GameManager.Instance.DialogueManager.DisplayDialogue(actionDialogue, () =>
+            {
+                onComplete?.Invoke();
+            });
+        }
     }
 }

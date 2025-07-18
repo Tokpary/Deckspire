@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f07f0205e53cd4098f74f499d49a73, type: 3}
   m_Name: AddGarbageAction
   m_EditorClassIdentifier: 
+  actionDialogue: AddGarbage
   CardPrefab: {fileID: 11400000, guid: 7c310c46d2d0b9d4cbd5273cc49247cd, type: 2}

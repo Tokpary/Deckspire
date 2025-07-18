@@ -12,10 +12,13 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
         [SerializeField] private CardSO CardPrefab;
         public override void ExecuteAction(Action onComplete = null)
         {
+            base.ExecuteAction();
            GameManager.Instance.GameBoard.AddCardToDiscardStackFromEnemy(CardPrefab, () =>
             {
                 onComplete?.Invoke();
             });
         }
+        
+        
     }
 }

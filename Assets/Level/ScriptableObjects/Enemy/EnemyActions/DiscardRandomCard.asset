@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7355249e538c0924fa07615d5812dee2, type: 3}
   m_Name: DiscardRandomCard
   m_EditorClassIdentifier: 
+  actionDialogue: DiscardCard
