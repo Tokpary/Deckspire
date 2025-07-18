@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Planificacion
   m_EditorClassIdentifier: 
-  cardName: Planificacion
-  description: Aumenta en 1 turno el tiempo de agotamiento de toda tu mano
+  cardName: Planning
+  description: Increment the exhaust time of your whole hand 1 turn
   cardImage: {fileID: 21300000, guid: 2a609aaaa12201e438a12cc12a7cd623, type: 3}
   cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 3

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Sobrecarga
   m_EditorClassIdentifier: 
-  cardName: Sobrecarga
-  description: "A\xF1ade 2 de energ\xEDa durante este turno"
+  cardName: Overcharge
+  description: Add 2 energy points for this round
   cardImage: {fileID: 21300000, guid: e69b237871e7de949943b156a717fe85, type: 3}
   cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 2

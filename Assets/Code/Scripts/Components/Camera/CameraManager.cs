@@ -61,7 +61,9 @@ namespace Code.Scripts.Components.Camera
                             obj.transform.DOMove(transform.position + transform.forward * 0.5f - transform.up * 0.1f, 0.5f)
                                 .SetEase(Ease.OutBack).OnComplete(() =>
                                 {
-                                    obj.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.5f).SetEase(Ease.OutBack).OnComplete(() => {
+                                    obj.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+                                    {
+                                        obj.CardStatus = CardStatus.Selected;
                                         _isAnimating = false;
                                     });
                                 });
@@ -101,6 +103,10 @@ namespace Code.Scripts.Components.Camera
                 elapsed = x;
             }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
             {
+                foreach (var card in GameManager.Instance.GameBoard.PlayerHand)
+                {
+                    card.CardStatus = CardStatus.InHand;
+                }
                 GameManager.Instance.Player.HandDeck.DeployCardsInHand();
                 _isAnimating = false;
             });

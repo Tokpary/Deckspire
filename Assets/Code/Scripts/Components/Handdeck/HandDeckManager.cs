@@ -43,7 +43,6 @@ namespace Code.Scripts.Components.Handdeck
             }
             
             selectedCard = card;
-            selectedCard.Select();
             OnCardSelected?.Invoke(card);
             
             DeployCardsInHand();

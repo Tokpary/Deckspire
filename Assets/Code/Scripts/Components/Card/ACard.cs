@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
@@ -23,10 +24,9 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private Vector3 _originalPosition;
 	public int EnergyCost { get; set; }
 	public int LifeTime { get; set; }
-    private bool _cardDeployedOnTable;
-    private bool _readyToUse;
     
-    private bool _isSelected = false;
+    public CardStatus CardStatus { get; set; } = CardStatus.InDeck;
+    
     [SerializeField] private Transform childTransform;
 
     private void Awake()
@@ -44,11 +44,6 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         }
     }
 
-    public void SetCardDeployed(bool deployedOnTable)
-    {
-        _cardDeployedOnTable = deployedOnTable;
-        _isSelected = false;
-    }
     
     public void InitializeCard()
     {
@@ -60,27 +55,14 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         _cardEnergyCostText.text = $"{_cardData.manaCost}";
 		this.EnergyCost = _cardData.manaCost;
 		this.LifeTime = _cardData.lifetime;
-        _readyToUse = false;
     }
 
-    public bool GetReadyToUse()
-    {
-        return _readyToUse;
-    }
 
     public void ResetValues()
     {
         this.EnergyCost = _cardData.manaCost;
         this.LifeTime = _cardData.lifetime;
-        _cardDeployedOnTable = false;
-        _readyToUse = false;
-        _isSelected = false;
         UpdateCard();
-    }
-
-    public void SetReadyToUse(bool value)
-    {
-        _readyToUse = value;
     }
     
     public virtual void PlayCard() {
@@ -102,15 +84,14 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void Select()
     {
-        _isSelected = true;
+        CardStatus = CardStatus.Selected;
     }
-    
+
     public void Deselect()
     {
-        _isSelected = false;
-        transform.DOScale(0.2f, 0.1f);
+        CardStatus = CardStatus.InHand;
     }
-    
+
     public void SetCardData(CardSO cardData)
     {
         _cardData = cardData;
@@ -133,7 +114,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (_isSelected)
+        if (CardStatus == CardStatus.Selected)
         {
             Plane dragPlane = new Plane(Vector3.up, new Vector3(0, 1.81f, 0)); // Plano horizontal a nivel y=0 (ajusta si la mesa está más alta)
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -150,35 +131,38 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (_cardDeployedOnTable && _readyToUse)
+        if (CardStatus.DeployedOnAbilitiesActive == CardStatus)
         {
             GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
-            _cardDeployedOnTable = false;
-            _readyToUse = false;
             return;
         }
         
-        if(_cardDeployedOnTable) return;
-        Debug.Log($"{_cardDeployedOnTable} - {_readyToUse} - {_isSelected} - Card clicked: {gameObject.name}");
-        if(_isSelected) return;
+        if(CardStatus != CardStatus.InHand) return;
+        CardStatus = CardStatus.OnAnimation;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (_cardDeployedOnTable && !_readyToUse) return;
-        // Change the card's appearance to indicate selection
-        transform.DOScale(0.25f, 0.15f);
+        if(CardStatus == CardStatus.OnAnimation) return;
+        if (CardStatus == CardStatus.InHand || CardStatus == CardStatus.DeployedOnAbilitiesActive)
+        {
+            transform.DOKill();
+            transform.DOScale(0.25f, 0.15f);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(CardStatus == CardStatus.OnAnimation) return;
         // Change the card's appearance to indicate deselection
+        transform.DOKill();
         transform.DOScale(0.2f, 0.1f);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (CardStatus != CardStatus.Selected) return;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 
@@ -206,4 +190,17 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     {
         _originalPosition = transform.position;
     }
+
+}
+
+public enum CardStatus
+{
+    InHand,
+    DeployedOnRules,
+    DeployedOnAbilitiesInactive,
+    DeployedOnAbilitiesActive,
+    Discarded,
+    Selected,
+    InDeck, 
+    OnAnimation
 }

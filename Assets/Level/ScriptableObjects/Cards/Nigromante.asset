@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Nigromante
   m_EditorClassIdentifier: 
-  cardName: Nigromante
-  description: "Al agotarse una carta, existe una probabilidad de \u2153 de que sus
-    efectos se activen autom\xE1ticamente"
+  cardName: Necromancer
+  description: "When an Action card is exhausted, there is a \u2153 chance that its
+    effects will activate"
   cardImage: {fileID: 21300000, guid: 3c0dddebbbe745e458a4b406fea29a0d, type: 3}
   cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 3

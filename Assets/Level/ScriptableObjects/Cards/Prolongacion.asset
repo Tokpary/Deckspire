@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Prolongacion
   m_EditorClassIdentifier: 
-  cardName: Prolongacion
-  description: Aumenta en 2 turnos el tiempo de agotamiento de una carta de tu mano
+  cardName: Prolongation
+  description: Increment the exhaust time of a card in your hand by 2 turns
   cardImage: {fileID: 21300000, guid: 22b0d722a3d9aa946ab8f78c2e0f9f24, type: 3}
   cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 1

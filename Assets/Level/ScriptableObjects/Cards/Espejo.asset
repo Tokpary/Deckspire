@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Espejo
   m_EditorClassIdentifier: 
-  cardName: Espejo
-  description: "Duplica el efecto la siguiente carta de Acci\xF3n Inmediata"
+  cardName: Mirror
+  description: Double the effect of the next Action card
   cardImage: {fileID: 21300000, guid: a94876b5be1c2b04eafb6337df26e024, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 3

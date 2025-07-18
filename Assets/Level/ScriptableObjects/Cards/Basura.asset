@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Basura
   m_EditorClassIdentifier: 
-  cardName: Basura
-  description: "No tiene ning\xFAn efecto"
+  cardName: Garbage
+  description: Does nothing
   cardImage: {fileID: 21300000, guid: f1268909b08175c4792fe11f38e3d69e, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2
