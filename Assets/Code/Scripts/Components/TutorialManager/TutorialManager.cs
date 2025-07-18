@@ -29,20 +29,20 @@ public class TutorialManager : MonoBehaviour
     
     //Mazo
     [SerializeField] private GameObject deck;
-    private Vector3 deckPos = new (0.83f,1.8f,-2.27f);
+    [SerializeField] private Vector3 deckPos = new (0.83f,1.8f,-2.27f);
     
     //Bola de Cristal
     [SerializeField] private GameObject ball;
-    private Vector3 ballPos = new (-0.177f, 2.035f, -2.015f);
+    [SerializeField] private Vector3 ballPos = new (-0.177f, 2.035f, -2.015f);
     
     
     //Campana
     [SerializeField] private GameObject bell;
-    private Vector3 bellPos = new (2.4f,2.8f,-1.25f);
+    [SerializeField] private Vector3 bellPos = new (2.4f,2.8f,-1.25f);
     
     //Reloj
     [SerializeField] private GameObject clock;
-    private Vector3 clockPos = new (2,2,-2);
+    [SerializeField] private Vector3 clockPos = new (2,2,-2);
     
     
     //Metodos
