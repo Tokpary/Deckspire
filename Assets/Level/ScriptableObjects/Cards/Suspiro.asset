@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Suspiro
   m_EditorClassIdentifier: 
-  cardName: Suspiro
-  description: "A\xF1ade 2 turnos a tu vida"
+  cardName: Breath
+  description: Add 2 turns to your life
   cardImage: {fileID: 21300000, guid: ec3c32baa54cdd541a5a8a8b88930604, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2

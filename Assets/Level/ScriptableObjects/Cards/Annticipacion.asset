@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Annticipacion
   m_EditorClassIdentifier: 
-  cardName: Anticipacion
-  description: "Salta la siguiente acci\xF3n del rival"
+  cardName: Anticipation
+  description: Skip the rival's next action
   cardImage: {fileID: 21300000, guid: deb73daf4d341f64681c3cada8dcba85, type: 3}
   cardBackground: {fileID: 21300000, guid: e03ab6badb913154eb35950f5e8eb96a, type: 3}
   manaCost: 2

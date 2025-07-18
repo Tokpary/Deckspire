@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bc20c12e0a411fb0bf8e2e2301e168, type: 3}
   m_Name: Luz de Luna
   m_EditorClassIdentifier: 
-  cardName: Luz de Luna
-  description: "Lorem Ipsum Amogus Dolor sit amet, no me acuerdo mas asi que asi
-    se queda nuestro coleg\xF3n"
+  cardName: Clair de Lune
+  description: When the turn ends, all the exhaust times of your hands must be different
   cardImage: {fileID: 21300000, guid: feb662f270eaebd4d98137ba75477dbf, type: 3}
   cardBackground: {fileID: 21300000, guid: 2f177be23af881d4ab4c0b463a70f961, type: 3}
   manaCost: 1
