@@ -4750,7 +4750,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &1013965804
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5309,6 +5309,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3509048220492786297, guid: c718127e954fb38468df94de7f992ccb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff454a494b4bd234faffde2f781d417f, type: 2}
+    - target: {fileID: 3648420328490970525, guid: c718127e954fb38468df94de7f992ccb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7b75da75eab38c43993204f5b8df5e4, type: 2}
+    - target: {fileID: 5377117970252138871, guid: c718127e954fb38468df94de7f992ccb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 788029d1097912d45b068ecd62500f7b, type: 2}
     - target: {fileID: 6164529433959828482, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
       propertyPath: m_Mesh
