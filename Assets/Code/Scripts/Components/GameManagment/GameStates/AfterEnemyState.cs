@@ -28,7 +28,6 @@ namespace Code.Scripts.Components.GameManagment.GameStates
 
             sequence.OnComplete(() =>
             {
-                Debug.Log("AfterEnemyState: Player takes damage and transitions to DrawState");
                 GameManager.Instance.Player.TakeDamage(1);
                 
                 GameManager.Instance.Player.CurrentEnergy = GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana;

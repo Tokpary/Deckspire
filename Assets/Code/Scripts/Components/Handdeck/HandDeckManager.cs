@@ -28,14 +28,8 @@ namespace Code.Scripts.Components.Handdeck
         
         public void SelectCard(ACard card)
         {
-            if (selectedCard != null)
-            {
-                selectedCard.Deselect();
-            }
-
             if (card == selectedCard)
             {
-                selectedCard.Deselect();
                 selectedCard = null;
                 DeployCardsInHand();
                 OnCardDeselected?.Invoke(card);
@@ -95,7 +89,10 @@ namespace Code.Scripts.Components.Handdeck
 // Aplicar rotación en espacio global
                     card.transform.DOMove(pos, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
                     {
-                        card.transform.DORotate(look.eulerAngles, 0.5f).SetEase(Ease.OutBack);
+                        card.transform.DORotate(look.eulerAngles, 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+                        {
+                            card.CardStatus = CardStatus.InHand;
+                        });
                     });
                     card.transform.localScale = Vector3.one * cardScale;
                 

@@ -24,8 +24,10 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private Vector3 _originalPosition;
 	public int EnergyCost { get; set; }
 	public int LifeTime { get; set; }
+    private Tween scaleTween;
+
     
-    public CardStatus CardStatus { get; set; } = CardStatus.InDeck;
+    public CardStatus CardStatus { get; set; } = CardStatus.Discarded;
     
     [SerializeField] private Transform childTransform;
 
@@ -136,30 +138,26 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
             GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
             return;
         }
-        
+        Debug.Log($"Card clicked: {gameObject.name} with status {CardStatus}");
         if(CardStatus != CardStatus.InHand) return;
-        CardStatus = CardStatus.OnAnimation;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(CardStatus == CardStatus.OnAnimation) return;
         if (CardStatus == CardStatus.InHand || CardStatus == CardStatus.DeployedOnAbilitiesActive)
         {
-            transform.DOKill();
-            transform.DOScale(0.25f, 0.15f);
+            scaleTween?.Kill(); // Solo mata la animación de escala anterior
+            scaleTween = transform.DOScale(0.25f, 0.15f);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(CardStatus == CardStatus.OnAnimation) return;
-        // Change the card's appearance to indicate deselection
-        transform.DOKill();
-        transform.DOScale(0.2f, 0.1f);
+    
+        scaleTween?.Kill(); // Igual aquí, solo matas la animación de escala
+        scaleTween = transform.DOScale(0.2f, 0.1f);
     }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         if (CardStatus != CardStatus.Selected) return;
@@ -201,6 +199,5 @@ public enum CardStatus
     DeployedOnAbilitiesActive,
     Discarded,
     Selected,
-    InDeck, 
-    OnAnimation
+    InDeck
 }
