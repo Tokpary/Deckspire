@@ -11,6 +11,7 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
         {
             _snapPoint = transform;
         }
+        
         public override bool CanAcceptCard(ACard card)
         {
             if (card.GetDataCard().cardType == 0 && card.EnergyCost <= GameManager.Instance.Player.CurrentEnergy)

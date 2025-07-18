@@ -138,19 +138,25 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         }
         
         if(CardStatus != CardStatus.InHand) return;
+        CardStatus = CardStatus.OnAnimation;
         GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!(CardStatus != CardStatus.InHand || CardStatus != CardStatus.DeployedOnAbilitiesActive)) return;
-        // Change the card's appearance to indicate selection
-        transform.DOScale(0.25f, 0.15f);
+        if(CardStatus == CardStatus.OnAnimation) return;
+        if (CardStatus == CardStatus.InHand || CardStatus == CardStatus.DeployedOnAbilitiesActive)
+        {
+            transform.DOKill();
+            transform.DOScale(0.25f, 0.15f);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(CardStatus == CardStatus.OnAnimation) return;
         // Change the card's appearance to indicate deselection
+        transform.DOKill();
         transform.DOScale(0.2f, 0.1f);
     }
 
@@ -195,5 +201,6 @@ public enum CardStatus
     DeployedOnAbilitiesActive,
     Discarded,
     Selected,
-    InDeck
+    InDeck, 
+    OnAnimation
 }

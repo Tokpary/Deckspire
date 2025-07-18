@@ -98,4 +98,12 @@ public class TutorialManager : MonoBehaviour
     {
         bell.transform.DOMove(bellPos, 1.5f);
     }
+
+    public void DisplayGameboard()
+    {
+        PositionDeck();
+        PositionBell();
+        PositionClock();
+        PositionBall();
+    }
 }

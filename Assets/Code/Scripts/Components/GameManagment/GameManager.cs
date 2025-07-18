@@ -11,6 +11,8 @@ namespace Code.Scripts.Components.GameManagment
 {
     public class GameManager : DesignPatterns.Singleton<GameManager>
     {
+        public bool PlayIntroduction = true;
+        public TutorialManager TutorialManager;
         public UIManager UIManager {get; private set; }
         private GameFlowManager _gameFlowManager;
         public GameFlowManager GameFlowManager
@@ -48,7 +50,15 @@ namespace Code.Scripts.Components.GameManagment
         {
             InitializeGame();
             GameBoard.Initialize(this);
-            _gameFlowManager.SetState(new DrawState(_gameFlowManager));
+            if (PlayIntroduction)
+            {
+                _gameFlowManager.SetState(new DialogueState(_gameFlowManager, "StartGame"));
+            }
+            else
+            {
+                _gameFlowManager.SetState(new DrawState(_gameFlowManager));
+                TutorialManager.DisplayGameboard();
+            }
             TurnManager.StartGame(GameBoard, _player, _enemy);
         }
 
