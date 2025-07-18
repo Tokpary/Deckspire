@@ -2028,6 +2028,8 @@ GameObject:
   - component: {fileID: 1013965901}
   - component: {fileID: 1013965903}
   - component: {fileID: 1013965904}
+  - component: {fileID: 1013965906}
+  - component: {fileID: 1013965905}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2388,6 +2390,8 @@ MonoBehaviour:
   - {fileID: 1013965876}
   - {fileID: 1013965886}
   - {fileID: 1013965701}
+  - {fileID: 1013965905}
+  - {fileID: 1013965906}
   - {fileID: 1013965702}
   - {fileID: 1013965887}
   - {fileID: 1013965877}
@@ -2625,8 +2629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 0
-  storyText: "{b}Ability{/b} are placed inactive on the desk, you will be able to
-    use them after one turn has passed\r."
+  storyText: '{b}Ability{/b} cards are placed inactive on the desk, you will be able
+    to use them on the following turn'
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -2980,7 +2984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 32
   indentLevel: 0
-  storyText: "All your {b}cards{/b} have a {b}cost{/b} and an {b}exhaust time\r{/b}."
+  storyText: 'All your {b}cards{/b} display two values:'
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -3007,7 +3011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 31
   indentLevel: 0
-  storyText: "They will eventually meet their fate, just like you\r."
+  storyText: If this number reaches 0, they will be {b}discarded{/b} from your hand.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -7322,6 +7326,60 @@ MonoBehaviour:
   isLocal: 0
   toTransformOLD: {fileID: 0}
   toPositionOLD: {x: 0, y: 0, z: 0}
+--- !u!114 &1013965905
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 244
+  indentLevel: 0
+  storyText: The number on the left is their {b}cost{/b}.
+  description: 
+  character: {fileID: 502526039}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965906
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 243
+  indentLevel: 0
+  storyText: The number on the right is their {b}exhaust time{/b}.
+  description: 
+  character: {fileID: 502526039}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1056908542
 GameObject:
   m_ObjectHideFlags: 0
