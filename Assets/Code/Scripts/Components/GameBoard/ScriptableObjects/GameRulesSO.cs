@@ -24,6 +24,8 @@ namespace Code.Scripts.Components.GameBoard.ScriptableObjects
         public bool IsSkippingNextEnemy;
         public bool IsMirrorApplied;
 
+        public bool IsModifyingCard;
+
         // BOSS RULES
         public int DecoyPerRound;
         public bool DrawOnEmptyHandOnly;

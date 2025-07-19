@@ -19,5 +19,6 @@ MonoBehaviour:
   manaCost: 2
   lifetime: 2
   cardType: 0
+  isCardModifier: 0
   abilities:
   - {fileID: 11400000, guid: f8ca2e0812c98264c94a595824e5fddf, type: 2}

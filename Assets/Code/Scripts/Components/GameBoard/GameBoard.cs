@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Code.Scripts.Components.Camera;
 using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.GameBoard.SnappableArea;
 using Code.Scripts.Components.GameManagment;
 using DG.Tweening;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Code.Scripts.Components.GameBoard
         public CardSO[] CurrentFullDeck;
         
         public Transform NewCardsTransform;
-        
+        public TappableSnapArea ExtraSlot;
         public GameBoard()
         {
             DiscardStack = new Stack<ACard>();
@@ -57,6 +58,7 @@ namespace Code.Scripts.Components.GameBoard
             Sequence s = DOTween.Sequence();
 
             DiscardStack.Push(card);
+            card.CardStatus = CardStatus.Discarded;
             PlayerHand.Remove(card);
             
             s.Append(card.transform.DOMove(DiscardStackTransform.position, 0.5f).SetEase(Ease.InOutQuad));
@@ -102,7 +104,7 @@ namespace Code.Scripts.Components.GameBoard
             {
                 ACard cardComponent = CreateCardInstance(card);
                 DrawStack.Push(cardComponent);
-                cardComponent.CardStatus = CardStatus.InDeck; // Set initial status
+                cardComponent.CardStatus = CardStatus.Discarded; // Set initial status
             }
             ShuffleDrawStack();
         }
@@ -144,19 +146,16 @@ namespace Code.Scripts.Components.GameBoard
             if (PlayerHand.Contains(card))
             {
                 PlayerHand.Remove(card);
-                return;
             }
 
             if (RulesMat.Contains(card))
             {
                 RulesMat.Remove(card);
-                return;
             }
 
             if (AbilityMat.Contains(card))
             {
                 AbilityMat.Remove(card);
-                return;
             }
             
             DiscardStack.Push(card);
@@ -167,6 +166,7 @@ namespace Code.Scripts.Components.GameBoard
         {
             GameObject cardObject = Instantiate(cardPrefab, transform);
             ACard cardComponent = cardObject.GetComponent<ACard>();
+            cardComponent.CardStatus = CardStatus.Discarded;
             cardComponent.SetCardData(cardSo);
             return cardComponent;
         }
@@ -195,7 +195,7 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in discardCards)
             {
                 DrawStack.Push(card);
-                card.CardStatus = CardStatus.InHand; // Reset the card status
+                card.CardStatus = CardStatus.InDeck; // Reset the card status
             }
             
             ShuffleDrawStack();
@@ -216,7 +216,7 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in shuffledCards)
             {
                 DrawStack.Push(card);
-                card.CardStatus = CardStatus.InHand; // Reset the card status
+                card.CardStatus = CardStatus.InDeck; // Reset the card status
             }
         }
 
@@ -241,7 +241,6 @@ namespace Code.Scripts.Components.GameBoard
                                 {
                                     DiscardStack.Push(card);
                                     card.CardStatus = CardStatus.Discarded;
-                                    card.Deselect();
                                     onComplete?.Invoke();
                                 });
                             });
@@ -249,6 +248,14 @@ namespace Code.Scripts.Components.GameBoard
                 });
            
         }
+
+        public void DestroyCard(ACard card)
+        {
+            PlayerHand.Remove(card);
+            Destroy(card.gameObject);
+            GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+        }
+        
 
         public void MoveCardToDiscard(ACard card)
         {

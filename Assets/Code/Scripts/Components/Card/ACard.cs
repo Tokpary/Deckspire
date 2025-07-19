@@ -6,10 +6,12 @@ using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
 using Code.Scripts.Components.Interfaces;
 using DG.Tweening;
+using Fungus;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using CameraManager = Code.Scripts.Components.Camera.CameraManager;
 
 public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IEndDragHandler, IBeginDragHandler
 {
@@ -26,6 +28,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 	public int LifeTime { get; set; }
     private Tween scaleTween;
 
+    private Vector3 _previousMatPosition;
     
     public CardStatus CardStatus { get; set; } = CardStatus.Discarded;
     
@@ -71,6 +74,19 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         foreach (var ability in _cardData.abilities) {
             ability.Activate(this);
             
+        }
+    }
+    
+    public Vector3 GetPreviousMatPosition()
+    {
+        return _previousMatPosition;
+    }
+
+    public void PlayOnSelectedCard(ACard card)
+    {
+        foreach (var ability in _cardData.abilities) 
+        {
+            ability.Activate(card, this);
         }
     }
 
@@ -133,14 +149,82 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (CardStatus.DeployedOnAbilitiesActive == CardStatus)
+
+        switch (CardStatus)
         {
-            GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
-            return;
+            case CardStatus.Selected:
+                break;
+            case CardStatus.Discarded:
+                break;
+            case CardStatus.InDeck:
+                break;
+            case CardStatus.InHand:
+                if (GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard)
+                {
+                    ACard actionCard = GameManager.Instance.GameBoard.GameRulesData.SelectedCard;
+                    if (actionCard.CardStatus == CardStatus.SelectedToModify)
+                    {
+                        GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = false;
+                        GameManager.Instance.GameBoard.GameRulesData.SelectedCard = null;
+                        if(actionCard.EnergyCost > GameManager.Instance.Player.CurrentEnergy)
+                        {
+                            actionCard.transform.DOShakeRotation(0.3f, 40, 10, 90).OnComplete(() =>
+                            {
+                                actionCard.CardStatus = CardStatus.InHand;
+                                GameManager.Instance.Player.HandDeck.DeselectCard(actionCard);
+                            });
+                        }
+                        else
+                        {
+                            GameManager.Instance.Player.CurrentEnergy -= actionCard.EnergyCost;
+                            GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
+                            actionCard.PlayOnSelectedCard(this);
+                            GameManager.Instance.GameBoard.MoveCardToDiscard(actionCard);
+                        }
+                    }
+                    else if (actionCard.CardStatus == CardStatus.SelectedToModifyFromMat)
+                    {
+                        GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = false;
+                        GameManager.Instance.GameBoard.GameRulesData.SelectedCard = null;
+                        actionCard.PlayOnSelectedCard(this);
+                        GameManager.Instance.GameBoard.MoveCardToDiscard(actionCard);
+                    }
+                    
+                }
+                else
+                {
+                    GameManager.Instance.Player.HandDeck.SelectCard(this);
+                }
+                break;
+            case CardStatus.SelectedToModify:
+                GameManager.Instance.Player.HandDeck.DeselectCard(this);
+                break;
+            case CardStatus.SelectedToModifyFromMat:
+                GameManager.Instance.Player.HandDeck.DeselectCardToMat(this);
+                break;
+            case CardStatus.DeployedOnRules:
+                break;
+            case CardStatus.DeployedOnAbilitiesInactive:
+                break;
+            case CardStatus.DeployedOnAbilitiesActive:
+                if(_cardData.isCardModifier)
+                {
+                    GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = true;
+                    GameManager.Instance.GameBoard.GameRulesData.SelectedCard = this;
+                    CardStatus = CardStatus.SelectedToModifyFromMat;
+                    _previousMatPosition = transform.position;
+                    CameraManager.Instance.ReturnToTableView(() =>
+                    {
+                        GameManager.Instance.Player.HandDeck.SelectCard(this);
+                    });
+                }
+                else
+                {
+                    GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
+                }
+                break;
+            
         }
-        Debug.Log($"Card clicked: {gameObject.name} with status {CardStatus}");
-        if(CardStatus != CardStatus.InHand) return;
-        GameManager.Instance.Player.HandDeck.SelectCard(this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -176,7 +260,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
             .SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
-                transform.DOShakePosition(0.35f, 0.1f, 10, 90, false, true)
+                transform.DOShakeRotation(0.3f, 40, 10, 90)
                     .OnComplete(() => { 
                             transform.DOScale(0.2f, 0.1f);
                 }); 
@@ -199,5 +283,7 @@ public enum CardStatus
     DeployedOnAbilitiesActive,
     Discarded,
     Selected,
-    InDeck
+    InDeck,
+    SelectedToModify,
+    SelectedToModifyFromMat
 }

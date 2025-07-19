@@ -24,13 +24,15 @@ namespace Code.Scripts.Components.GameBoard
         public bool IsRushApplied { get; set; }
         public bool IsFriendlyFireApplied { get; set; }
         public bool IsMirrorApplied { get; set; }
-
+        
+        public bool IsModifyingCard { get; set; }
         // BOSS RULES
         public int DecoyPerRound { get; set; }
         public bool DrawOnEmptyHandOnly { get; set; }
         public bool DecoyOnTableCards { get; set; }
         public bool IsSkippingNextEnemy { get; set; }
 
+        public ACard SelectedCard { get; set; }
         private void Awake()
         {
             InitializeGameRules();
@@ -51,6 +53,7 @@ namespace Code.Scripts.Components.GameBoard
             IsRushApplied = DefaultGameRules.IsRushApplied;
             IsFriendlyFireApplied = DefaultGameRules.IsFriendlyFireApplied;
             IsMirrorApplied = DefaultGameRules.IsMirrorApplied;
+            IsModifyingCard = DefaultGameRules.IsModifyingCard;
             DecoyPerRound = DefaultGameRules.DecoyPerRound;
             DrawOnEmptyHandOnly = DefaultGameRules.DrawOnEmptyHandOnly;
             DecoyOnTableCards = DefaultGameRules.DecoyOnTableCards;

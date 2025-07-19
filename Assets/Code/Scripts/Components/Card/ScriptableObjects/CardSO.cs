@@ -13,6 +13,8 @@ namespace Code.Scripts.Components.Card.ScriptableObjects
         public int manaCost;
         public int lifetime;
         public int cardType; // 0: Unit, 1: Spell, 2: Rule
+
+        public bool isCardModifier = false;
         
         public List<CardAbilitySo> abilities;
     }

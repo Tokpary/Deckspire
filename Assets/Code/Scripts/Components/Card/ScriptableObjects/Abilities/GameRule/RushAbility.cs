@@ -8,7 +8,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int energyIncrement;
 
-        public override void Activate(ACard card)
+        public override void Activate(ACard card, ACard actionCard = null)
         {
             GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana += energyIncrement;
         }
