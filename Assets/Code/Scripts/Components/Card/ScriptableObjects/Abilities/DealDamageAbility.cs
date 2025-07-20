@@ -13,7 +13,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
         {
             if (GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied)
             {
-                targetCard.LifeTime += damage;
+                targetCard.LifeTime -= damage;
                 targetCard.UpdateCard();
             }
             else

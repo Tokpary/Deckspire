@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fool
   m_EditorClassIdentifier: 
   Name: The Fool
-  MaxHealth: 3
+  MaxHealth: 15
   Actions:
   - {fileID: 11400000, guid: 12ea168b88128ce429ef414be64851c4, type: 2}
   - {fileID: 11400000, guid: 1964775a2be861f499260c3974044198, type: 2}

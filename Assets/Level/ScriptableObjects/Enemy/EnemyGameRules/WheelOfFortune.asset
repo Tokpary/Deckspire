@@ -32,4 +32,4 @@ MonoBehaviour:
   DecoyOnTableCards: 0
   IsCleanseApplied: 0
   LifeLossOn2CardsDecoyed: 0
-  NumberOfRefillsToWin: 1
+  NumberOfRefillsToWin: 2
