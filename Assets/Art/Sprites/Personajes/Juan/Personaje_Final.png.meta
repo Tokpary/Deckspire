@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f57d3f0fbb3ce647a9409c53926aa6b
+guid: fbb1e1176b40f6d4eb42d973fd5042e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: muerte_0
+      name: Personaje_Final_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 10
         y: 0
-        width: 935
-        height: 1132
+        width: 71
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00d0c8339f348034286e9380f3008154
-      internalID: 1382030532
+      spriteID: 84f5ed17d66605448b9a3343bdd5d93f
+      internalID: -1883059778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: muerte_1
+      name: Personaje_Final_1
       rect:
         serializedVersion: 2
-        x: 989
+        x: 91
         y: 0
-        width: 932
-        height: 1111
+        width: 71
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d05768622f7a64489d5fe7ea88f9b91
-      internalID: 480159182
+      spriteID: e525114fd2bacd04cad8bcd48f2b8ef4
+      internalID: 2077759903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: muerte_2
+      name: Personaje_Final_2
       rect:
         serializedVersion: 2
-        x: 1999
+        x: 170
         y: 0
-        width: 935
-        height: 1111
+        width: 71
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 078a1fe93d3e2204a932415e553f9cd9
-      internalID: 1528005548
+      spriteID: af178ec98bebef44eafb217c875b4ef0
+      internalID: -2004602044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: muerte_3
+      name: Personaje_Final_3
       rect:
         serializedVersion: 2
-        x: 2987
+        x: 257
         y: 0
-        width: 935
-        height: 1091
+        width: 71
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,50 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2294c6034f42b164ea589e0761a9b476
-      internalID: -380893586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: muerte_5
-      rect:
-        serializedVersion: 2
-        x: 4078
-        y: 0
-        width: 935
-        height: 1103
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fbabc573441603408e91ec3fd25e295
-      internalID: 65589995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: muerte_8
-      rect:
-        serializedVersion: 2
-        x: 5147
-        y: 0
-        width: 935
-        height: 1123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39f86253eafd1af4c9e0129778c627ff
-      internalID: 700085954
+      spriteID: 2d146d8d85e66ff41a90a713813a492c
+      internalID: 1059261815
       vertices: []
       indices: 
       edges: []
@@ -225,7 +183,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3d4e911bcf8f9fc4ba6e59062d0098fc
+    spriteID: bab520e76d0b7ce44a3e3cf3696ce731
     internalID: 0
     vertices: []
     indices: 
@@ -233,22 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      muerte_0: 1382030532
-      muerte_1: 480159182
-      muerte_10: 863295529
-      muerte_11: 868581511
-      muerte_12: -406330765
-      muerte_13: 199421853
-      muerte_14: 2013514763
-      muerte_15: -1089099867
-      muerte_2: 1528005548
-      muerte_3: -380893586
-      muerte_4: -1205511194
-      muerte_5: 65589995
-      muerte_6: -265639949
-      muerte_7: 1285833564
-      muerte_8: 700085954
-      muerte_9: 314069344
+      Personaje_Final_0: -1883059778
+      Personaje_Final_1: 2077759903
+      Personaje_Final_2: -2004602044
+      Personaje_Final_3: 1059261815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
