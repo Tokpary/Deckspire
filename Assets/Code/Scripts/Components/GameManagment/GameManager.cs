@@ -51,7 +51,7 @@ namespace Code.Scripts.Components.GameManagment
         private void Start()
         {
             InitializeGame();
-            GameBoard.Initialize(this);
+            GameBoard.Initialize(this, Enemy);
             if (PlayIntroduction)
             {
                 _gameFlowManager.SetState(new DialogueState(_gameFlowManager, "StartGame"));
@@ -73,6 +73,7 @@ namespace Code.Scripts.Components.GameManagment
         {
            // player.HandDeck.Initialize();
         }
+        
         
         
 

@@ -30,5 +30,9 @@ namespace Code.Scripts.Components.GameBoard.ScriptableObjects
         public int DecoyPerRound;
         public bool DrawOnEmptyHandOnly;
         public bool DecoyOnTableCards;
+
+        public bool IsCleanseApplied;
+        public bool LifeLossOn2CardsDecoyed;
+        public int NumberOfRefillsToWin;
     }
 }

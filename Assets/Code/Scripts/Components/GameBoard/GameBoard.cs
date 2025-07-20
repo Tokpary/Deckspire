@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using Code.Scripts.Components.Camera;
 using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.Entity;
 using Code.Scripts.Components.GameBoard.SnappableArea;
 using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.GameManagment.GameStates;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,6 +31,8 @@ namespace Code.Scripts.Components.GameBoard
         
         public Transform NewCardsTransform;
         public TappableSnapArea ExtraSlot;
+        
+        private int RefillTimes = 0;
         public GameBoard()
         {
             DiscardStack = new Stack<ACard>();
@@ -38,12 +42,13 @@ namespace Code.Scripts.Components.GameBoard
             RulesMat = new List<ACard>();
         }
         
-        public void Initialize(GameManager gameManager)
+        public void Initialize(GameManager gameManager, Enemy enemy)
         {
             DiscardStack.Clear();
             DrawStack.Clear();
             PlayerHand.Clear();
             GameRulesData = GetComponent<GameRulesData>();
+            GameRulesData.UpdateEnemyRules(enemy.EnemyRulesData);
             InitializeCards();
             InitializePlayer();
         }
@@ -74,7 +79,25 @@ namespace Code.Scripts.Components.GameBoard
         
         public void RefillPlayerHand(Action onComplete = null)
         {
+            
             var seq = DOTween.Sequence();
+            if(GameManager.Instance.GameBoard.GameRulesData.DrawOnEmptyHandOnly && PlayerHand.Count > 0)
+            {
+                GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+                foreach (var card in AbilityMat)
+                {
+                    if (card.CardStatus == CardStatus.DeployedOnAbilitiesInactive)
+                    {
+                        seq.AppendCallback(() => {
+                            card.CardStatus = CardStatus.DeployedOnAbilitiesActive;
+                            card.transform.DORotate(new Vector3(90, 0, 0), 0.3f);  });
+                        seq.AppendInterval(0.3f);
+                    }
+                }
+                seq.OnComplete(() => onComplete?.Invoke());
+                return;
+            }
+            
 
    			int cardsToDraw = GameRulesData.MaxHandSize - PlayerHand.Count;
 
@@ -109,7 +132,29 @@ namespace Code.Scripts.Components.GameBoard
             ShuffleDrawStack();
         }
 
+        public void FriendlyFireEnabled()
+        {
+            foreach (CardSO card in CurrentFullDeck)
+            {
+                if (card.isDamageAbility)
+                {
+                    card.isCardModifier = true;
+                }
+            }
+        }
 
+        public void FriendlyFireDisabled()
+        {
+            foreach (CardSO card in CurrentFullDeck)
+            {
+                if (card.isDamageAbility)
+                {
+                    card.isCardModifier = false;
+                }
+            }
+        }
+
+        
         public void DisplayCardInTable(ACard card)
         {
             GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
@@ -199,7 +244,13 @@ namespace Code.Scripts.Components.GameBoard
             }
             
             ShuffleDrawStack();
-            
+            RefillTimes++;
+            if(RefillTimes >= GameRulesData.NumberOfRefillsToWin && GameRulesData.NumberOfRefillsToWin > 0)
+            {
+                Debug.Log("Game Over: Refill limit reached.");
+                //GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "StartGame"));
+                return null;
+            }
             // Return the top card from the now shuffled draw stack
             return DrawStack.Count > 0 ? DrawStack.Pop() : null;
         }

@@ -14,6 +14,14 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
         
         public override bool CanAcceptCard(ACard card)
         {
+            bool cleanse = false;
+            foreach (var ability in card.GetDataCard().abilities)
+            {
+                if (ability.name == "CleanseAbility") // Assuming 4 is the type for cleanse ability
+                {
+                    return false;
+                }
+            }
             if (card.GetDataCard().cardType == 0 && card.EnergyCost <= GameManager.Instance.Player.CurrentEnergy)
             {
                 return true;

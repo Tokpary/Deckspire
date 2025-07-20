@@ -19,13 +19,7 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
 
         public virtual void RemoveCardFromSlot()
         {
-            _currentCardOnSlot.transform.DOMove(_discardStack.position, 0.5f)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() =>
-                {
-                    _currentCardOnSlot.transform.rotation = Quaternion.identity;
-                    _currentCardOnSlot = null;
-                });
+            _currentCardOnSlot = null;
         }
     }
 }

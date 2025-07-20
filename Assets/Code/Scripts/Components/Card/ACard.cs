@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.GameBoard.SnappableArea;
 using Code.Scripts.Components.GameManagment;
 using Code.Scripts.Components.Handdeck;
 using Code.Scripts.Components.Interfaces;
@@ -29,6 +30,8 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     private Tween scaleTween;
 
     private Vector3 _previousMatPosition;
+    
+    public ASnapZone CurrentSnapZone { get; set; }
     
     public CardStatus CardStatus { get; set; } = CardStatus.Discarded;
     
@@ -60,6 +63,18 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         _cardEnergyCostText.text = $"{_cardData.manaCost}";
 		this.EnergyCost = _cardData.manaCost;
 		this.LifeTime = _cardData.lifetime;
+
+        if (_cardData.isDamageAbility)
+        {
+            if (GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied)
+            {
+                _cardData.isCardModifier = true;
+            } 
+            else
+            {
+                _cardData.isCardModifier = false;
+            }
+        }
     }
 
 
@@ -74,6 +89,14 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         foreach (var ability in _cardData.abilities) {
             ability.Activate(this);
             
+        }
+    }
+
+    public void PlayOnExitCard()
+    {
+        foreach (var ability in _cardData.abilities) 
+        {
+            ability.Deactivate(this);
         }
     }
     
@@ -187,6 +210,8 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
                         GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = false;
                         GameManager.Instance.GameBoard.GameRulesData.SelectedCard = null;
                         actionCard.PlayOnSelectedCard(this);
+                        if(actionCard.CurrentSnapZone != null)
+                            actionCard.CurrentSnapZone.RemoveCardFromSlot();
                         GameManager.Instance.GameBoard.MoveCardToDiscard(actionCard);
                     }
                     
@@ -221,6 +246,10 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
                 else
                 {
                     GameManager.Instance.GameBoard.UseCardFromAbilityMat(this);
+                    if(CurrentSnapZone != null)
+                    {
+                        CurrentSnapZone.RemoveCardFromSlot();
+                    }
                 }
                 break;
             

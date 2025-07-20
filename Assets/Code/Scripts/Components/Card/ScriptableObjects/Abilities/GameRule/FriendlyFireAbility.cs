@@ -10,11 +10,13 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
         public override void Activate(ACard card, ACard actionCard = null)
         {
             GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied = true;
+            GameManager.Instance.GameBoard.FriendlyFireEnabled();
         }
         
         public override void Deactivate(ACard card)
         {
             GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied = false;
+            GameManager.Instance.GameBoard.FriendlyFireDisabled();
         }
     }
 }

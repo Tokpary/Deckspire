@@ -30,9 +30,15 @@ namespace Code.Scripts.Components.GameBoard
         public int DecoyPerRound { get; set; }
         public bool DrawOnEmptyHandOnly { get; set; }
         public bool DecoyOnTableCards { get; set; }
+        public bool LifeLossOn2CardsDecoyed { get; set; }
+        
         public bool IsSkippingNextEnemy { get; set; }
+        public bool IsCleanseApplied { get; set; }
+        
 
         public ACard SelectedCard { get; set; }
+        public int NumberOfRefillsToWin { get; set; }
+
         private void Awake()
         {
             InitializeGameRules();
@@ -58,6 +64,20 @@ namespace Code.Scripts.Components.GameBoard
             DrawOnEmptyHandOnly = DefaultGameRules.DrawOnEmptyHandOnly;
             DecoyOnTableCards = DefaultGameRules.DecoyOnTableCards;
             IsSkippingNextEnemy = DefaultGameRules.IsSkippingNextEnemy;
+            IsCleanseApplied = DefaultGameRules.IsCleanseApplied;
+            LifeLossOn2CardsDecoyed = DefaultGameRules.LifeLossOn2CardsDecoyed;
+            NumberOfRefillsToWin = DefaultGameRules.NumberOfRefillsToWin;
+        }
+
+        public void UpdateEnemyRules(GameRulesSO enemyEnemyRulesData)
+        {
+            if (enemyEnemyRulesData == null) return;
+
+            DrawOnEmptyHandOnly = enemyEnemyRulesData.DrawOnEmptyHandOnly;
+            DecoyPerRound = enemyEnemyRulesData.DecoyPerRound;
+            DecoyOnTableCards = enemyEnemyRulesData.DecoyOnTableCards;
+            LifeLossOn2CardsDecoyed = enemyEnemyRulesData.LifeLossOn2CardsDecoyed;
+            NumberOfRefillsToWin = enemyEnemyRulesData.NumberOfRefillsToWin;
         }
     }
 }
