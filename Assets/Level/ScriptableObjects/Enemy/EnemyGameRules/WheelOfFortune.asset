@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad47dcb71bd49d485fb3d17489b6078, type: 3}
+  m_Name: WheelOfFortune
+  m_EditorClassIdentifier: 
+  PlayerHealth: 0
+  PlayerMana: 0
+  MaxHandSize: 0
+  PlayerMaxMana: 0
+  PlayerMaxHealth: 0
+  IsReinformentApplied: 0
+  IsNecromancyApplied: 0
+  IsHandGameApplied: 0
+  IsMoonLightApplied: 0
+  IsOptionsApplied: 0
+  IsRushApplied: 0
+  IsFriendlyFireApplied: 0
+  IsSkippingNextEnemy: 0
+  IsMirrorApplied: 0
+  IsModifyingCard: 0
+  DecoyPerRound: 1
+  DrawOnEmptyHandOnly: 1
+  DecoyOnTableCards: 0
+  IsCleanseApplied: 0
+  LifeLossOn2CardsDecoyed: 0
+  NumberOfRefillsToWin: 2

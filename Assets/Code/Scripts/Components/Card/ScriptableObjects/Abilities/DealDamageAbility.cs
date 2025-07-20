@@ -9,9 +9,17 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int damage;
 
-        public override void Activate(ACard card)
+        public override void Activate(ACard targetCard, ACard actionCard = null)
         {
-            GameManager.Instance.Enemy.TakeDamage(damage);
+            if (GameManager.Instance.GameBoard.GameRulesData.IsFriendlyFireApplied)
+            {
+                targetCard.LifeTime += damage;
+                targetCard.UpdateCard();
+            }
+            else
+            {
+                GameManager.Instance.Enemy.TakeDamage(damage);
+            }
         }
         
         public override void Deactivate(ACard card)

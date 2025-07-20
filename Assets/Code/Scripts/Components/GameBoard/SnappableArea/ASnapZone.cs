@@ -7,6 +7,11 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
     public abstract class ASnapZone : MonoBehaviour, ISnapZone
     {
         protected ACard _currentCardOnSlot;
+        public ACard CurrentCardOnSlot
+        {
+            get => _currentCardOnSlot;
+            set => _currentCardOnSlot = value;
+        }
         [SerializeField] private Transform _discardStack;
         public abstract bool CanAcceptCard(ACard card);
 
@@ -14,13 +19,7 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
 
         public virtual void RemoveCardFromSlot()
         {
-            _currentCardOnSlot.transform.DOMove(_discardStack.position, 0.5f)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() =>
-                {
-                    _currentCardOnSlot.transform.rotation = Quaternion.identity;
-                    _currentCardOnSlot = null;
-                });
+            _currentCardOnSlot = null;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Code.Scripts.Components.Entity.ScriptableObjects;
+using Code.Scripts.Components.GameBoard.ScriptableObjects;
 using Code.Scripts.Components.GameManagment;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ namespace Code.Scripts.Components.Entity
 	public class Enemy : Entity
 	{
 		[SerializeField] private EntitySO _enemyData;
+		[SerializeField] public GameRulesSO EnemyRulesData;
 
 		public override void Awake()
 		{
@@ -41,6 +43,11 @@ namespace Code.Scripts.Components.Entity
 				dieEvent.OnDieEvent();
 			}
 
+			CurrentHealth = MaxHealth;
+		}
+		
+		public void RestartLife()
+		{
 			CurrentHealth = MaxHealth;
 		}
 

@@ -8,11 +8,12 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int Increment;
         
-        public override void Activate(ACard card)
+        public override void Activate(ACard card, ACard actionCard = null)
         {
             foreach (ACard c in GameManager.Instance.GameBoard.PlayerHand)
             {
                 c.LifeTime += Increment;
+                c.UpdateCard();
             }
         }
 

@@ -114,7 +114,7 @@ namespace Code.Scripts.Components.Camera
                 
         }
 
-        public void ReturnToTableView()
+        public void ReturnToTableView(Action onComplete = null)
         {
             if (!_isTopView) return;
             _isTopView = false;
@@ -126,6 +126,7 @@ namespace Code.Scripts.Components.Camera
                 elapsed = x;
             }, angleDegrees, duration).SetEase(Ease.InOutSine).OnComplete(() =>
             {
+                onComplete?.Invoke();
                 GameManager.Instance.Player.HandDeck.DeployCardsInHand();
                 _isAnimating = false;
             });

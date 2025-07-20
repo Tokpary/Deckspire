@@ -7,14 +7,19 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     public class HandGameAbility : CardAbilitySo
     {
 
-        public override void Activate(ACard card)
+        public override void Activate(ACard card, ACard actionCard = null)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsHandGameApplied = true;
+            GameManager.Instance.GameBoard.ExtraSlot.gameObject.SetActive(true);
         }
         
         public override void Deactivate(ACard card)
         {
-            GameManager.Instance.GameBoard.GameRulesData.IsHandGameApplied = false;
+            if(GameManager.Instance.GameBoard.ExtraSlot.CurrentCardOnSlot != null)
+            {
+                ACard actionCard = GameManager.Instance.GameBoard.ExtraSlot.CurrentCardOnSlot;
+                GameManager.Instance.GameBoard.MoveCardToDiscard(actionCard);
+            }
+            GameManager.Instance.GameBoard.ExtraSlot.gameObject.SetActive(false);
         }
     }
 }

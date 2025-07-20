@@ -8,7 +8,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int Increment;
         
-        public override void Activate(ACard card)
+        public override void Activate(ACard card, ACard actionCard = null)
         {
             GameManager.Instance.Player.CurrentEnergy += Increment;
             GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);

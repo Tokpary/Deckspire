@@ -25,21 +25,57 @@ namespace Code.Scripts.Components.Handdeck
         public event System.Action<ACard> OnCardDeselected;
         
         private ACard selectedCard;
+
+        public void DeselectCard(ACard card)
+        {
+            card.CardStatus = CardStatus.InHand;
+            GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = false;
+            GameManager.Instance.GameBoard.GameRulesData.SelectedCard = null;
+            GameManager.Instance.GameBoard.PlayerHand.Add(card);
+            DeployCardsInHand();
+            selectedCard = null;
+        }
+        
+        public void DeselectCardToMat(ACard card)
+        {
+            card.CardStatus = CardStatus.DeployedOnAbilitiesActive;
+            GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = false;
+            GameManager.Instance.GameBoard.GameRulesData.SelectedCard = null;
+            GameManager.Instance.GameBoard.AbilityMat.Add(card);
+            card.transform.DOMove(card.GetPreviousMatPosition(), 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                card.transform.DORotate(new Vector3(90,0, 0), 0.5f).SetEase(Ease.OutBack);
+            });
+            DeployCardsInHand();
+            selectedCard = null;
+        }
         
         public void SelectCard(ACard card)
         {
-            if (card == selectedCard)
+            if (!card.GetDataCard().isCardModifier || (card.GetDataCard().isCardModifier && card.GetDataCard().cardType == 1 && card.CardStatus != CardStatus.SelectedToModifyFromMat))
             {
-                selectedCard = null;
+                selectedCard = card;
+                OnCardSelected?.Invoke(card);
                 DeployCardsInHand();
-                OnCardDeselected?.Invoke(card);
-                return;
+                
+            } else
+            {
+                //display card on middle of screen
+                Vector3 screenPos = _cameraTransform.position + _cameraTransform.forward * cardDistanceFromCamera;
+                card.transform.DOMove(screenPos + new Vector3(0,0.125f), 0.5f).SetEase(Ease.OutBack).OnComplete(() =>
+                {
+                    card.transform.DORotate(_cameraTransform.rotation.eulerAngles, 0.5f).SetEase(Ease.OutBack);
+                    if (CardStatus.SelectedToModifyFromMat != card.CardStatus)
+                        card.CardStatus = CardStatus.SelectedToModify;
+                    GameManager.Instance.GameBoard.GameRulesData.IsModifyingCard = true;
+                    GameManager.Instance.GameBoard.GameRulesData.SelectedCard = card;
+                    selectedCard = card;
+                    DeployCardsInHand();
+                    
+                });
             }
             
-            selectedCard = card;
-            OnCardSelected?.Invoke(card);
             
-            DeployCardsInHand();
         }
         
         public void AddCard(ACard card, bool deploy = true)
@@ -55,6 +91,13 @@ namespace Code.Scripts.Components.Handdeck
         public void DeployCardsInHand()
         {
             List<ACard> handCards = GameManager.Instance.GameBoard.PlayerHand;
+            for(int i = handCards.Count - 1; i >= 0; i--)
+            {
+                if (handCards[i].CardStatus == CardStatus.SelectedToModify)
+                {
+                    handCards.Remove(handCards[i]);
+                }
+            }
             if (handCards.Count == 0) return;
 
             float half = (handCards.Count - 1) / 2f;

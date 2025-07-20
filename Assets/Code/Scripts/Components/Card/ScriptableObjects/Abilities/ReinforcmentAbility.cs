@@ -8,7 +8,7 @@ namespace Code.Scripts.Components.Card.ScriptableObjects.Abilities
     {
         public int Multiplier;
 
-        public override void Activate(ACard card)
+        public override void Activate(ACard card, ACard actionCard = null)
         {
             GameManager.Instance.Enemy.DamageMultiplier = Multiplier;
         }

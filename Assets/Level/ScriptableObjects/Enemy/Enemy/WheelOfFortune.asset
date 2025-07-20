@@ -15,8 +15,10 @@ MonoBehaviour:
   Name: Wheel Of Fortune
   MaxHealth: 5
   Actions:
-  - {fileID: 11400000, guid: 12ea168b88128ce429ef414be64851c4, type: 2}
+  - {fileID: 11400000, guid: 1964775a2be861f499260c3974044198, type: 2}
+  - {fileID: 11400000, guid: 43eb050a913792a4c99ca9fc07fed615, type: 2}
+  - {fileID: 11400000, guid: 63d9bbe1c6044884e892a3cd577781b3, type: 2}
   DieEvents:
-  - {fileID: 11400000, guid: 77361b5ae3ba9af4aa6b1dc0fa03ea0d, type: 2}
+  - {fileID: 11400000, guid: d61870ba66891bd43a52c43099f2306f, type: 2}
   Passives:
   - {fileID: 11400000, guid: 6b76cbfc71f06db479e10d2ba7facd9a, type: 2}

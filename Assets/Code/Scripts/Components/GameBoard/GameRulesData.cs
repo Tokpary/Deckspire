@@ -24,12 +24,20 @@ namespace Code.Scripts.Components.GameBoard
         public bool IsRushApplied { get; set; }
         public bool IsFriendlyFireApplied { get; set; }
         public bool IsMirrorApplied { get; set; }
-
+        
+        public bool IsModifyingCard { get; set; }
         // BOSS RULES
         public int DecoyPerRound { get; set; }
         public bool DrawOnEmptyHandOnly { get; set; }
         public bool DecoyOnTableCards { get; set; }
+        public bool LifeLossOn2CardsDecoyed { get; set; }
+        
         public bool IsSkippingNextEnemy { get; set; }
+        public bool IsCleanseApplied { get; set; }
+        
+
+        public ACard SelectedCard { get; set; }
+        public int NumberOfRefillsToWin { get; set; }
 
         private void Awake()
         {
@@ -51,10 +59,25 @@ namespace Code.Scripts.Components.GameBoard
             IsRushApplied = DefaultGameRules.IsRushApplied;
             IsFriendlyFireApplied = DefaultGameRules.IsFriendlyFireApplied;
             IsMirrorApplied = DefaultGameRules.IsMirrorApplied;
+            IsModifyingCard = DefaultGameRules.IsModifyingCard;
             DecoyPerRound = DefaultGameRules.DecoyPerRound;
             DrawOnEmptyHandOnly = DefaultGameRules.DrawOnEmptyHandOnly;
             DecoyOnTableCards = DefaultGameRules.DecoyOnTableCards;
             IsSkippingNextEnemy = DefaultGameRules.IsSkippingNextEnemy;
+            IsCleanseApplied = DefaultGameRules.IsCleanseApplied;
+            LifeLossOn2CardsDecoyed = DefaultGameRules.LifeLossOn2CardsDecoyed;
+            NumberOfRefillsToWin = DefaultGameRules.NumberOfRefillsToWin;
+        }
+
+        public void UpdateEnemyRules(GameRulesSO enemyEnemyRulesData)
+        {
+            if (enemyEnemyRulesData == null) return;
+
+            DrawOnEmptyHandOnly = enemyEnemyRulesData.DrawOnEmptyHandOnly;
+            DecoyPerRound = enemyEnemyRulesData.DecoyPerRound;
+            DecoyOnTableCards = enemyEnemyRulesData.DecoyOnTableCards;
+            LifeLossOn2CardsDecoyed = enemyEnemyRulesData.LifeLossOn2CardsDecoyed;
+            NumberOfRefillsToWin = enemyEnemyRulesData.NumberOfRefillsToWin;
         }
     }
 }

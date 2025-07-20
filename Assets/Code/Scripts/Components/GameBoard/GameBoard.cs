@@ -3,7 +3,10 @@ using System;
 using System.Collections.Generic;
 using Code.Scripts.Components.Camera;
 using Code.Scripts.Components.Card.ScriptableObjects;
+using Code.Scripts.Components.Entity;
+using Code.Scripts.Components.GameBoard.SnappableArea;
 using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.GameManagment.GameStates;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,7 +30,9 @@ namespace Code.Scripts.Components.GameBoard
         public CardSO[] CurrentFullDeck;
         
         public Transform NewCardsTransform;
+        public TappableSnapArea ExtraSlot;
         
+        private int RefillTimes = 0;
         public GameBoard()
         {
             DiscardStack = new Stack<ACard>();
@@ -37,12 +42,13 @@ namespace Code.Scripts.Components.GameBoard
             RulesMat = new List<ACard>();
         }
         
-        public void Initialize(GameManager gameManager)
+        public void Initialize(GameManager gameManager, Enemy enemy)
         {
             DiscardStack.Clear();
             DrawStack.Clear();
             PlayerHand.Clear();
             GameRulesData = GetComponent<GameRulesData>();
+            GameRulesData.UpdateEnemyRules(enemy.EnemyRulesData);
             InitializeCards();
             InitializePlayer();
         }
@@ -57,6 +63,7 @@ namespace Code.Scripts.Components.GameBoard
             Sequence s = DOTween.Sequence();
 
             DiscardStack.Push(card);
+            card.CardStatus = CardStatus.Discarded;
             PlayerHand.Remove(card);
             
             s.Append(card.transform.DOMove(DiscardStackTransform.position, 0.5f).SetEase(Ease.InOutQuad));
@@ -72,7 +79,25 @@ namespace Code.Scripts.Components.GameBoard
         
         public void RefillPlayerHand(Action onComplete = null)
         {
+            
             var seq = DOTween.Sequence();
+            if(GameManager.Instance.GameBoard.GameRulesData.DrawOnEmptyHandOnly && PlayerHand.Count > 0)
+            {
+                GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+                foreach (var card in AbilityMat)
+                {
+                    if (card.CardStatus == CardStatus.DeployedOnAbilitiesInactive)
+                    {
+                        seq.AppendCallback(() => {
+                            card.CardStatus = CardStatus.DeployedOnAbilitiesActive;
+                            card.transform.DORotate(new Vector3(90, 0, 0), 0.3f);  });
+                        seq.AppendInterval(0.3f);
+                    }
+                }
+                seq.OnComplete(() => onComplete?.Invoke());
+                return;
+            }
+            
 
    			int cardsToDraw = GameRulesData.MaxHandSize - PlayerHand.Count;
 
@@ -102,12 +127,34 @@ namespace Code.Scripts.Components.GameBoard
             {
                 ACard cardComponent = CreateCardInstance(card);
                 DrawStack.Push(cardComponent);
-                cardComponent.CardStatus = CardStatus.InDeck; // Set initial status
+                cardComponent.CardStatus = CardStatus.Discarded; // Set initial status
             }
             ShuffleDrawStack();
         }
 
+        public void FriendlyFireEnabled()
+        {
+            foreach (CardSO card in CurrentFullDeck)
+            {
+                if (card.isDamageAbility)
+                {
+                    card.isCardModifier = true;
+                }
+            }
+        }
 
+        public void FriendlyFireDisabled()
+        {
+            foreach (CardSO card in CurrentFullDeck)
+            {
+                if (card.isDamageAbility)
+                {
+                    card.isCardModifier = false;
+                }
+            }
+        }
+
+        
         public void DisplayCardInTable(ACard card)
         {
             GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
@@ -144,19 +191,16 @@ namespace Code.Scripts.Components.GameBoard
             if (PlayerHand.Contains(card))
             {
                 PlayerHand.Remove(card);
-                return;
             }
 
             if (RulesMat.Contains(card))
             {
                 RulesMat.Remove(card);
-                return;
             }
 
             if (AbilityMat.Contains(card))
             {
                 AbilityMat.Remove(card);
-                return;
             }
             
             DiscardStack.Push(card);
@@ -167,6 +211,7 @@ namespace Code.Scripts.Components.GameBoard
         {
             GameObject cardObject = Instantiate(cardPrefab, transform);
             ACard cardComponent = cardObject.GetComponent<ACard>();
+            cardComponent.CardStatus = CardStatus.Discarded;
             cardComponent.SetCardData(cardSo);
             return cardComponent;
         }
@@ -195,11 +240,17 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in discardCards)
             {
                 DrawStack.Push(card);
-                card.CardStatus = CardStatus.InHand; // Reset the card status
+                card.CardStatus = CardStatus.InDeck; // Reset the card status
             }
             
             ShuffleDrawStack();
-            
+            RefillTimes++;
+            if(RefillTimes >= GameRulesData.NumberOfRefillsToWin && GameRulesData.NumberOfRefillsToWin > 0)
+            {
+                Debug.Log("Game Over: Refill limit reached.");
+                //GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "StartGame"));
+                return null;
+            }
             // Return the top card from the now shuffled draw stack
             return DrawStack.Count > 0 ? DrawStack.Pop() : null;
         }
@@ -216,7 +267,7 @@ namespace Code.Scripts.Components.GameBoard
             foreach (var card in shuffledCards)
             {
                 DrawStack.Push(card);
-                card.CardStatus = CardStatus.InHand; // Reset the card status
+                card.CardStatus = CardStatus.InDeck; // Reset the card status
             }
         }
 
@@ -241,7 +292,6 @@ namespace Code.Scripts.Components.GameBoard
                                 {
                                     DiscardStack.Push(card);
                                     card.CardStatus = CardStatus.Discarded;
-                                    card.Deselect();
                                     onComplete?.Invoke();
                                 });
                             });
@@ -249,6 +299,14 @@ namespace Code.Scripts.Components.GameBoard
                 });
            
         }
+
+        public void DestroyCard(ACard card)
+        {
+            PlayerHand.Remove(card);
+            Destroy(card.gameObject);
+            GameManager.Instance.Player.HandDeck.DeployCardsInHand();
+        }
+        
 
         public void MoveCardToDiscard(ACard card)
         {

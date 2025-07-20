@@ -25,7 +25,6 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
             Sequence s = GameManager.Instance.GameBoard.RemoveFromPlayerHandTween(card);
             s.OnComplete(() =>
             {
-                Debug.Log($"Discarded card: {card.name}");
                 onComplete?.Invoke();
             });
             s.Play();
