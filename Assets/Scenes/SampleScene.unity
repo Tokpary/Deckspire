@@ -2163,13 +2163,16 @@ GameObject:
   - component: {fileID: 1013965926}
   - component: {fileID: 1013965925}
   - component: {fileID: 1013965929}
-  - component: {fileID: 1013965928}
   - component: {fileID: 1013965933}
   - component: {fileID: 1013965932}
   - component: {fileID: 1013965931}
   - component: {fileID: 1013965930}
   - component: {fileID: 1013965935}
   - component: {fileID: 1013965934}
+  - component: {fileID: 1013965939}
+  - component: {fileID: 1013965938}
+  - component: {fileID: 1013965937}
+  - component: {fileID: 1013965936}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2262,8 +2265,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1013965727}
+  selectedCommands:
+  - {fileID: 1013965936}
   variables: []
   description: 
   stepPause: 0
@@ -3811,12 +3816,14 @@ MonoBehaviour:
   eventHandler: {fileID: 1013965752}
   commandList:
   - {fileID: 1013965731}
+  - {fileID: 1013965938}
+  - {fileID: 1013965939}
   - {fileID: 1013965728}
   - {fileID: 1013965729}
   - {fileID: 1013965730}
   - {fileID: 1013965910}
   - {fileID: 1013965911}
-  - {fileID: 1013965928}
+  - {fileID: 1013965937}
   - {fileID: 1013965908}
   - {fileID: 1013965732}
   - {fileID: 1013965738}
@@ -3825,6 +3832,7 @@ MonoBehaviour:
   - {fileID: 1013965735}
   - {fileID: 1013965736}
   - {fileID: 1013965737}
+  - {fileID: 1013965936}
   - {fileID: 1013965918}
   - {fileID: 1013965919}
   suppressAllAutoSelections: 0
@@ -3923,7 +3931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 79
   indentLevel: 0
-  storyText: "Oh, has the time come?\r"
+  storyText: ...
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -7902,24 +7910,6 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
---- !u!114 &1013965928
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013965647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 267
-  indentLevel: 0
-  musicClip: {fileID: 8300000, guid: cc8ebb7f6e88de047a2dcaa35fa84dcd, type: 3}
-  atTime: 0
-  loop: 1
-  fadeDuration: 1
 --- !u!114 &1013965929
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -8047,6 +8037,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 272
   indentLevel: 0
+--- !u!114 &1013965936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 277
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: cc8ebb7f6e88de047a2dcaa35fa84dcd, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
+--- !u!114 &1013965937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b359b09a7ba2e4af981f07c07f8af85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 276
+  indentLevel: 0
+--- !u!114 &1013965938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 275
+  indentLevel: 0
+  storyText: I am all out of cards...
+  description: 
+  character: {fileID: 502526039}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 274
+  indentLevel: 0
+  storyText: "Oh, has the time come?\r"
+  description: 
+  character: {fileID: 502526039}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1056908542
 GameObject:
   m_ObjectHideFlags: 0
