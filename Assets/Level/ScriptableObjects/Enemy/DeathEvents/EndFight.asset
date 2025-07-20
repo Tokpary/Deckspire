@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e0b6eeaf54d54a64be6fc511e3158, type: 3}
   m_Name: EndFight
   m_EditorClassIdentifier: 
+  cardsToAdd:
+  - {fileID: 11400000, guid: 6f142abb5c1f9c0488d425f4a7df4a91, type: 2}
+  - {fileID: 11400000, guid: d35c87d78690890479fc41439eed3187, type: 2}
+  - {fileID: 11400000, guid: db7ecd5b0d07b934a838ed3b077ce216, type: 2}
+  - {fileID: 11400000, guid: b2881c2d39a1ad64c863edd5a3b26880, type: 2}
+  - {fileID: 11400000, guid: c8fcb3b01a358b34c915c98651ea243e, type: 2}
+  - {fileID: 11400000, guid: c6f0d2719ee4b56409ee7d9f02f1e6c5, type: 2}
+  - {fileID: 11400000, guid: cd5bbd87134ec724e9bf52fa948726a2, type: 2}

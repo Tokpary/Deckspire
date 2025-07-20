@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aad47dcb71bd49d485fb3d17489b6078, type: 3}
-  m_Name: WheelOfFortune
+  m_Name: HermitGameRules
   m_EditorClassIdentifier: 
   PlayerHealth: 0
   PlayerMana: 0
@@ -27,9 +27,9 @@ MonoBehaviour:
   IsSkippingNextEnemy: 0
   IsMirrorApplied: 0
   IsModifyingCard: 0
-  DecoyPerRound: 1
-  DrawOnEmptyHandOnly: 1
+  DecoyPerRound: 2
+  DrawOnEmptyHandOnly: 0
   DecoyOnTableCards: 0
   IsCleanseApplied: 0
   LifeLossOn2CardsDecoyed: 0
-  NumberOfRefillsToWin: 1
+  NumberOfRefillsToWin: 0

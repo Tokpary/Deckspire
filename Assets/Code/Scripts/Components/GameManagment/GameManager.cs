@@ -51,6 +51,15 @@ namespace Code.Scripts.Components.GameManagment
         private void Start()
         {
             InitializeGame();
+        }
+
+        public void StartFight()
+        {
+            _gameFlowManager.SetState(new DrawState(_gameFlowManager));
+        }
+
+        public void InitializeGame()
+        {
             GameBoard.Initialize(this, Enemy);
             if (PlayIntroduction)
             {
@@ -64,19 +73,17 @@ namespace Code.Scripts.Components.GameManagment
             TurnManager.StartGame(GameBoard, _player, _enemy);
         }
 
-        public void StartFight()
+        public void InitializeNextEnemy()
         {
+            int playerCurrentHealth = Player.CurrentHealth;
+            GameBoard.Initialize(this, Enemy);
+            Player.CurrentHealth = playerCurrentHealth; // Restore player's health
+            UIManager.UpdateTurn(Player.CurrentHealth);
+            UIManager.UpdateEnergy(Player.CurrentEnergy);
             _gameFlowManager.SetState(new DrawState(_gameFlowManager));
-        }
-
-        private void InitializeGame()
-        {
-           // player.HandDeck.Initialize();
+            TurnManager.StartGame(GameBoard, _player, _enemy);
         }
         
-        
-        
-
         public void ShowMainMenu()
         {
             // Logic to show the main menu UI

@@ -48,6 +48,7 @@ namespace Code.Scripts.Components.GameBoard
             DrawStack.Clear();
             PlayerHand.Clear();
             GameRulesData = GetComponent<GameRulesData>();
+            GameRulesData.InitializeGameRules();
             GameRulesData.UpdateEnemyRules(enemy.EnemyRulesData);
             InitializeCards();
             InitializePlayer();
@@ -247,8 +248,7 @@ namespace Code.Scripts.Components.GameBoard
             RefillTimes++;
             if(RefillTimes >= GameRulesData.NumberOfRefillsToWin && GameRulesData.NumberOfRefillsToWin > 0)
             {
-                Debug.Log("Game Over: Refill limit reached.");
-                //GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "StartGame"));
+                GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "LastDialogue"));
                 return null;
             }
             // Return the top card from the now shuffled draw stack
@@ -274,6 +274,10 @@ namespace Code.Scripts.Components.GameBoard
         public void AddCardToDiscardStackFromEnemy(CardSO cardSo, Action onComplete = null)
         {
             ACard card = CreateCardInstance(cardSo);
+            
+            Array.Resize(ref CurrentFullDeck, CurrentFullDeck.Length + 1);
+            CurrentFullDeck[CurrentFullDeck.Length - 1] = cardSo;
+            
             card.transform.position = NewCardsTransform.position;
             card.transform.rotation = Quaternion.Euler(0, 0, 0);
             
@@ -319,6 +323,54 @@ namespace Code.Scripts.Components.GameBoard
                         AddToDiscardStack(card);
                     });
                 });
+        }
+        
+        public void MoveCardToDiscardAndDestroy(ACard card)
+        {
+            card.transform.DOMove(DiscardStackTransform.position, 0.5f)
+                .SetEase(Ease.InOutQuad)
+                .OnComplete(() =>
+                {
+                    card.transform.DORotate(new Vector3(90, 0, 0), 0.2f).SetEase(Ease.InOutQuad).OnComplete(() =>
+                    {
+                        Destroy(card.gameObject);
+                    });
+                });
+        }
+
+        public void AddCardToCurrentFullDeck(CardSO[] cardsToAdd)
+        {
+            foreach (var card in cardsToAdd)
+            {
+                Array.Resize(ref CurrentFullDeck, CurrentFullDeck.Length + 1);
+                CurrentFullDeck[CurrentFullDeck.Length - 1] = card;
+            }
+        }
+
+        public void ClearBoard()
+        {
+            foreach (var card in PlayerHand)
+            {
+                MoveCardToDiscardAndDestroy(card);
+            }
+            PlayerHand.Clear();
+            
+            foreach (var card in AbilityMat)
+            {
+                MoveCardToDiscardAndDestroy(card);
+            }
+            AbilityMat.Clear();
+            
+            foreach (var card in RulesMat)
+            {
+                MoveCardToDiscardAndDestroy(card); 
+            }
+            RulesMat.Clear();
+            DiscardStack.Clear();
+            DrawStack.Clear();
+            
+            RefillTimes = 0;
+            
         }
     }
 }

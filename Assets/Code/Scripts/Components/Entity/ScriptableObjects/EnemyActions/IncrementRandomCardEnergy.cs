@@ -11,7 +11,14 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
         public int IncrementAmount = 1;
         public override void ExecuteAction(Action onComplete = null)
         {
+            if (GameManager.Instance.GameBoard.PlayerHand.Count == 0)
+            {
+                onComplete?.Invoke();
+                return;
+            }
+
             int index = Random.Range(0, GameManager.Instance.GameBoard.PlayerHand.Count);
+            
             ACard card = GameManager.Instance.GameBoard.PlayerHand[index];
             
             card.EnergyCost += IncrementAmount;
