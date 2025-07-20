@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,15 @@ public class MainMenuCanvasManager : MonoBehaviour
     [SerializeField] private Animator fadeAnimator;
     
     //Metodos
+    private void Start()
+    {
+        fadeAnimator.SetBool("FadeOut", false);
+    }
 
     public void OnPlayPressed()
     {
-        fadeAnimator.SetBool("FadeOut", true);
+        //fadeAnimator.SetBool("FadeOut", true);
+        Fungus.Flowchart.BroadcastFungusMessage("FadeOut");
     }
     
     
