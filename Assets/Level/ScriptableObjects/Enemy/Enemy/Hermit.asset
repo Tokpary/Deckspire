@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Hermit
   MaxHealth: 1
-  Actions: []
-  DieEvents: []
+  Actions:
+  - {fileID: 11400000, guid: 807f549ae3550af488eed93e2be30ba7, type: 2}
+  - {fileID: 11400000, guid: 25adcadfd0fbcf243bd55a5d30e4d2d0, type: 2}
+  DieEvents:
+  - {fileID: 11400000, guid: c143a6cdc3732ae45861a5f44661eb6f, type: 2}
   Passives: []

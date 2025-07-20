@@ -33,3 +33,6 @@ MonoBehaviour:
   IsCleanseApplied: 0
   LifeLossOn2CardsDecoyed: 0
   NumberOfRefillsToWin: 0
+  CardLifeTimeIsVisible: 1
+  IsDeathWinCondition: 0
+  IsHermitWinCondition: 1

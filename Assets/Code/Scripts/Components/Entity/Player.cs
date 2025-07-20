@@ -2,6 +2,7 @@ using System;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameBoard;
 using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.GameManagment.GameStates;
 using Code.Scripts.Components.Handdeck;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace Code.Scripts.Components.Entity
 
         public override void Die()
         {
-            Debug.Log("Player has died.");
+            GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "PlayerDeath"));
         }
 
         public virtual void TakeDamage(int damage)

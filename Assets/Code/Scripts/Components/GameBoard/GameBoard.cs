@@ -127,6 +127,14 @@ namespace Code.Scripts.Components.GameBoard
             foreach (CardSO card in CurrentFullDeck)
             {
                 ACard cardComponent = CreateCardInstance(card);
+                if(GameManager.Instance.GameBoard.GameRulesData.CardLifeTimeIsVisible)
+                {
+                    cardComponent.SetLifeTimeVisbility(true);
+                }
+                else
+                {
+                    cardComponent.SetLifeTimeVisbility(false);
+                }
                 DrawStack.Push(cardComponent);
                 cardComponent.CardStatus = CardStatus.Discarded; // Set initial status
             }
@@ -371,6 +379,18 @@ namespace Code.Scripts.Components.GameBoard
             
             RefillTimes = 0;
             
+        }
+
+        public void SendFromStackToDiscard(int cardsAmount)
+        {
+            for (int i = 0; i < cardsAmount; i++)
+            {
+                if (DrawStack.Count > 0)
+                {
+                    ACard card = DrawStack.Pop();
+                    MoveCardToDiscard(card);
+                }
+            }
         }
     }
 }

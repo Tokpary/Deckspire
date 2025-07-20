@@ -34,5 +34,8 @@ namespace Code.Scripts.Components.GameBoard.ScriptableObjects
         public bool IsCleanseApplied;
         public bool LifeLossOn2CardsDecoyed;
         public int NumberOfRefillsToWin;
+        public bool CardLifeTimeIsVisible = true; // Default value, can be changed in the inspector
+        public bool IsDeathWinCondition;
+        public bool IsHermitWinCondition;
     }
 }

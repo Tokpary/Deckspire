@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d9a5d1e20e6114499b4fa0189574ca, type: 3}
-  m_Name: Death
+  m_Script: {fileID: 11500000, guid: 6c5ae06074b445c39aa114e57b6405d5, type: 3}
+  m_Name: MuertePremadura
   m_EditorClassIdentifier: 
-  Name: Death
-  MaxHealth: -1
-  Actions:
-  - {fileID: 11400000, guid: 856e5965b1678b84cbd8504922d6d02e, type: 2}
-  DieEvents: []
-  Passives: []
+  actionDialogue: Adding garbage card to your deck!
+  CardsAmount: 2

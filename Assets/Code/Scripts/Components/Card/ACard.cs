@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Code.Scripts.Components.Card.ScriptableObjects;
 using Code.Scripts.Components.GameBoard.SnappableArea;
 using Code.Scripts.Components.GameManagment;
+using Code.Scripts.Components.GameManagment.GameStates;
 using Code.Scripts.Components.Handdeck;
 using Code.Scripts.Components.Interfaces;
 using DG.Tweening;
@@ -114,6 +115,13 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
     }
 
 	public void UpdateCard(){
+        if (GameManager.Instance.GameBoard.GameRulesData.IsHermitWinCondition)
+        {
+            if (LifeTime >= 10)
+            {
+                GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "LastDialogue"));
+            }
+        }
         _cardLifeTimeText.text = $"{this.LifeTime}";
         _cardEnergyCostText.text = $"{this.EnergyCost}";
 	}
@@ -302,6 +310,13 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
         _originalPosition = transform.position;
     }
 
+    public void SetLifeTimeVisbility(bool b)
+    {
+        if (_cardLifeTimeText != null)
+        {
+            _cardLifeTimeText.gameObject.SetActive(b);
+        }
+    }
 }
 
 public enum CardStatus

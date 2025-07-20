@@ -11,10 +11,15 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
 
         public override void ExecuteAction(Action onComplete = null)
         {
+            base.ExecuteAction();
             foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand)
             {
-                card.LifeTime += Random.Range(-1, 1);
+                int randomValue = Random.Range(-1, 4); 
+                card.LifeTime += randomValue;
+                Debug.Log($"Card: {card.LifeTime}");
+                card.UpdateCard();
             }
+            onComplete?.Invoke();
         }
     }
 }

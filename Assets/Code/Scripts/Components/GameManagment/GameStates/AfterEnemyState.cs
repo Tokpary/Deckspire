@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Patterns.State.Interfaces;
@@ -15,31 +16,87 @@ namespace Code.Scripts.Components.GameManagment.GameStates
         {
             Sequence sequence = DOTween.Sequence();
 
-            foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand.ToList()) // copiar la lista por seguridad
+            int discardedCardCant = 0;
+
+            if (!GameManager.Instance.GameBoard.GameRulesData.NextRoundIsFreeze)
             {
-                card.LifeTime -= GameManager.Instance.GameBoard.GameRulesData.DecoyPerRound;
-                card.UpdateCard();
-
-                if (card.LifeTime <= 0)
+                foreach (ACard card in GameManager.Instance.GameBoard.PlayerHand.ToList()) // copiar la lista por seguridad
                 {
-                    sequence.Append(GameManager.Instance.GameBoard.RemoveFromPlayerHandTween(card));
-                }
-            }
+                    card.LifeTime -= GameManager.Instance.GameBoard.GameRulesData.DecoyPerRound;
+                    card.UpdateCard();
 
+                    if (card.LifeTime <= 0)
+                    {
+                        sequence.Append(GameManager.Instance.GameBoard.RemoveFromPlayerHandTween(card));
+                        discardedCardCant++;
+                    }
+                }
+            } 
+            else
+            {
+                GameManager.Instance.GameBoard.GameRulesData.NextRoundIsFreeze = false;
+            }
+            
+
+            if (GameManager.Instance.GameBoard.GameRulesData.DecoyOnTableCards)
+            {
+                List<ACard> cardsToRemove = new List<ACard>();
+                cardsToRemove.AddRange(GameManager.Instance.GameBoard.AbilityMat);
+                cardsToRemove.AddRange(GameManager.Instance.GameBoard.RulesMat);
+                
+                foreach (ACard card in cardsToRemove)
+                {
+                    card.LifeTime -= GameManager.Instance.GameBoard.GameRulesData.DecoyPerRound;
+                    card.UpdateCard();
+                    
+                    if (card.LifeTime <= 0)
+                    {
+                        GameManager.Instance.GameBoard.MoveCardToDiscard(card);
+                        card.CurrentSnapZone.RemoveCardFromSlot();
+                    }
+                }
+                
+            }
+            
             sequence.OnComplete(() =>
             {
                 GameManager.Instance.Player.TakeDamage(1);
-                
-                GameManager.Instance.Player.CurrentEnergy = GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana;
+
+                if (GameManager.Instance.GameBoard.GameRulesData.NextRoundIsEnergyLoss)
+                {
+                    GameManager.Instance.Player.CurrentEnergy = GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana - 1;
+                    GameManager.Instance.GameBoard.GameRulesData.NextRoundIsEnergyLoss = false;
+                }
+                else
+                {
+                    GameManager.Instance.Player.CurrentEnergy = GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana;
+                }
+
+                if (GameManager.Instance.GameBoard.GameRulesData.LifeLossOn2CardsDecoyed)
+                {
+                    if (discardedCardCant >= 2)
+                    {
+                        GameManager.Instance.Player.TakeDamage(1);
+                    }
+                }
                 
                 GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
-                GameManager.Instance.GameFlowManager.SetState(new DrawState(gameManager));
+                if (GameManager.Instance.GameBoard.GameRulesData.IsDeathWinCondition && 
+                    GameManager.Instance.GameBoard.PlayerHand.Count <= 0)
+                {
+                        GameManager.Instance.GameFlowManager.SetState(new DialogueState(gameManager, "DeathBeated"));
+                }
+                else
+                {
+                    GameManager.Instance.GameFlowManager.SetState(new DrawState(gameManager));
+                }
             });
 
             sequence.Play();
         }
         public override void Exit(IGameState gameManager)
         {
+           
         }
 
         public override void Update()

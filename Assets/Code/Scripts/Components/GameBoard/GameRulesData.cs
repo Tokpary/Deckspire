@@ -31,6 +31,7 @@ namespace Code.Scripts.Components.GameBoard
         public bool DrawOnEmptyHandOnly { get; set; }
         public bool DecoyOnTableCards { get; set; }
         public bool LifeLossOn2CardsDecoyed { get; set; }
+        public bool CardLifeTimeIsVisible { get; set; } = true; // Default value, can be changed in the inspector
         
         public bool IsSkippingNextEnemy { get; set; }
         public bool IsCleanseApplied { get; set; }
@@ -38,6 +39,11 @@ namespace Code.Scripts.Components.GameBoard
 
         public ACard SelectedCard { get; set; }
         public int NumberOfRefillsToWin { get; set; }
+        public bool IsDeathWinCondition { get; set; }
+        
+        public bool NextRoundIsEnergyLoss { get; set; } = false; // Default value, can be changed in the inspector
+        public bool NextRoundIsFreeze { get; set; }
+        public bool IsHermitWinCondition { get; set; } = false; // Default value, can be changed in the inspector
 
         private void Awake()
         {
@@ -67,6 +73,9 @@ namespace Code.Scripts.Components.GameBoard
             IsCleanseApplied = DefaultGameRules.IsCleanseApplied;
             LifeLossOn2CardsDecoyed = DefaultGameRules.LifeLossOn2CardsDecoyed;
             NumberOfRefillsToWin = DefaultGameRules.NumberOfRefillsToWin;
+            CardLifeTimeIsVisible = DefaultGameRules.CardLifeTimeIsVisible;
+            IsDeathWinCondition = DefaultGameRules.IsDeathWinCondition;
+            IsHermitWinCondition = DefaultGameRules.IsHermitWinCondition;
         }
 
         public void UpdateEnemyRules(GameRulesSO enemyEnemyRulesData)
@@ -78,6 +87,9 @@ namespace Code.Scripts.Components.GameBoard
             DecoyOnTableCards = enemyEnemyRulesData.DecoyOnTableCards;
             LifeLossOn2CardsDecoyed = enemyEnemyRulesData.LifeLossOn2CardsDecoyed;
             NumberOfRefillsToWin = enemyEnemyRulesData.NumberOfRefillsToWin;
+            CardLifeTimeIsVisible = enemyEnemyRulesData.CardLifeTimeIsVisible;
+            IsDeathWinCondition = enemyEnemyRulesData.IsDeathWinCondition;
+            IsHermitWinCondition = enemyEnemyRulesData.IsHermitWinCondition;
         }
     }
 }

@@ -32,3 +32,6 @@ MonoBehaviour:
   DecoyOnTableCards: 1
   IsCleanseApplied: 0
   LifeLossOn2CardsDecoyed: 1
+  NumberOfRefillsToWin: 0
+  CardLifeTimeIsVisible: 0
+  IsDeathWinCondition: 1

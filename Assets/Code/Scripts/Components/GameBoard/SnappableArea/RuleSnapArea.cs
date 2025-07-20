@@ -45,6 +45,11 @@ namespace Code.Scripts.Components.GameBoard.SnappableArea
 
             if (CanAcceptCard(card))
             {
+                if (GameManager.Instance.GameBoard.GameRulesData.DecoyOnTableCards)
+                {
+                    card.LifeTime = 3;
+                    card.UpdateCard();
+                }
                 if(GameManager.Instance.GameBoard.GameRulesData.IsCleanseApplied)
                 {
                     GameManager.Instance.GameBoard.GameRulesData.IsCleanseApplied = false;

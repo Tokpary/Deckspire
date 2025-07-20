@@ -17,6 +17,7 @@ namespace Code.Scripts.Components.Entity.ScriptableObjects.EnemyActions
                 return;
             }
 
+            base.ExecuteAction();
             int index = Random.Range(0, GameManager.Instance.GameBoard.PlayerHand.Count);
             ACard card = GameManager.Instance.GameBoard.PlayerHand[index];
             
