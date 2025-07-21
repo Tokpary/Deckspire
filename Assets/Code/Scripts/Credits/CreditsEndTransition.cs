@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FadeOutSceneTransition : StateMachineBehaviour
+public class CreditsEndTransition : StateMachineBehaviour
 {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        SceneManager.LoadScene("SampleScene"); //Escena de juego
+        SceneManager.LoadScene("PostCredits"); //Escena de juego
     }
 }
