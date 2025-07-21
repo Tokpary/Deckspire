@@ -1108,6 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: 7787317f6a319df458003161b713ef7d, type: 2}
   EnemyRulesData: {fileID: 11400000, guid: a605c8393ea7c044ebff9b0475ac9b12, type: 2}
+  HealthText: {fileID: 0}
 --- !u!212 &221807097 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7950592004245017835, guid: a4573808b62c5ce49b1f9f60fa41cba2,
@@ -11885,6 +11886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: aba03ac83dc6e2749890b17fbaae4bc1, type: 2}
   EnemyRulesData: {fileID: 11400000, guid: 0d3824495eaf88a40afa79a1441b0560, type: 2}
+  HealthText: {fileID: 0}
 --- !u!212 &1226216747 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2502777180320212635, guid: aa898f0a74d5a244c9bf62998a196cfb,
@@ -13042,7 +13044,7 @@ PrefabInstance:
     - target: {fileID: 850534008039850541, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 45
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 1441760138152056350, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
@@ -13377,6 +13379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5838292374524088596, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
+      propertyPath: HealthText
+      value: 
+      objectReference: {fileID: 782514657}
+    - target: {fileID: 5838292374524088596, guid: c718127e954fb38468df94de7f992ccb,
+        type: 3}
       propertyPath: EnemyRulesData
       value: 
       objectReference: {fileID: 11400000, guid: dd48f05e85dc2f94394da490464ae71a,
@@ -13446,7 +13453,7 @@ PrefabInstance:
     - target: {fileID: 8298917836781419980, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1389
+      value: 1392
       objectReference: {fileID: 0}
     - target: {fileID: 8434767025100126925, guid: c718127e954fb38468df94de7f992ccb,
         type: 3}
@@ -14406,6 +14413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: 760b3fbe004253846bc0141daf04c802, type: 2}
   EnemyRulesData: {fileID: 11400000, guid: 5094b4e54cf06574c858be75fb977e69, type: 2}
+  HealthText: {fileID: 0}
 --- !u!1 &2144853922
 GameObject:
   m_ObjectHideFlags: 0

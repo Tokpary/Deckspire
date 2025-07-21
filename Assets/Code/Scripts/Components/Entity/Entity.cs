@@ -8,8 +8,8 @@ namespace Code.Scripts.Components.Entity
 		public int CurrentHealth { get; set; }
 		public int MaxEnergy {get; set;}
 		public int CurrentEnergy {get; set;}
-		
-		public int DamageMultiplier {  get; set; }
+
+		public int DamageMultiplier { get; set; } = 1;
 
 		public virtual void Awake()
 		{

@@ -3070,6 +3070,8 @@ GameObject:
   - component: {fileID: 1945769319}
   - component: {fileID: 1945769322}
   - component: {fileID: 1945769321}
+  - component: {fileID: 1945769323}
+  - component: {fileID: 1945769324}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3093,7 +3095,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 18
     y: 85
-    width: 165
+    width: 167.6
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3102,6 +3104,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1945769313}
   commandList:
+  - {fileID: 1945769323}
   - {fileID: 1945769322}
   - {fileID: 1945769321}
   - {fileID: 1945769317}
@@ -3110,6 +3113,7 @@ MonoBehaviour:
   - {fileID: 1945769314}
   - {fileID: 1945769315}
   - {fileID: 1945769316}
+  - {fileID: 1945769324}
   - {fileID: 1945769318}
   - {fileID: 1945769320}
   - {fileID: 1945769319}
@@ -3138,8 +3142,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1945769303}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
@@ -3423,6 +3426,38 @@ MonoBehaviour:
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
   fadeTexture: {fileID: 0}
   fadeTweenType: 4
+--- !u!114 &1945769323
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945769301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 17
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: b3c8053fdd5692642a6835b45faf4346, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
+--- !u!114 &1945769324
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945769301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b359b09a7ba2e4af981f07c07f8af85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 18
+  indentLevel: 0
 --- !u!1 &1960132689
 GameObject:
   m_ObjectHideFlags: 0

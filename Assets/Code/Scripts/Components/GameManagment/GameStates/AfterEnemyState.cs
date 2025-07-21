@@ -60,7 +60,6 @@ namespace Code.Scripts.Components.GameManagment.GameStates
             
             sequence.OnComplete(() =>
             {
-                GameManager.Instance.Player.TakeDamage(1);
 
                 if (GameManager.Instance.GameBoard.GameRulesData.NextRoundIsEnergyLoss)
                 {
@@ -72,24 +71,29 @@ namespace Code.Scripts.Components.GameManagment.GameStates
                     GameManager.Instance.Player.CurrentEnergy = GameManager.Instance.GameBoard.GameRulesData.PlayerMaxMana;
                 }
 
-                if (GameManager.Instance.GameBoard.GameRulesData.LifeLossOn2CardsDecoyed)
-                {
-                    if (discardedCardCant >= 2)
-                    {
-                        GameManager.Instance.Player.TakeDamage(1);
-                    }
-                }
-                
                 GameManager.Instance.UIManager.UpdateEnergy(GameManager.Instance.Player.CurrentEnergy);
                 if (GameManager.Instance.GameBoard.GameRulesData.IsDeathWinCondition && 
                     GameManager.Instance.GameBoard.PlayerHand.Count <= 0)
                 {
                         GameManager.Instance.GameFlowManager.SetState(new DialogueState(gameManager, "DeathBeated"));
+                        return;
                 }
                 else
                 {
+                    
+                
+                    if (GameManager.Instance.GameBoard.GameRulesData.LifeLossOn2CardsDecoyed)
+                    {
+                        if (discardedCardCant >= 2)
+                        {
+                            GameManager.Instance.Player.TakeDamage(1);
+                        }
+                    }
+                    GameManager.Instance.Player.TakeDamage(1);
                     GameManager.Instance.GameFlowManager.SetState(new DrawState(gameManager));
                 }
+                
+
             });
 
             sequence.Play();

@@ -12,6 +12,7 @@ namespace Code.Scripts.Components.Interactables
             if (GameManager.Instance.GameFlowManager.GetCurrentState() is DeployCardState)
             {
                 GetComponent<Animator>().SetTrigger("Toque");
+                
                 GameManager.Instance.GameFlowManager.SetState(new EnemyActionState(GameManager.Instance.GameFlowManager));
             }
         }
