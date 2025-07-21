@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Limpieza
   m_EditorClassIdentifier: 
   cardName: Cleaning
-  description: Take a Game Changer or an Ability card out of the table and return
-    it to the discard pile
+  description: Place this card above a Game Changer or an ability card on the table
+    to return it to the discard pile
   cardImage: {fileID: 21300000, guid: 1db0787e2121def42a0c42d2d21df597, type: 3}
   cardBackground: {fileID: 21300000, guid: 7a3669899ac8ef3449a7c7078b7c81a7, type: 3}
   manaCost: 2

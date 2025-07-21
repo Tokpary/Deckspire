@@ -629,19 +629,19 @@ MonoBehaviour:
 
     - Deal 15 Damage
 
-    Paassives:
+    Passives:
 
     - None
 
-    Possiblle
+    Possible
     Actions:
 
-    - Take one random card out of your hand
+    - Discard a random card from your hand
 
     - Add a Garbage card
 
     to
-    your hand'
+    your deck'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40d84718bbdc049499a44a4d77f3d06d, type: 2}
   m_sharedMaterial: {fileID: -2846263691083220672, guid: 40d84718bbdc049499a44a4d77f3d06d,
@@ -1313,11 +1313,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Objective:\n- End the turn with an empty hand\nPaassives:\n- If 2 or more
+  m_text: "Objective:\n- End the turn with an empty hand\nPassives:\n- If 2 or more
     cards exhaust in the same turn, you lose 1 life point\n- Ability and Game Changer
     cards will expire 3 turns after being placed on the desk\n- You can't see the
-    exhaust time of your hand\nPossiblle Actions:\n- Two random cards from your \ndeck
-    will be placed on the inactive deck"
+    exhaust time of your hand\nPossible Actions:\n- Two random cards from your \nactive
+    deck will be placed into the\ninactive deck"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40d84718bbdc049499a44a4d77f3d06d, type: 2}
   m_sharedMaterial: {fileID: -2846263691083220672, guid: 40d84718bbdc049499a44a4d77f3d06d,
@@ -1345,8 +1345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 58.3
+  m_fontSizeBase: 58.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1830,7 +1830,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457539634}
   m_LocalRotation: {x: -0, y: -0, z: 0.008055657, w: 0.9999676}
-  m_LocalPosition: {x: 0, y: 0, z: 57.99991}
+  m_LocalPosition: {x: 0, y: 0, z: 58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1838,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.923}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.00036, y: -8.999979}
+  m_AnchoredPosition: {x: 33, y: -16}
   m_SizeDelta: {x: 350.96, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457539636
@@ -1863,20 +1863,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Objective:
 
-    - A card in your hand must have an exhaust time of 15
+    - A card in your hand must have an exhaust time of 13
     rounds
 
-    Paassives:
+    Passives:
 
     - Cards expire twice as fast
 
-    Possiblle Actions:
+    - If you attack
+    him, cards won''t expire this round
 
-    -
-    All the cards in your hand randomly add or subtract 1 to their exhaust time
+    Possible Actions:
 
-    -
-    Reduce your next turn''s starting energy by 1'
+    - All the cards
+    in your hand randomly add or subtract 1 to their exhaust time
+
+    - Reduce your
+    next turn''s starting energy by 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40d84718bbdc049499a44a4d77f3d06d, type: 2}
   m_sharedMaterial: {fileID: -2846263691083220672, guid: 40d84718bbdc049499a44a4d77f3d06d,
@@ -1904,8 +1907,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 65.9
+  m_fontSizeBase: 65.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1914,7 +1917,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 20
+  m_characterSpacing: 9.6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2334,10 +2337,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Objective:\n- Cycle your discard pile 2 times\nPaassives:\n- You can only
-    take new cards whe nyour hand is empty\nPossiblle Actions:\n- Discard a random
-    card from rour hand\n- Add 1 to the cost of a random card in your hand\n-Add
-    2 to the texhaust time \nof a random card in your hand"
+  m_text: 'Objective:
+
+    - Cycle your discard pile 2 times
+
+    Passives:
+
+    -
+    You can only take new cards when your hand is empty
+
+    - If you attack him,
+    he will play his turn twice
+
+    Possible Actions:
+
+    - Discard a random card
+    from rour hand
+
+    - Add 1 to the cost of a random card in your hand
+
+    -Add
+    2 to the texhaust time
+
+    of a random card in your hand'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40d84718bbdc049499a44a4d77f3d06d, type: 2}
   m_sharedMaterial: {fileID: -2846263691083220672, guid: 40d84718bbdc049499a44a4d77f3d06d,
@@ -2365,8 +2387,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68
-  m_fontSizeBase: 68
+  m_fontSize: 58.22
+  m_fontSizeBase: 58.22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3660,7 +3682,6 @@ GameObject:
   - component: {fileID: 1013965732}
   - component: {fileID: 1013965738}
   - component: {fileID: 1013965737}
-  - component: {fileID: 1013965736}
   - component: {fileID: 1013965735}
   - component: {fileID: 1013965734}
   - component: {fileID: 1013965733}
@@ -3879,6 +3900,11 @@ GameObject:
   - component: {fileID: 1013965990}
   - component: {fileID: 1013965991}
   - component: {fileID: 1013965992}
+  - component: {fileID: 1013965997}
+  - component: {fileID: 1013965996}
+  - component: {fileID: 1013965995}
+  - component: {fileID: 1013965994}
+  - component: {fileID: 1013965993}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3962,7 +3988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 205.31293, y: -324.13788}
+  scrollPos: {x: 234.31293, y: -358.13788}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 460
@@ -4053,6 +4079,11 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 1013965656}
   commandList:
+  - {fileID: 1013965997}
+  - {fileID: 1013965996}
+  - {fileID: 1013965994}
+  - {fileID: 1013965993}
+  - {fileID: 1013965995}
   - {fileID: 1013965991}
   - {fileID: 1013965803}
   - {fileID: 1013965924}
@@ -5480,7 +5511,6 @@ MonoBehaviour:
   - {fileID: 1013965733}
   - {fileID: 1013965734}
   - {fileID: 1013965735}
-  - {fileID: 1013965736}
   - {fileID: 1013965737}
   - {fileID: 1013965936}
   - {fileID: 1013965984}
@@ -5703,33 +5733,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1013965736
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013965647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 86
-  indentLevel: 0
-  storyText: Take this card, it may help you to victory.
-  description: 
-  character: {fileID: 489842127}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &1013965737
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5798,7 +5801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 101
   indentLevel: 0
-  storyText: '{s=3}Goodbye{/s}'
+  storyText: '{s=3}Goodbye{/s}.'
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5825,7 +5828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 100
   indentLevel: 0
-  storyText: '{s=5}Hehehe{/s}'
+  storyText: '{s=5}Hehehe{/s}.'
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5852,7 +5855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 99
   indentLevel: 0
-  storyText: Perhaps, nothing can really exist eternally
+  storyText: Perhaps, nothing can really exist eternally.
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5879,7 +5882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 98
   indentLevel: 0
-  storyText: And, eventually, you will end just like me
+  storyText: And, eventually, you will end just like me.
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5906,7 +5909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 97
   indentLevel: 0
-  storyText: More will come, more like you
+  storyText: More will come, more like you.
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5960,7 +5963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 95
   indentLevel: 0
-  storyText: "You will replace me as {i}Death\r{/i}"
+  storyText: "You will replace me as {i}Death\r{/i}."
   description: 
   character: {fileID: 489842127}
   portrait: {fileID: 0}
@@ -5987,7 +5990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 94
   indentLevel: 0
-  storyText: And you must abide to your new role
+  storyText: And you must abide to your new role.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -6014,7 +6017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 93
   indentLevel: 0
-  storyText: Now my time has come
+  storyText: Now my time has come.
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -6041,7 +6044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 92
   indentLevel: 0
-  storyText: "This feeling is\u2026 new"
+  storyText: "This feeling is\u2026 new."
   description: 
   character: {fileID: 502526039}
   portrait: {fileID: 0}
@@ -10943,6 +10946,141 @@ MonoBehaviour:
   targetObject: {fileID: 435441900}
   methodName: CleanGameBoard
   delay: 0
+--- !u!114 &1013965993
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 334
+  indentLevel: 0
+  storyText: Hahahahaha!
+  description: 
+  character: {fileID: 847098738}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965994
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 333
+  indentLevel: 0
+  storyText: Hahahahahahahahaha!
+  description: 
+  character: {fileID: 847098738}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965995
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 332
+  indentLevel: 0
+  storyText: '{s=5}Hahaha...{/s}'
+  description: 
+  character: {fileID: 847098738}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965996
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 331
+  indentLevel: 0
+  storyText: You... you sure are strong!
+  description: 
+  character: {fileID: 847098738}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &1013965997
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013965647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 330
+  indentLevel: 0
+  storyText: Oh... my...
+  description: 
+  character: {fileID: 847098738}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &1056908542
 GameObject:
   m_ObjectHideFlags: 0
