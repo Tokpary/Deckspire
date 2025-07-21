@@ -117,7 +117,7 @@ public abstract class ACard : MonoBehaviour, ICard, IPointerClickHandler, IDragH
 	public void UpdateCard(){
         if (GameManager.Instance.GameBoard.GameRulesData.IsHermitWinCondition)
         {
-            if (LifeTime >= 10)
+            if (LifeTime >= 15)
             {
                 GameManager.Instance.GameFlowManager.SetState(new DialogueState(GameManager.Instance.GameFlowManager, "LastDialogue"));
             }
