@@ -1026,7 +1026,7 @@ PrefabInstance:
     - target: {fileID: 3591848962779521434, guid: a4573808b62c5ce49b1f9f60fa41cba2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.148
+      value: -1.213
       objectReference: {fileID: 0}
     - target: {fileID: 3591848962779521434, guid: a4573808b62c5ce49b1f9f60fa41cba2,
         type: 3}
@@ -2578,12 +2578,12 @@ PrefabInstance:
     - target: {fileID: 6146427580473162809, guid: 8d46f213faf8431448c9c3b8a632f01d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.307
+      value: 2.312
       objectReference: {fileID: 0}
     - target: {fileID: 6146427580473162809, guid: 8d46f213faf8431448c9c3b8a632f01d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.148
+      value: -1.258
       objectReference: {fileID: 0}
     - target: {fileID: 6146427580473162809, guid: 8d46f213faf8431448c9c3b8a632f01d,
         type: 3}
@@ -3988,7 +3988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 234.31293, y: -358.13788}
+  scrollPos: {x: 273.31293, y: -326.13788}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 460
@@ -11692,7 +11692,7 @@ PrefabInstance:
     - target: {fileID: 2247007656993591022, guid: aa898f0a74d5a244c9bf62998a196cfb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.12
+      value: -1.257
       objectReference: {fileID: 0}
     - target: {fileID: 2247007656993591022, guid: aa898f0a74d5a244c9bf62998a196cfb,
         type: 3}
@@ -14207,7 +14207,7 @@ PrefabInstance:
     - target: {fileID: 3150734235793295640, guid: 831d8392415e0074a89a8dcd0caeb0ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.148
+      value: -1.247
       objectReference: {fileID: 0}
     - target: {fileID: 3150734235793295640, guid: 831d8392415e0074a89a8dcd0caeb0ac,
         type: 3}
