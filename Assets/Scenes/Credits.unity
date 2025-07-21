@@ -1530,7 +1530,6 @@ GameObject:
   - component: {fileID: 2053984488}
   - component: {fileID: 2053984487}
   - component: {fileID: 2053984491}
-  - component: {fileID: 2053984492}
   - component: {fileID: 2053984493}
   - component: {fileID: 2053984495}
   - component: {fileID: 2053984494}
@@ -1582,7 +1581,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 2053984487}
   commandList:
-  - {fileID: 2053984492}
   - {fileID: 2053984491}
   - {fileID: 2053984496}
   - {fileID: 2053984493}
@@ -1680,24 +1678,6 @@ MonoBehaviour:
   isLocal: 1
   toTransformOLD: {fileID: 0}
   toPositionOLD: {x: 0, y: 0, z: 0}
---- !u!114 &2053984492
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053984486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 2
-  indentLevel: 0
-  _duration:
-    floatRef: {fileID: 0}
-    floatVal: 1
-  durationOLD: 0
 --- !u!114 &2053984493
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1734,7 +1714,7 @@ MonoBehaviour:
   indentLevel: 0
   _sceneName:
     stringRef: {fileID: 0}
-    stringVal: MainMenu
+    stringVal: PostCredits
   loadingImage: {fileID: 0}
   sceneNameOLD: 
 --- !u!114 &2053984495
